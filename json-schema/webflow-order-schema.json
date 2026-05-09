@@ -1,0 +1,780 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.webflow.com/schemas/order.json",
+  "title": "Webflow Ecommerce Order",
+  "description": "A Webflow Ecommerce Order object representing a customer order, as returned by the Webflow Data API v2. Includes order status, customer information, purchased items, pricing totals, shipping details, and payment processor data.",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The order ID. Will usually be 6 hex characters, but can also be 9 hex characters if the site has a very large number of Orders. Randomly assigned.",
+      "examples": ["dfa-3f1"]
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the Order.",
+      "enum": [
+        "pending",
+        "unfulfilled",
+        "fulfilled",
+        "disputed",
+        "dispute-lost",
+        "refunded"
+      ],
+      "examples": ["unfulfilled"]
+    },
+    "comment": {
+      "type": "string",
+      "description": "A comment string for this Order, which is editable by the API user (not used by Webflow).",
+      "examples": ["Customer requested gift wrapping."]
+    },
+    "orderComment": {
+      "type": "string",
+      "description": "A comment that the customer left when making their Order.",
+      "examples": ["Please gift wrap with a personal note."]
+    },
+    "acceptedOn": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The ISO8601 timestamp that an Order was placed.",
+      "examples": ["2018-12-03T22:06:15.761Z"]
+    },
+    "fulfilledOn": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When an Order is marked as 'fulfilled', this field represents the timestamp of the fulfillment in ISO8601 format. Otherwise, it is null.",
+      "examples": ["2018-12-03T22:06:15.761Z"]
+    },
+    "refundedOn": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When an Order is marked as 'refunded', this field represents the timestamp of the refund in ISO8601 format. Otherwise, it is null.",
+      "examples": ["2018-12-03T22:06:15.761Z"]
+    },
+    "disputedOn": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When an Order is marked as 'disputed', this field represents the timestamp of the dispute in ISO8601 format. Otherwise, it is null.",
+      "examples": ["2018-12-03T22:06:15.761Z"]
+    },
+    "disputeUpdatedOn": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "If an Order has been disputed by the customer, this key will be set to the ISO8601 timestamp of the last update received. If the Order is not disputed, the key will be null.",
+      "examples": ["2018-12-03T22:06:15.761Z"]
+    },
+    "disputeLastStatus": {
+      "type": ["string", "null"],
+      "description": "If an order was disputed by the customer, then this key will be set with the dispute's status from the payment processor.",
+      "enum": [
+        "warning_needs_response",
+        "warning_under_review",
+        "warning_closed",
+        "needs_response",
+        "under_review",
+        "charge_refunded",
+        "won",
+        "lost",
+        null
+      ],
+      "examples": [null]
+    },
+    "customerPaid": {
+      "type": "object",
+      "description": "The total paid by the customer.",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "The three-letter ISO currency code.",
+          "examples": ["USD"]
+        },
+        "value": {
+          "type": "string",
+          "description": "The numeric value in the base unit of the currency.",
+          "examples": ["5892"]
+        },
+        "string": {
+          "type": "string",
+          "description": "The user-facing string representation of the amount.",
+          "examples": ["$58.92"]
+        }
+      }
+    },
+    "netAmount": {
+      "type": "object",
+      "description": "The net amount after application fees.",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "The three-letter ISO currency code.",
+          "examples": ["USD"]
+        },
+        "value": {
+          "type": "string",
+          "description": "The numeric value in the base unit of the currency.",
+          "examples": ["5892"]
+        },
+        "string": {
+          "type": "string",
+          "description": "The user-facing string representation of the amount.",
+          "examples": ["$58.92"]
+        }
+      }
+    },
+    "applicationFee": {
+      "type": "object",
+      "description": "The application fee assessed by the platform.",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "The three-letter ISO currency code.",
+          "examples": ["USD"]
+        },
+        "value": {
+          "type": "string",
+          "description": "The numeric value in the base unit of the currency.",
+          "examples": ["5892"]
+        },
+        "string": {
+          "type": "string",
+          "description": "The user-facing string representation of the amount.",
+          "examples": ["$58.92"]
+        }
+      }
+    },
+    "allAddresses": {
+      "type": "array",
+      "description": "All addresses provided by the customer during the ordering flow.",
+      "items": {
+        "type": "object",
+        "description": "A customer address.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the order address.",
+            "enum": ["shipping", "billing"],
+            "examples": ["shipping"]
+          },
+          "japanType": {
+            "type": ["string", "null"],
+            "description": "Represents a Japan-only address format. This field will only appear on orders placed from Japan.",
+            "enum": ["kana", "kanji", null],
+            "examples": ["kanji"]
+          },
+          "addressee": {
+            "type": "string",
+            "description": "Display name on the address.",
+            "examples": ["Customerio Namen"]
+          },
+          "line1": {
+            "type": "string",
+            "description": "The first line of the address.",
+            "examples": ["123 Example Rd"]
+          },
+          "line2": {
+            "type": "string",
+            "description": "The second line of the address.",
+            "examples": [""]
+          },
+          "city": {
+            "type": "string",
+            "description": "The city of the address.",
+            "examples": ["Examplesville"]
+          },
+          "state": {
+            "type": "string",
+            "description": "The state or province of the address.",
+            "examples": ["CA"]
+          },
+          "country": {
+            "type": "string",
+            "description": "The country of the address.",
+            "examples": ["US"]
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code of the address.",
+            "examples": ["90012"]
+          }
+        }
+      }
+    },
+    "shippingAddress": {
+      "type": "object",
+      "description": "The shipping address for the order.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the order address.",
+          "enum": ["shipping", "billing"],
+          "examples": ["shipping"]
+        },
+        "japanType": {
+          "type": ["string", "null"],
+          "description": "Represents a Japan-only address format.",
+          "enum": ["kana", "kanji", null]
+        },
+        "addressee": {
+          "type": "string",
+          "description": "Display name on the address."
+        },
+        "line1": {
+          "type": "string",
+          "description": "The first line of the address."
+        },
+        "line2": {
+          "type": "string",
+          "description": "The second line of the address."
+        },
+        "city": {
+          "type": "string",
+          "description": "The city of the address."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state or province of the address."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the address."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The postal code of the address."
+        }
+      }
+    },
+    "billingAddress": {
+      "type": "object",
+      "description": "The billing address for the order.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the order address.",
+          "enum": ["shipping", "billing"],
+          "examples": ["billing"]
+        },
+        "japanType": {
+          "type": ["string", "null"],
+          "description": "Represents a Japan-only address format.",
+          "enum": ["kana", "kanji", null]
+        },
+        "addressee": {
+          "type": "string",
+          "description": "Display name on the address."
+        },
+        "line1": {
+          "type": "string",
+          "description": "The first line of the address."
+        },
+        "line2": {
+          "type": "string",
+          "description": "The second line of the address."
+        },
+        "city": {
+          "type": "string",
+          "description": "The city of the address."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state or province of the address."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the address."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The postal code of the address."
+        }
+      }
+    },
+    "shippingProvider": {
+      "type": ["string", "null"],
+      "description": "A string editable by the API user to note the shipping provider used (not used by Webflow).",
+      "examples": ["USPS"]
+    },
+    "shippingTracking": {
+      "type": ["string", "null"],
+      "description": "A string editable by the API user to note the shipping tracking number for the order (not used by Webflow).",
+      "examples": ["RA401558525US"]
+    },
+    "shippingTrackingURL": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "A URL for tracking the shipment.",
+      "examples": ["shipping.test.com/RA401558525US"]
+    },
+    "customerInfo": {
+      "type": "object",
+      "description": "An object with the customer's full name and email.",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "The full name of the Customer.",
+          "examples": ["Customerio Namen"]
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The Customer's email address.",
+          "examples": ["renning@webflow.com"]
+        }
+      }
+    },
+    "purchasedItems": {
+      "type": "array",
+      "description": "An array of all things that the Customer purchased.",
+      "items": {
+        "type": "object",
+        "description": "An Item that was purchased.",
+        "properties": {
+          "count": {
+            "type": "number",
+            "description": "Number of Item purchased.",
+            "examples": [1]
+          },
+          "rowTotal": {
+            "type": "object",
+            "description": "The total for the row.",
+            "properties": {
+              "unit": {
+                "type": "string",
+                "description": "The three-letter ISO currency code.",
+                "examples": ["USD"]
+              },
+              "value": {
+                "type": "string",
+                "description": "The numeric value in the base unit of the currency.",
+                "examples": ["5892"]
+              },
+              "string": {
+                "type": "string",
+                "description": "The user-facing string representation of the amount.",
+                "examples": ["$58.92"]
+              }
+            }
+          },
+          "productId": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The unique identifier for the Product.",
+            "examples": ["5eb9fd05caef491eb9757183"]
+          },
+          "productName": {
+            "type": "string",
+            "description": "User-facing name of the Product.",
+            "examples": ["White Cup"]
+          },
+          "productSlug": {
+            "type": "string",
+            "description": "Slug for the Product.",
+            "examples": ["white-cup"]
+          },
+          "variantId": {
+            "type": "string",
+            "description": "Identifier for the Product Variant (SKU).",
+            "examples": ["5eb9fcace279761d8199790c"]
+          },
+          "variantName": {
+            "type": "string",
+            "description": "User-facing name of the Product Variant (SKU).",
+            "examples": ["Red"]
+          },
+          "variantSlug": {
+            "type": "string",
+            "description": "Slug for the Product Variant (SKU).",
+            "examples": ["red"]
+          },
+          "variantSKU": {
+            "type": "string",
+            "description": "The user-defined custom SKU of the Product Variant (SKU).",
+            "examples": ["red-medium"]
+          },
+          "variantImage": {
+            "type": "object",
+            "description": "Image associated with the Product Variant.",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The hosted location for the Variant's image."
+              },
+              "file": {
+                "type": "object",
+                "description": "File metadata for the variant image.",
+                "properties": {
+                  "size": {
+                    "type": "number",
+                    "description": "The image size in bytes."
+                  },
+                  "originalFileName": {
+                    "type": "string",
+                    "description": "The original name of the image."
+                  },
+                  "createdOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The creation timestamp of the image."
+                  },
+                  "contentType": {
+                    "type": "string",
+                    "description": "The MIME type of the image."
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "The image width in pixels."
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "The image height in pixels."
+                  },
+                  "variants": {
+                    "type": "array",
+                    "description": "Variants of the supplied image.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "The hosted location for the image variant."
+                        },
+                        "originalFileName": {
+                          "type": "string",
+                          "description": "The original file name."
+                        },
+                        "size": {
+                          "type": "number",
+                          "description": "The image size in bytes."
+                        },
+                        "width": {
+                          "type": "integer",
+                          "description": "The image width in pixels."
+                        },
+                        "height": {
+                          "type": "integer",
+                          "description": "The image height in pixels."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "variantPrice": {
+            "type": "object",
+            "description": "The price corresponding to the variant.",
+            "properties": {
+              "unit": {
+                "type": "string",
+                "description": "The three-letter ISO currency code.",
+                "examples": ["USD"]
+              },
+              "value": {
+                "type": "string",
+                "description": "The numeric value in the base unit of the currency.",
+                "examples": ["5892"]
+              },
+              "string": {
+                "type": "string",
+                "description": "The user-facing string representation of the amount.",
+                "examples": ["$58.92"]
+              }
+            }
+          },
+          "weight": {
+            "type": ["number", "null"],
+            "description": "The physical weight of the variant if provided, or null.",
+            "examples": [5]
+          },
+          "width": {
+            "type": ["number", "null"],
+            "description": "The physical width of the variant if provided, or null.",
+            "examples": [4]
+          },
+          "height": {
+            "type": ["number", "null"],
+            "description": "The physical height of the variant if provided, or null.",
+            "examples": [7]
+          },
+          "length": {
+            "type": ["number", "null"],
+            "description": "The physical length of the variant if provided, or null.",
+            "examples": [2]
+          }
+        }
+      }
+    },
+    "purchasedItemsCount": {
+      "type": "number",
+      "description": "The sum of all 'count' fields in 'purchasedItems'.",
+      "examples": [1]
+    },
+    "stripeDetails": {
+      "type": "object",
+      "description": "An object with various Stripe IDs, useful for linking into the Stripe dashboard.",
+      "properties": {
+        "subscriptionId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated identifier for the Subscription.",
+          "examples": ["sub_1J6xwG2eZvKYlo2CXu9Zt0Tn"]
+        },
+        "paymentMethod": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated identifier for the PaymentMethod used.",
+          "examples": ["pm_1J6xwG2eZvKYlo2CXu9Zt0Tn"]
+        },
+        "paymentIntentId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated identifier for the PaymentIntent, or null.",
+          "examples": ["pi_1J6xwG2eZvKYlo2CXu9Zt0Tn"]
+        },
+        "customerId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated customer identifier, or null.",
+          "examples": ["cus_E5ajeiWNHEtcAW"]
+        },
+        "chargeId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated charge identifier, or null.",
+          "examples": ["ch_1DdPYQKMjGA7k9mI2AKiBY6u"]
+        },
+        "disputeId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated dispute identifier, or null.",
+          "examples": [null]
+        },
+        "refundId": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated refund identifier, or null.",
+          "examples": [null]
+        },
+        "refundReason": {
+          "type": ["string", "null"],
+          "description": "Stripe-generated refund reason, or null.",
+          "examples": ["requested_by_customer"]
+        }
+      }
+    },
+    "stripeCard": {
+      "type": "object",
+      "description": "Details on the card used to fulfill this order, if this order was finalized with Stripe.",
+      "properties": {
+        "last4": {
+          "type": "string",
+          "description": "The last 4 digits on the card as a string.",
+          "examples": ["4242"]
+        },
+        "brand": {
+          "type": "string",
+          "description": "The card's brand (ie. credit card network).",
+          "enum": [
+            "Visa",
+            "American Express",
+            "MasterCard",
+            "Discover",
+            "JCB",
+            "Diners Club",
+            "Unknown"
+          ],
+          "examples": ["Visa"]
+        },
+        "ownerName": {
+          "type": "string",
+          "description": "The name on the card.",
+          "examples": ["Customerio Namen"]
+        },
+        "expires": {
+          "type": "object",
+          "description": "The card's expiration date.",
+          "properties": {
+            "year": {
+              "type": "number",
+              "description": "Year that the card expires.",
+              "examples": [2025]
+            },
+            "month": {
+              "type": "number",
+              "description": "Month that the card expires.",
+              "examples": [12]
+            }
+          }
+        }
+      }
+    },
+    "paypalDetails": {
+      "type": "object",
+      "description": "PayPal payment details if this order was finalized with PayPal.",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "PayPal order identifier.",
+          "examples": ["1a2b3c4d5e6f7g8h9i0j"]
+        },
+        "payerId": {
+          "type": "string",
+          "description": "PayPal payer identifier.",
+          "examples": ["9k8j7i6h5g4f3e2d1c0b"]
+        },
+        "captureId": {
+          "type": "string",
+          "description": "PayPal capture identifier.",
+          "examples": ["qwe123rty456uio789p"]
+        },
+        "refundId": {
+          "type": "string",
+          "description": "PayPal refund identifier.",
+          "examples": ["abcde12345fghij67890"]
+        },
+        "refundReason": {
+          "type": "string",
+          "description": "PayPal-issued reason for the refund.",
+          "examples": ["Customer requested refund"]
+        },
+        "disputeId": {
+          "type": "string",
+          "description": "PayPal dispute identifier.",
+          "examples": ["zxcvbnm987poiuytrewq"]
+        }
+      }
+    },
+    "customData": {
+      "type": "array",
+      "description": "An array of additional inputs for custom order data gathering. Each object in the array represents an input with a name, and a textInput, textArea, or checkbox value.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata associated with the order.",
+      "properties": {
+        "isBuyNow": {
+          "type": "boolean",
+          "description": "Indicates whether the order was placed via Buy Now.",
+          "examples": [false]
+        }
+      }
+    },
+    "isCustomerDeleted": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the customer has been deleted from the site.",
+      "examples": [false]
+    },
+    "isShippingRequired": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the order contains one or more purchased items that require shipping.",
+      "examples": [false]
+    },
+    "hasDownloads": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the order contains one or more purchased items that are downloadable.",
+      "examples": [false]
+    },
+    "paymentProcessor": {
+      "type": "string",
+      "description": "A string indicating the payment processor used for this order.",
+      "examples": ["stripe"]
+    },
+    "totals": {
+      "type": "object",
+      "description": "An object describing various pricing totals.",
+      "properties": {
+        "subtotal": {
+          "type": "object",
+          "description": "The subtotal price.",
+          "properties": {
+            "unit": {
+              "type": "string",
+              "description": "The three-letter ISO currency code.",
+              "examples": ["USD"]
+            },
+            "value": {
+              "type": "string",
+              "description": "The numeric value in the base unit of the currency.",
+              "examples": ["5892"]
+            },
+            "string": {
+              "type": "string",
+              "description": "The user-facing string representation of the amount.",
+              "examples": ["$58.92"]
+            }
+          }
+        },
+        "extras": {
+          "type": "array",
+          "description": "An array of extra items, includes discounts, shipping, and taxes.",
+          "items": {
+            "type": "object",
+            "description": "Extra order items, includes discounts, shipping, and taxes.",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of extra item this is.",
+                "enum": [
+                  "discount",
+                  "discount-shipping",
+                  "shipping",
+                  "tax"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "description": "A human-readable name for this extra charge.",
+                "examples": ["shipping"]
+              },
+              "description": {
+                "type": "string",
+                "description": "A human-readable description of this extra charge.",
+                "examples": ["Flat Rate"]
+              },
+              "price": {
+                "type": "object",
+                "description": "The price for the item.",
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "description": "The three-letter ISO currency code."
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The numeric value in the base unit of the currency."
+                  },
+                  "string": {
+                    "type": "string",
+                    "description": "The user-facing string representation of the amount."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "total": {
+          "type": "object",
+          "description": "The total price.",
+          "properties": {
+            "unit": {
+              "type": "string",
+              "description": "The three-letter ISO currency code.",
+              "examples": ["USD"]
+            },
+            "value": {
+              "type": "string",
+              "description": "The numeric value in the base unit of the currency.",
+              "examples": ["5892"]
+            },
+            "string": {
+              "type": "string",
+              "description": "The user-facing string representation of the amount.",
+              "examples": ["$58.92"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

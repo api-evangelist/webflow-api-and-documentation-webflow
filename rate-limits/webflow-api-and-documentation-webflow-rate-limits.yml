@@ -1,0 +1,72 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Webflow API and Documentation
+providerId: webflow-api-and-documentation-webflow
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - CMS
+  - Content Management
+  - Ecommerce
+  - No-Code
+  - Publishing
+  - Web Development
+  - Rate Limiting
+description: The Webflow Data API enforces a per-API-key, per-minute rate limit that scales by the
+  site's subscription tier. Limits are scoped to the API key — distinct keys on the same site have
+  independent budgets. Cached reads through the content-delivery API are effectively unlimited; Site
+  Publish has its own one-per-minute cap regardless of plan.
+sources:
+  - https://developers.webflow.com/data/reference/rate-limits
+  - https://webflow.com/pricing
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Starter / Basic Site Plans
+    scope: key
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+    notes: Per API key.
+  - name: CMS / Ecommerce / Business Site Plans
+    scope: key
+    metric: requests_per_minute
+    limit: 120
+    timeFrame: minute
+    notes: Per API key.
+  - name: Enterprise Site Plans
+    scope: key
+    metric: requests_per_minute
+    limit: -1
+    notes: Custom rate limit negotiated as part of the Enterprise contract.
+  - name: Site Publish
+    scope: site
+    metric: requests_per_minute
+    limit: 1
+    timeFrame: minute
+    notes: One successful publish per site per minute.
+  - name: Cached Content-Delivery Reads
+    scope: key
+    metric: varies
+    limit: effectively unlimited
+    notes: Cached requests served by the content-delivery API are not subject to the per-minute API
+      rate limit.
+policies:
+  - name: Per-Key Scoping
+    description: Each API key has its own rate budget. Use one key per environment / app to isolate
+      noisy clients.
+  - name: 429 Handling
+    description: On throttle, the API returns 429 with a Retry-After header (typically 60 seconds).
+      Webflow's official SDK implements exponential backoff automatically.
+  - name: Webhooks Over Polling
+    description: Webflow recommends webhook subscriptions for change notifications instead of polling
+      to stay within the per-minute budget.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

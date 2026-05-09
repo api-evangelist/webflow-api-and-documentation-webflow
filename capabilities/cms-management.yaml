@@ -1,0 +1,482 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow CMS Management
+  description: 'Webflow CMS management workflow combining the Data API for programmatic content operations: site publishing,
+    CMS collection and item management, webhook configuration, and content automation. Used by content managers, developers
+    building CMS integrations, and marketing automation teams.'
+  tags:
+  - Webflow
+  - CMS
+  - Content Management
+  - Publishing
+  - Sites
+  created: '2026-05-03'
+  modified: '2026-05-06'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_KEY: WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API v2 for sites, CMS, ecommerce, and more.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: Bearer {{WEBFLOW_API_KEY}}
+      placement: header
+    resources:
+    - name: sites
+      path: /sites
+      description: Webflow sites within a workspace.
+      operations:
+      - name: list-sites
+        method: GET
+        description: List Sites
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-site
+        method: GET
+        description: Get Site
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a Webflow site.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: publish-site
+        method: POST
+        description: Publish Site
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a Webflow site.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            customDomains: '{{tools.customDomains}}'
+    - name: collections
+      path: /sites/{site_id}/collections
+      description: CMS collections within a Webflow site.
+      operations:
+      - name: list-collections
+        method: GET
+        description: List Collections
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a Webflow site.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-collection
+        method: GET
+        description: Get Collection
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: items
+      path: /collections/{collection_id}/items
+      description: CMS items within a Webflow collection.
+      operations:
+      - name: list-items
+        method: GET
+        description: List Collection Items
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Maximum number of items to return.
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Offset to start returning items from.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-item
+        method: POST
+        description: Create Item
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            fieldData: '{{tools.fieldData}}'
+            isArchived: '{{tools.isArchived}}'
+            isDraft: '{{tools.isDraft}}'
+      - name: update-item
+        method: PATCH
+        description: Update Item
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        - name: item_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS item.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            fieldData: '{{tools.fieldData}}'
+      - name: delete-item
+        method: DELETE
+        description: Delete Item
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        - name: item_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS item.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: publish-item
+        method: POST
+        description: Publish Item
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a CMS collection.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            itemIds: '{{tools.itemIds}}'
+    - name: webhooks
+      path: /sites/{site_id}/webhooks
+      description: Webhooks for real-time event notifications from Webflow.
+      operations:
+      - name: list-webhooks
+        method: GET
+        description: List Webhooks
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a Webflow site.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-webhook
+        method: POST
+        description: Create Webhook
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier for a Webflow site.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            triggerType: '{{tools.triggerType}}'
+            url: '{{tools.url}}'
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: webflow-cms-api
+    description: Unified REST API for Webflow CMS content management workflows.
+    resources:
+    - path: /v1/sites
+      name: sites
+      description: Webflow site management
+      operations:
+      - method: GET
+        name: list-sites
+        description: List all available Webflow sites
+        call: webflow-data.list-sites
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site_id}/publish
+      name: site-publish
+      description: Publish a Webflow site
+      operations:
+      - method: POST
+        name: publish-site
+        description: Publish a Webflow site to custom domains
+        call: webflow-data.publish-site
+        with:
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections
+      name: collections
+      description: CMS collection management
+      operations:
+      - method: GET
+        name: list-collections
+        description: List CMS collections for a site
+        call: webflow-data.list-collections
+        with:
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/items
+      name: items
+      description: CMS item management
+      operations:
+      - method: GET
+        name: list-items
+        description: List items in a CMS collection
+        call: webflow-data.list-items
+        with:
+          collection_id: rest.collection_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-item
+        description: Create a new CMS item
+        call: webflow-data.create-item
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/items/{item_id}
+      name: item
+      description: Single CMS item operations
+      operations:
+      - method: PATCH
+        name: update-item
+        description: Update a CMS item
+        call: webflow-data.update-item
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-item
+        description: Delete a CMS item
+        call: webflow-data.delete-item
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/webhooks
+      name: webhooks
+      description: Webhook management
+      operations:
+      - method: GET
+        name: list-webhooks
+        description: List webhooks for a site
+        call: webflow-data.list-webhooks
+        with:
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-webhook
+        description: Create a webhook for Webflow events
+        call: webflow-data.create-webhook
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9080
+    namespace: webflow-cms-mcp
+    transport: http
+    description: MCP server for AI-assisted Webflow CMS content management.
+    tools:
+    - name: list-sites
+      description: List all Webflow sites available with the API key
+      hints:
+        readOnly: true
+        openWorld: true
+      call: webflow-data.list-sites
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publish-site
+      description: Publish a Webflow site to make changes live
+      hints:
+        readOnly: false
+        destructive: false
+      call: webflow-data.publish-site
+      with:
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-collections
+      description: List CMS collections in a Webflow site
+      hints:
+        readOnly: true
+        openWorld: true
+      call: webflow-data.list-collections
+      with:
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-items
+      description: List all items in a Webflow CMS collection
+      hints:
+        readOnly: true
+        openWorld: true
+      call: webflow-data.list-items
+      with:
+        collection_id: tools.collection_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-cms-item
+      description: Create a new content item in a Webflow CMS collection
+      hints:
+        readOnly: false
+        destructive: false
+      call: webflow-data.create-item
+      with:
+        collection_id: tools.collection_id
+        fieldData: tools.fieldData
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-cms-item
+      description: Update an existing Webflow CMS content item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data.update-item
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        fieldData: tools.fieldData
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publish-cms-items
+      description: Publish CMS items to make them live on the Webflow site
+      hints:
+        readOnly: false
+        destructive: false
+      call: webflow-data.publish-item
+      with:
+        collection_id: tools.collection_id
+        itemIds: tools.itemIds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-cms-item
+      description: Delete an item from a Webflow CMS collection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-data.delete-item
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-webhooks
+      description: List webhooks registered for a Webflow site
+      hints:
+        readOnly: true
+        openWorld: false
+      call: webflow-data.list-webhooks
+      with:
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-webhook
+      description: Register a webhook to receive Webflow site events
+      hints:
+        readOnly: false
+        destructive: false
+      call: webflow-data.create-webhook
+      with:
+        site_id: tools.site_id
+        triggerType: tools.triggerType
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.

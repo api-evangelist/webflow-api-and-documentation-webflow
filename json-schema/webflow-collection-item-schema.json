@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.webflow.com/schemas/collection-item.json",
+  "title": "Webflow Collection Item",
+  "description": "A Webflow Collection Item representing a single entry in a CMS collection, as returned by the Webflow Data API v2. Each item includes system metadata, status flags, and content fields stored in fieldData.",
+  "type": "object",
+  "required": [
+    "id",
+    "fieldData",
+    "lastPublished",
+    "lastUpdated",
+    "createdOn"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the Item.",
+      "examples": ["580e64008c9a982ac9b8b754"]
+    },
+    "cmsLocaleId": {
+      "type": "string",
+      "description": "Identifier for the locale of the CMS item.",
+      "examples": ["653ad57de882f528b32e810e"]
+    },
+    "lastPublished": {
+      "type": ["string", "null"],
+      "readOnly": true,
+      "description": "The date the item was last published.",
+      "examples": ["2023-03-17T18:47:35.560Z"]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The date the item was last updated.",
+      "examples": ["2023-03-17T18:47:35.560Z"]
+    },
+    "createdOn": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The date the item was created.",
+      "examples": ["2023-03-17T18:47:35.560Z"]
+    },
+    "isArchived": {
+      "type": "boolean",
+      "default": false,
+      "description": "Boolean determining if the Item is set to archived."
+    },
+    "isDraft": {
+      "type": "boolean",
+      "default": false,
+      "description": "Boolean determining if the Item is set to draft."
+    },
+    "fieldData": {
+      "type": "object",
+      "description": "An object containing the item's content fields. Every item requires a name and slug. Additional fields are dynamic and match the collection's schema definition.",
+      "required": [
+        "name",
+        "slug"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the Item.",
+          "examples": ["The Hitchhiker's Guide to the Galaxy"]
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL structure of the Item in your site. Updates to an item slug will break all links referencing the old slug.",
+          "examples": ["hitchhikers-guide-to-the-galaxy"]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "site_abc123def456",
+  "cmsLocaleId": "site_abc123def456",
+  "lastUpdated": "2025-03-15T14:30:00Z",
+  "createdOn": "2025-03-15T14:30:00Z",
+  "isArchived": false,
+  "isDraft": false,
+  "fieldData": {
+    "name": "My Webflow Site",
+    "slug": "my-webflow-site"
+  }
+}

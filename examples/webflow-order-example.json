@@ -1,0 +1,46 @@
+{
+  "orderId": "site_abc123def456",
+  "status": "pending",
+  "comment": "sample-comment",
+  "orderComment": "sample-orderComment",
+  "disputeLastStatus": "warning_needs_response",
+  "customerPaid": {
+    "unit": "sample-unit",
+    "value": "sample-value",
+    "string": "sample-string"
+  },
+  "netAmount": {
+    "unit": "sample-unit",
+    "value": "sample-value",
+    "string": "sample-string"
+  },
+  "applicationFee": {
+    "unit": "sample-unit",
+    "value": "sample-value",
+    "string": "sample-string"
+  },
+  "allAddresses": [
+    {
+      "type": "shipping",
+      "japanType": "kana",
+      "addressee": "sample-addressee",
+      "line1": "sample-line1",
+      "line2": "sample-line2",
+      "city": "sample-city",
+      "state": "sample-state",
+      "country": "sample-country",
+      "postalCode": "sample-postalCode"
+    }
+  ],
+  "shippingAddress": {
+    "type": "shipping",
+    "japanType": "kana",
+    "addressee": "sample-addressee",
+    "line1": "sample-line1",
+    "line2": "sample-line2",
+    "city": "sample-city",
+    "state": "sample-state",
+    "country": "sample-country",
+    "postalCode": "sample-postalCode"
+  }
+}

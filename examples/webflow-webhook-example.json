@@ -1,0 +1,9 @@
+{
+  "id": "site_abc123def456",
+  "triggerType": "form_submission",
+  "url": "https://mysite.webflow.io",
+  "workspaceId": "site_abc123def456",
+  "siteId": "site_abc123def456",
+  "lastTriggered": "2025-03-15T14:30:00Z",
+  "createdOn": "2025-03-15T14:30:00Z"
+}

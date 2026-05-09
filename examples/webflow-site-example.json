@@ -1,0 +1,40 @@
+{
+  "id": "site_abc123def456",
+  "workspaceId": "site_abc123def456",
+  "displayName": "My Webflow Site",
+  "shortName": "My Webflow Site",
+  "previewUrl": "https://api.webflow.com/v2/sites/site_abc123",
+  "timeZone": "2025-03-15T14:30:00Z",
+  "createdOn": "2025-03-15T14:30:00Z",
+  "lastUpdated": "2025-03-15T14:30:00Z",
+  "lastPublished": "2025-03-15T14:30:00Z",
+  "customDomains": [
+    {
+      "id": "site_abc123def456",
+      "url": "https://mysite.webflow.io"
+    }
+  ],
+  "locales": {
+    "primary": {
+      "id": "site_abc123def456",
+      "cmsLocaleId": "site_abc123def456",
+      "enabled": true,
+      "displayName": "My Webflow Site",
+      "redirect": true,
+      "subdirectory": "sample-subdirectory",
+      "tag": "sample-tag"
+    },
+    "secondary": [
+      {
+        "id": "site_abc123def456",
+        "cmsLocaleId": "site_abc123def456",
+        "enabled": true,
+        "displayName": "My Webflow Site",
+        "subdirectory": "sample-subdirectory",
+        "tag": "sample-tag"
+      }
+    ]
+  },
+  "dataCollectionEnabled": true,
+  "dataCollectionType": "always"
+}

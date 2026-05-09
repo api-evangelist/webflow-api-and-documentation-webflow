@@ -1,0 +1,167 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Webflow API and Documentation
+providerId: webflow-api-and-documentation-webflow
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - CMS
+  - Content Management
+  - Ecommerce
+  - No-Code
+  - Publishing
+  - Web Development
+description: Webflow's Data API is bundled with the underlying Site Plan tier rather than priced
+  separately; access and rate limits are governed by the Site Plan attached to the workspace. Plans
+  reflect Webflow's published Site / Workspace / Ecommerce ladder (billed-yearly monthly rates from
+  webflow.com/pricing). API rate limits per tier are tracked in the rate-limits artifact.
+sources:
+  - https://webflow.com/pricing
+  - https://developers.webflow.com/data/reference/rate-limits
+plans:
+  - id: webflow-api-and-documentation-webflow-site-starter
+    name: Site - Starter
+    type: freemium
+    description: Free site tier with API access at 60 req/min; 2 pages, 50 lifetime form submits, 1 GB
+      bandwidth.
+    entries:
+      - label: Site Subscription
+        name: site_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: API Rate Limit
+        name: api_rate_limit
+        type: tiered
+        metric: requests_per_minute
+        limit: 60
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Data API at 60 req/min
+      - name: webflow.io subdomain
+  - id: webflow-api-and-documentation-webflow-site-basic
+    name: Site - Basic
+    type: subscription
+    description: Custom-domain site without CMS; API access at 60 req/min.
+    entries:
+      - label: Site Subscription
+        name: site_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$14 (billed yearly)'
+        userMultiplied: false
+      - label: API Rate Limit
+        name: api_rate_limit
+        type: tiered
+        metric: requests_per_minute
+        limit: 60
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Custom Domain
+      - name: Data API at 60 req/min
+  - id: webflow-api-and-documentation-webflow-site-cms
+    name: Site - CMS
+    type: subscription
+    description: CMS-enabled site; API access at 120 req/min.
+    entries:
+      - label: Site Subscription
+        name: site_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$23 (billed yearly)'
+        userMultiplied: false
+      - label: API Rate Limit
+        name: api_rate_limit
+        type: tiered
+        metric: requests_per_minute
+        limit: 120
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: CMS Collections
+      - name: Data API at 120 req/min
+  - id: webflow-api-and-documentation-webflow-site-business
+    name: Site - Business
+    type: subscription
+    description: High-traffic site; API access at 120 req/min.
+    entries:
+      - label: Site Subscription
+        name: site_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$39 (billed yearly)'
+        userMultiplied: false
+      - label: API Rate Limit
+        name: api_rate_limit
+        type: tiered
+        metric: requests_per_minute
+        limit: 120
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: High-Volume Hosting
+      - name: Data API at 120 req/min
+  - id: webflow-api-and-documentation-webflow-site-enterprise
+    name: Site - Enterprise
+    type: enterprise
+    description: Custom-priced enterprise tier with custom API rate limits and SLA.
+    entries:
+      - label: Site Subscription
+        name: site_subscription
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: API Rate Limit
+        name: api_rate_limit
+        type: tiered
+        metric: requests_per_minute
+        limit: -1
+        timeFrame: minute
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Custom API Rate Limit
+      - name: SLA
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

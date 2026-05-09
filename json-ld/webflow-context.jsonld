@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "webflow": "https://api.webflow.com/ns#",
+
+    "Site": "schema:WebSite",
+    "Collection": "schema:DataCatalog",
+    "CollectionItem": "schema:CreativeWork",
+    "Page": "schema:WebPage",
+    "Product": "schema:Product",
+    "Order": "schema:Order",
+    "Asset": "schema:MediaObject",
+
+    "displayName": "schema:name",
+    "shortName": "schema:alternateName",
+    "title": "schema:name",
+    "name": "schema:name",
+    "slug": "schema:identifier",
+    "description": "schema:description",
+
+    "createdOn": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "lastUpdated": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "lastPublished": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "previewUrl": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "@id"
+    },
+
+    "isDraft": "schema:creativeWorkStatus",
+    "isArchived": {
+      "@id": "schema:archivedAt",
+      "@type": "xsd:boolean"
+    },
+
+    "orderId": "schema:orderNumber",
+    "status": "schema:orderStatus",
+    "acceptedOn": {
+      "@id": "schema:orderDate",
+      "@type": "xsd:dateTime"
+    },
+
+    "url": {
+      "@id": "schema:contentUrl",
+      "@type": "@id"
+    },
+    "fileSize": "schema:contentSize",
+    "mimeType": "schema:encodingFormat"
+  }
+}

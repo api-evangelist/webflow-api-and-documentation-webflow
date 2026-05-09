@@ -1,0 +1,4683 @@
+openapi: 3.1.0
+info:
+  title: Webflow Collections API
+  description: Webflow Data API v2 - Collections endpoints.
+  version: 2.0.0
+  contact:
+    name: Webflow Developer Relations
+    email: developers@webflow.com
+    url: https://developers.webflow.com
+  termsOfService: https://webflow.com/legal/terms
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.webflow.com/v2
+    description: Webflow API v2
+    x-fern-server-name: Data API
+security:
+  - OAuth2: []
+  - ApiKey: []
+tags:
+  - name: Collections
+    description: Collections are CMS collections of items.
+  - name: Sites
+    description: Sites are the sites in your Webflow workspace.
+paths:
+  /sites/{site_id}/collections:
+    get:
+      x-fern-sdk-group-name: collections
+      x-fern-sdk-method-name: list
+      security:
+        - OAuth2:
+            - cms:read
+      operationId: list-collections
+      summary: Webflow List Collections
+      description: 'List of all Collections within a Site.
+
+
+        Required scope | `cms:read`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      parameters:
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  collections:
+                    - id: 63692ab61fb2852f582ba8f5
+                      displayName: Products
+                      singularName: Product
+                      slug: product
+                      createdOn: '2019-06-12T13:35:14.238Z'
+                      lastUpdated: '2022-11-17T15:08:50.480Z'
+                    - id: 63692ab61fb2856e6a2ba8f6
+                      displayName: Categories
+                      singularName: Category
+                      slug: category
+                      createdOn: '2019-06-12T13:35:14.238Z'
+                      lastUpdated: '2022-11-17T15:08:50.481Z'
+                    - id: 63692ab61fb285a8562ba8f4
+                      displayName: SKUs
+                      singularName: SKU
+                      slug: sku
+                      createdOn: '2019-06-12T13:35:14.238Z'
+                      lastUpdated: '2022-11-17T15:08:50.478Z'
+                properties:
+                  collections:
+                    description: An array of Collections
+                    type: array
+                    items:
+                      example:
+                        id: 7f15043107e2fc95644e93807ee25dd6
+                        displayName: Guide Entries
+                        singularName: Guide Entry
+                        fields:
+                          - id: 5e2a1b3c4d5e6f7890a1b2c3
+                            isEditable: true
+                            isRequired: true
+                            type: PlainText
+                            slug: name
+                            displayName: Entry Title
+                            helpText: Name of the entry.
+                            validations:
+                          - id: 5e2a1b3c4d5e6f7890a1b2c4
+                            isEditable: true
+                            isRequired: true
+                            type: PlainText
+                            slug: slug
+                            displayName: Slug
+                            helpText: Slug of the entry.
+                            validations:
+                          - id: 6f7e8d9c0b1a2e3d4c5b6a7f
+                            isEditable: true
+                            isRequired: false
+                            type: PlainText
+                            slug: summary
+                            displayName: Summary
+                            helpText: A short summary of the entry.
+                            validations:
+                          - id: 1a2b3c4d5e6f7a8b9c0d1e2f
+                            isEditable: true
+                            isRequired: false
+                            type: RichText
+                            slug: entry-html
+                            displayName: Entry HTML
+                            helpText: The HTML content of the entry.
+                            validations:
+                          - id: 7e8d9c0b1a2e3d4c5b6a7f8e
+                            isEditable: true
+                            isRequired: false
+                            type: Image
+                            slug: illustration-image
+                            displayName: Illustration Image
+                            helpText: An image of the entry.
+                            validations:
+                          - id: 2f3e4d5c6b7a8e9d0c1b2a3f
+                            isEditable: true
+                            isRequired: false
+                            type: VideoLink
+                            slug: demonstration-video
+                            displayName: Demonstration Video
+                            helpText: A video of the entry.
+                            validations:
+                          - id: 8e9d0c1b2a3f4e5d6c7b8a9e
+                            isEditable: true
+                            isRequired: false
+                            type: Link
+                            slug: more-info-link
+                            displayName: More Info Link
+                            helpText: A link to more information about the entry.
+                            validations:
+                          - id: 3f4e5d6c7b8a9e0d1c2b3a4f
+                            isEditable: true
+                            isRequired: false
+                            type: Number
+                            slug: importance-level
+                            displayName: Importance Level
+                            helpText: The importance level of the entry.
+                            validations:
+                              format: integer
+                              allowNegative: false
+                              allowZero: false
+                              minValue: 1
+                              maxValue: 5
+                          - id: 9e0d1c2b3a4f5e6d7c8b9a0e
+                            isEditable: true
+                            isRequired: false
+                            type: Switch
+                            slug: is-essential
+                            displayName: Is Essential
+                            helpText: Is this entry essential?
+                            validations:
+                          - id: 4f5e6d7c8b9a0e1d2c3b4a5f
+                            isEditable: true
+                            isRequired: false
+                            type: Date
+                            slug: first-mentioned
+                            displayName: First Mentioned
+                            helpText: Date of the first mention of the subject.
+                            validations:
+                          - id: 0e1d2c3b4a5f6e7d8c9b0a1e
+                            isEditable: true
+                            isRequired: false
+                            type: Color
+                            slug: towel-color
+                            displayName: Towel Color
+                            helpText: The color of the towel.
+                            validations:
+                          - id: 5f6e7d8c9b0a1e2d3c4b5a6f
+                            isEditable: true
+                            isRequired: false
+                            type: Reference
+                            slug: related-entry
+                            displayName: Related Entry
+                            helpText: A related entry.
+                            validations:
+                              collectionId: 7f15043107e2fc95644e93807ee25dd6
+                          - id: 1e2d3c4b5a6f7e8d9c0b1a2f
+                            isEditable: true
+                            isRequired: false
+                            type: MultiReference
+                            slug: mentioned-in-entries
+                            displayName: Mentioned In Entries
+                            helpText: Entries that mention this subject.
+                            validations:
+                              collectionId: 7f15043107e2fc95644e93807ee25dd6
+                          - id: 6f7e8d9c0b1a2e3d4c5b6a8f
+                            isEditable: true
+                            isRequired: false
+                            type: Option
+                            slug: item-type
+                            displayName: Item Type
+                            helpText: The type of item.
+                            validations:
+                              options:
+                                - name: Survival Gear
+                                  id: 66f6e966c9e1dc700a857ca3
+                                - name: Gadget
+                                  id: 66f6e966c9e1dc700a857ca4
+                                - name: Other
+                                  id: 66f6e966c9e1dc700a857ca5
+                          - id: 2e3d4c5b6a7f8e9d0c1b2a4f
+                            isEditable: true
+                            isRequired: false
+                            type: File
+                            slug: guide-file
+                            displayName: Guide File
+                            helpText:
+                            validations:
+                          - id: 7f8e9d0c1b2a3f4e5d6c8b9e
+                            isEditable: true
+                            isRequired: false
+                            type: Email
+                            slug: contributor-email
+                            displayName: Contributor Email
+                            helpText:
+                            validations:
+                          - id: 3a4f5e6d7c8b9a0e1d2c4b5f
+                            isEditable: true
+                            isRequired: false
+                            type: Phone
+                            slug: emergency-contact
+                            displayName: Emergency Contact
+                            helpText:
+                            validations:
+                        slug: guide-entry
+                        createdOn: '2024-04-12T12:42:00.000Z'
+                        lastUpdated: '2024-04-12T12:42:00.000Z'
+                      description: A collection object
+                      type: object
+                      required:
+                        - id
+                      properties:
+                        id:
+                          type: string
+                          format: objectid
+                          description: Unique identifier for a Collection
+                          example: 562ac0395358780a1f5e6fbd
+                        displayName:
+                          type: string
+                          example: Blog Posts
+                          description: Name given to the Collection
+                        singularName:
+                          type: string
+                          example: Blog Post
+                          description: The name of one Item in Collection (e.g. ”Blog Post” if the Collection is called “Blog Posts”)
+                        slug:
+                          type: string
+                          example: blog-posts
+                          description: Slug of Collection in Site URL structure
+                        createdOn:
+                          type: string
+                          format: date-time
+                          example: '2022-12-07T16:51:37.571Z'
+                          readOnly: true
+                          description: The date the collection was created
+                        lastUpdated:
+                          type: string
+                          format: date-time
+                          example: '2022-12-07T16:51:37.571Z'
+                          readOnly: true
+                          description: The date the collection was last updated
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+    post:
+      x-fern-sdk-group-name: collections
+      x-fern-sdk-method-name: create
+      security:
+        - OAuth2:
+            - cms:write
+      operationId: create-collection
+      summary: Webflow Create Collection
+      description: 'Create a Collection for a site with collection fields.
+
+
+        Each collection includes the required _name_ and _slug_ fields, which are generated automatically. You can update the `displayName` of these fields, but the slug for them cannot be changed. Fields slugs are automatically converted to lowercase. Spaces in slugs are replaced with hyphens.
+
+
+        Required scope | `cms:write`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      parameters:
+        - name: site_id
+          in: path
+          description: Unique identifier for a Site
+          example: 580e63e98c9a982ac9b8b741
+          required: true
+          schema:
+            type: string
+            format: objectid
+            default:
+      requestBody:
+        description: Pass the Name of the collection, as well as the singular name of each item in the collection.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - displayName
+                - singularName
+              properties:
+                displayName:
+                  type: string
+                  description: Name of the collection. Each collection name must be distinct.
+                singularName:
+                  type: string
+                  description: Singular name of each item.
+                slug:
+                  type: string
+                  description: Part of a URL that identifier
+                fields:
+                  type: array
+                  description: An array of custom fields to add to the collection
+                  items:
+                    description: Details about the field of a collection
+                    examples:
+                      StaticField:
+                        id: 562ac0395358780a1f5e6fbc
+                        isEditable: true
+                        type: RichText
+                        isRequired: false
+                        displayName: Post Body
+                        helpText: Add the body of your post here
+                      OptionField:
+                        id: 562ac0395358780a1f5e6fbc
+                        isEditable: true
+                        type: Option
+                        isRequired: false
+                        displayName: Post Type
+                        helpText: Add the body of your post here
+                        metadata:
+                          options:
+                            - name: Feature
+                            - name: News
+                            - name: Product Highlight
+                      ReferenceField:
+                        id: 562ac0395358780a1f5e6fbd
+                        isEditable: true
+                        type: Reference
+                        isRequired: false
+                        displayName: Author
+                        helpText: Add the post author here
+                        metadata:
+                          collectionId: 63692ab61fb2852f582ba8f5
+                    oneOf:
+                      - type: object
+                        x-fern-type-name: Static Field
+                        title: Static Field
+                        required:
+                          - type
+                          - displayName
+                        properties:
+                          id:
+                            type: string
+                            format: objectid
+                            description: Unique identifier for a Field
+                            example: 562ac0395358780a1f5e6fbd
+                            readOnly: true
+                          isEditable:
+                            type: boolean
+                            description: Define whether the field is editable
+                            readOnly: true
+                            example: true
+                          isRequired:
+                            type: boolean
+                            description: define whether a field is required in a collection
+                          type:
+                            type: string
+                            enum:
+                              - Color
+                              - DateTime
+                              - Email
+                              - File
+                              - Image
+                              - Link
+                              - MultiImage
+                              - Number
+                              - Phone
+                              - PlainText
+                              - RichText
+                              - Switch
+                              - VideoLink
+                            description: Choose these appropriate field type for your collection data
+                          displayName:
+                            type: string
+                            description: The name of a field
+                          helpText:
+                            type: string
+                            description: Additional text to help anyone filling out this field
+                        example:
+                          id: 562ac0395358780a1f5e6fbc
+                          isEditable: true
+                          type: RichText
+                          isRequired: false
+                          displayName: Post Body
+                          helpText: Add the body of your post here
+                      - type: object
+                        x-fern-type-name: Option Field
+                        title: Option Field
+                        required:
+                          - type
+                          - displayName
+                          - metadata
+                        properties:
+                          id:
+                            type: string
+                            format: objectid
+                            description: Unique identifier for a Field
+                            readOnly: true
+                          isEditable:
+                            type: boolean
+                            description: Define whether the field is editable
+                            readOnly: true
+                          isRequired:
+                            type: boolean
+                            description: define whether a field is required in a collection
+                          type:
+                            description: The [Option field type](/data/reference/field-types-item-values#option)
+                            type: string
+                            enum:
+                              - Option
+                          displayName:
+                            type: string
+                            description: The name of a field
+                          helpText:
+                            type: string
+                            description: Additional text to help anyone filling out this field
+                          metadata:
+                            type: object
+                            required:
+                              - options
+                            description: The metadata for the Option field.
+                            properties:
+                              options:
+                                type: array
+                                description: The option values for the Option field.
+                                items:
+                                  type: object
+                                  required:
+                                    - name
+                                  description: A single option value for the Option field.
+                                  properties:
+                                    name:
+                                      type: string
+                                      description: The name of the option
+                                    id:
+                                      type: string
+                                      description: The unique identifier of the option
+                                      readOnly: true
+                                  minItems: 1
+                                  maxItems: 100
+                        example:
+                          id: 562ac0395358780a1f5e6fbc
+                          isEditable: true
+                          type: Option
+                          isRequired: false
+                          displayName: Post Type
+                          helpText: Add the body of your post here
+                          metadata:
+                            options:
+                              - name: Feature
+                              - name: News
+                              - name: Product Highlight
+                      - type: object
+                        x-fern-type-name: Reference Field
+                        title: Reference Field
+                        required:
+                          - type
+                          - displayName
+                          - metadata
+                        properties:
+                          id:
+                            type: string
+                            format: objectid
+                            description: Unique identifier for a Field
+                            readOnly: true
+                          isEditable:
+                            type: boolean
+                            description: Define whether the field is editable
+                            readOnly: true
+                          isRequired:
+                            type: boolean
+                            description: define whether a field is required in a collection
+                          type:
+                            type: string
+                            enum:
+                              - MultiReference
+                              - Reference
+                            description: Choose these appropriate field type for your collection data
+                          displayName:
+                            type: string
+                            description: The name of a field
+                          helpText:
+                            type: string
+                            description: Additional text to help anyone filling out this field
+                          metadata:
+                            type: object
+                            required:
+                              - collectionId
+                            properties:
+                              collectionId:
+                                type: string
+                                description: The unique identifier of the collection
+                            description: The collectionId for the referenced collection. Only applicable for Reference and MultiReference fields.
+                        example:
+                          id: 562ac0395358780a1f5e6fbd
+                          isEditable: true
+                          type: Reference
+                          isRequired: false
+                          displayName: Author
+                          helpText: Add the post author here
+                          metadata:
+                            collectionId: 63692ab61fb2852f582ba8f5
+            example:
+              displayName: Blog Posts
+              singularName: Blog Post
+              slug: posts
+              fields:
+                - type: PlainText
+                  displayName: Title
+                  slug: title
+                  isRequired: true
+                  helpText: The title of the blog post
+                - type: RichText
+                  displayName: Content
+                  slug: content
+                  isRequired: true
+                  helpText: The content of the blog post
+                - type: Reference
+                  displayName: Author
+                  slug: author
+                  isRequired: true
+                  helpText: The author of the blog post
+                  metadata:
+                    collectionId: 23cc2d952d4e4631ffd4345d2743db4e
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                example:
+                  id: 7f15043107e2fc95644e93807ee25dd6
+                  displayName: Guide Entries
+                  singularName: Guide Entry
+                  fields:
+                    - id: 5e2a1b3c4d5e6f7890a1b2c3
+                      isEditable: true
+                      isRequired: true
+                      type: PlainText
+                      slug: name
+                      displayName: Entry Title
+                      helpText: Name of the entry.
+                      validations:
+                    - id: 5e2a1b3c4d5e6f7890a1b2c4
+                      isEditable: true
+                      isRequired: true
+                      type: PlainText
+                      slug: slug
+                      displayName: Slug
+                      helpText: Slug of the entry.
+                      validations:
+                    - id: 6f7e8d9c0b1a2e3d4c5b6a7f
+                      isEditable: true
+                      isRequired: false
+                      type: PlainText
+                      slug: summary
+                      displayName: Summary
+                      helpText: A short summary of the entry.
+                      validations:
+                    - id: 1a2b3c4d5e6f7a8b9c0d1e2f
+                      isEditable: true
+                      isRequired: false
+                      type: RichText
+                      slug: entry-html
+                      displayName: Entry HTML
+                      helpText: The HTML content of the entry.
+                      validations:
+                    - id: 7e8d9c0b1a2e3d4c5b6a7f8e
+                      isEditable: true
+                      isRequired: false
+                      type: Image
+                      slug: illustration-image
+                      displayName: Illustration Image
+                      helpText: An image of the entry.
+                      validations:
+                    - id: 2f3e4d5c6b7a8e9d0c1b2a3f
+                      isEditable: true
+                      isRequired: false
+                      type: VideoLink
+                      slug: demonstration-video
+                      displayName: Demonstration Video
+                      helpText: A video of the entry.
+                      validations:
+                    - id: 8e9d0c1b2a3f4e5d6c7b8a9e
+                      isEditable: true
+                      isRequired: false
+                      type: Link
+                      slug: more-info-link
+                      displayName: More Info Link
+                      helpText: A link to more information about the entry.
+                      validations:
+                    - id: 3f4e5d6c7b8a9e0d1c2b3a4f
+                      isEditable: true
+                      isRequired: false
+                      type: Number
+                      slug: importance-level
+                      displayName: Importance Level
+                      helpText: The importance level of the entry.
+                      validations:
+                        format: integer
+                        allowNegative: false
+                        allowZero: false
+                        minValue: 1
+                        maxValue: 5
+                    - id: 9e0d1c2b3a4f5e6d7c8b9a0e
+                      isEditable: true
+                      isRequired: false
+                      type: Switch
+                      slug: is-essential
+                      displayName: Is Essential
+                      helpText: Is this entry essential?
+                      validations:
+                    - id: 4f5e6d7c8b9a0e1d2c3b4a5f
+                      isEditable: true
+                      isRequired: false
+                      type: Date
+                      slug: first-mentioned
+                      displayName: First Mentioned
+                      helpText: Date of the first mention of the subject.
+                      validations:
+                    - id: 0e1d2c3b4a5f6e7d8c9b0a1e
+                      isEditable: true
+                      isRequired: false
+                      type: Color
+                      slug: towel-color
+                      displayName: Towel Color
+                      helpText: The color of the towel.
+                      validations:
+                    - id: 5f6e7d8c9b0a1e2d3c4b5a6f
+                      isEditable: true
+                      isRequired: false
+                      type: Reference
+                      slug: related-entry
+                      displayName: Related Entry
+                      helpText: A related entry.
+                      validations:
+                        collectionId: 7f15043107e2fc95644e93807ee25dd6
+                    - id: 1e2d3c4b5a6f7e8d9c0b1a2f
+                      isEditable: true
+                      isRequired: false
+                      type: MultiReference
+                      slug: mentioned-in-entries
+                      displayName: Mentioned In Entries
+                      helpText: Entries that mention this subject.
+                      validations:
+                        collectionId: 7f15043107e2fc95644e93807ee25dd6
+                    - id: 6f7e8d9c0b1a2e3d4c5b6a8f
+                      isEditable: true
+                      isRequired: false
+                      type: Option
+                      slug: item-type
+                      displayName: Item Type
+                      helpText: The type of item.
+                      validations:
+                        options:
+                          - name: Survival Gear
+                            id: 66f6e966c9e1dc700a857ca3
+                          - name: Gadget
+                            id: 66f6e966c9e1dc700a857ca4
+                          - name: Other
+                            id: 66f6e966c9e1dc700a857ca5
+                    - id: 2e3d4c5b6a7f8e9d0c1b2a4f
+                      isEditable: true
+                      isRequired: false
+                      type: File
+                      slug: guide-file
+                      displayName: Guide File
+                      helpText:
+                      validations:
+                    - id: 7f8e9d0c1b2a3f4e5d6c8b9e
+                      isEditable: true
+                      isRequired: false
+                      type: Email
+                      slug: contributor-email
+                      displayName: Contributor Email
+                      helpText:
+                      validations:
+                    - id: 3a4f5e6d7c8b9a0e1d2c4b5f
+                      isEditable: true
+                      isRequired: false
+                      type: Phone
+                      slug: emergency-contact
+                      displayName: Emergency Contact
+                      helpText:
+                      validations:
+                  slug: guide-entry
+                  createdOn: '2024-04-12T12:42:00.000Z'
+                  lastUpdated: '2024-04-12T12:42:00.000Z'
+                description: A collection object
+                type: object
+                required:
+                  - id
+                  - displayName
+                  - singularName
+                  - fields
+                properties:
+                  id:
+                    type: string
+                    format: objectid
+                    description: Unique identifier for a Collection
+                    example: 562ac0395358780a1f5e6fbd
+                  displayName:
+                    type: string
+                    example: Blog Posts
+                    description: Name given to the Collection
+                  singularName:
+                    type: string
+                    example: Blog Post
+                    description: The name of one Item in Collection (e.g. ”Blog Post” if the Collection is called “Blog Posts”)
+                  slug:
+                    type: string
+                    example: blog-posts
+                    description: Slug of Collection in Site URL structure
+                  createdOn:
+                    type: string
+                    format: date-time
+                    example: '2022-12-07T16:51:37.571Z'
+                    readOnly: true
+                    description: The date the collection was created
+                  lastUpdated:
+                    type: string
+                    format: date-time
+                    example: '2022-12-07T16:51:37.571Z'
+                    readOnly: true
+                    description: The date the collection was last updated
+                  fields:
+                    type: array
+                    description: The list of fields in the Collection
+                    items:
+                      description: The details of a field in a collection
+                      example:
+                        id: 75821f618da60c18383330bcc0ca488b
+                        isEditable: true
+                        isRequired: false
+                        type: RichText
+                        slug: post-body
+                        displayName: Post Body
+                        helpText: Add the body of your post here
+                        validations:
+                          maxLength: 1000
+                          minLength: 100
+                      type: object
+                      required:
+                        - id
+                        - type
+                        - isRequired
+                        - displayName
+                      properties:
+                        id:
+                          type: string
+                          format: objectid
+                          description: Unique identifier for a Field
+                        isRequired:
+                          type: boolean
+                          description: define whether a field is required in a collection
+                        isEditable:
+                          type: boolean
+                          description: Define whether the field is editable
+                          readOnly: true
+                        type:
+                          type: string
+                          enum:
+                            - Color
+                            - DateTime
+                            - Email
+                            - ExtFileRef
+                            - File
+                            - Image
+                            - Link
+                            - MultiImage
+                            - MultiReference
+                            - Number
+                            - Option
+                            - Phone
+                            - PlainText
+                            - Reference
+                            - RichText
+                            - Switch
+                            - VideoLink
+                          description: Choose these appropriate field type for your collection data
+                        slug:
+                          type: string
+                          description: Slug of Field in Site URL structure. Slugs should be all lowercase with no spaces. Any spaces will be converted to "-."
+                        displayName:
+                          type: string
+                          description: The name of a field
+                        helpText:
+                          type: string
+                          description: Additional text to help anyone filling out this field
+                        validations:
+                          type: object
+                          nullable: true
+                          readOnly: true
+                          description: The validations for the field
+                          properties:
+                            additionalProperties:
+                              oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: integer
+                                - type: object
+                                  properties:
+                                    additionalProperties: true
+              example:
+                displayName: Blog Posts
+                singularName: Blog Post
+                slug: posts
+                createdOn: '2016-10-24T19:41:48Z'
+                lastUpdated: '2016-10-24T19:42:38Z'
+                fields:
+                  - type: PlainText
+                    displayName: Title
+                    slug: title
+                    isRequired: true
+                    helpText: The title of the blog post
+                  - type: RichText
+                    displayName: Content
+                    slug: content
+                    isRequired: true
+                    helpText: The content of the blog post
+                  - type: Reference
+                    displayName: Author
+                    slug: author
+                    isRequired: true
+                    helpText: The author of the blog post
+                    metadata:
+                      collectionId: 23cc2d952d4e4631ffd4345d2743db4e
+        '400':
+          description: Validation failure
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: validation_error
+                message: 'Validation Error: Provided ID is invalid'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '409':
+          description: Collection already exists
+          x-logErrorCode: 409
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: duplicate_collection
+                message: Collection already exists
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+  /collections/{collection_id}:
+    get:
+      x-fern-sdk-group-name: collections
+      x-fern-sdk-method-name: get
+      security:
+        - OAuth2:
+            - cms:read
+      operationId: collection-details
+      summary: Webflow Get Collection Details
+      description: 'Get the full details of a collection from its ID.
+
+
+        Required scope | `cms:read`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      parameters:
+        - name: collection_id
+          in: path
+          description: Unique identifier for a Collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                example:
+                  id: 7f15043107e2fc95644e93807ee25dd6
+                  displayName: Guide Entries
+                  singularName: Guide Entry
+                  fields:
+                    - id: 5e2a1b3c4d5e6f7890a1b2c3
+                      isEditable: true
+                      isRequired: true
+                      type: PlainText
+                      slug: name
+                      displayName: Entry Title
+                      helpText: Name of the entry.
+                      validations:
+                    - id: 5e2a1b3c4d5e6f7890a1b2c4
+                      isEditable: true
+                      isRequired: true
+                      type: PlainText
+                      slug: slug
+                      displayName: Slug
+                      helpText: Slug of the entry.
+                      validations:
+                    - id: 6f7e8d9c0b1a2e3d4c5b6a7f
+                      isEditable: true
+                      isRequired: false
+                      type: PlainText
+                      slug: summary
+                      displayName: Summary
+                      helpText: A short summary of the entry.
+                      validations:
+                    - id: 1a2b3c4d5e6f7a8b9c0d1e2f
+                      isEditable: true
+                      isRequired: false
+                      type: RichText
+                      slug: entry-html
+                      displayName: Entry HTML
+                      helpText: The HTML content of the entry.
+                      validations:
+                    - id: 7e8d9c0b1a2e3d4c5b6a7f8e
+                      isEditable: true
+                      isRequired: false
+                      type: Image
+                      slug: illustration-image
+                      displayName: Illustration Image
+                      helpText: An image of the entry.
+                      validations:
+                    - id: 2f3e4d5c6b7a8e9d0c1b2a3f
+                      isEditable: true
+                      isRequired: false
+                      type: VideoLink
+                      slug: demonstration-video
+                      displayName: Demonstration Video
+                      helpText: A video of the entry.
+                      validations:
+                    - id: 8e9d0c1b2a3f4e5d6c7b8a9e
+                      isEditable: true
+                      isRequired: false
+                      type: Link
+                      slug: more-info-link
+                      displayName: More Info Link
+                      helpText: A link to more information about the entry.
+                      validations:
+                    - id: 3f4e5d6c7b8a9e0d1c2b3a4f
+                      isEditable: true
+                      isRequired: false
+                      type: Number
+                      slug: importance-level
+                      displayName: Importance Level
+                      helpText: The importance level of the entry.
+                      validations:
+                        format: integer
+                        allowNegative: false
+                        allowZero: false
+                        minValue: 1
+                        maxValue: 5
+                    - id: 9e0d1c2b3a4f5e6d7c8b9a0e
+                      isEditable: true
+                      isRequired: false
+                      type: Switch
+                      slug: is-essential
+                      displayName: Is Essential
+                      helpText: Is this entry essential?
+                      validations:
+                    - id: 4f5e6d7c8b9a0e1d2c3b4a5f
+                      isEditable: true
+                      isRequired: false
+                      type: Date
+                      slug: first-mentioned
+                      displayName: First Mentioned
+                      helpText: Date of the first mention of the subject.
+                      validations:
+                    - id: 0e1d2c3b4a5f6e7d8c9b0a1e
+                      isEditable: true
+                      isRequired: false
+                      type: Color
+                      slug: towel-color
+                      displayName: Towel Color
+                      helpText: The color of the towel.
+                      validations:
+                    - id: 5f6e7d8c9b0a1e2d3c4b5a6f
+                      isEditable: true
+                      isRequired: false
+                      type: Reference
+                      slug: related-entry
+                      displayName: Related Entry
+                      helpText: A related entry.
+                      validations:
+                        collectionId: 7f15043107e2fc95644e93807ee25dd6
+                    - id: 1e2d3c4b5a6f7e8d9c0b1a2f
+                      isEditable: true
+                      isRequired: false
+                      type: MultiReference
+                      slug: mentioned-in-entries
+                      displayName: Mentioned In Entries
+                      helpText: Entries that mention this subject.
+                      validations:
+                        collectionId: 7f15043107e2fc95644e93807ee25dd6
+                    - id: 6f7e8d9c0b1a2e3d4c5b6a8f
+                      isEditable: true
+                      isRequired: false
+                      type: Option
+                      slug: item-type
+                      displayName: Item Type
+                      helpText: The type of item.
+                      validations:
+                        options:
+                          - name: Survival Gear
+                            id: 66f6e966c9e1dc700a857ca3
+                          - name: Gadget
+                            id: 66f6e966c9e1dc700a857ca4
+                          - name: Other
+                            id: 66f6e966c9e1dc700a857ca5
+                    - id: 2e3d4c5b6a7f8e9d0c1b2a4f
+                      isEditable: true
+                      isRequired: false
+                      type: File
+                      slug: guide-file
+                      displayName: Guide File
+                      helpText:
+                      validations:
+                    - id: 7f8e9d0c1b2a3f4e5d6c8b9e
+                      isEditable: true
+                      isRequired: false
+                      type: Email
+                      slug: contributor-email
+                      displayName: Contributor Email
+                      helpText:
+                      validations:
+                    - id: 3a4f5e6d7c8b9a0e1d2c4b5f
+                      isEditable: true
+                      isRequired: false
+                      type: Phone
+                      slug: emergency-contact
+                      displayName: Emergency Contact
+                      helpText:
+                      validations:
+                  slug: guide-entry
+                  createdOn: '2024-04-12T12:42:00.000Z'
+                  lastUpdated: '2024-04-12T12:42:00.000Z'
+                description: A collection object
+                type: object
+                required:
+                  - id
+                  - displayName
+                  - singularName
+                  - fields
+                properties:
+                  id:
+                    type: string
+                    format: objectid
+                    description: Unique identifier for a Collection
+                    example: 562ac0395358780a1f5e6fbd
+                  displayName:
+                    type: string
+                    example: Blog Posts
+                    description: Name given to the Collection
+                  singularName:
+                    type: string
+                    example: Blog Post
+                    description: The name of one Item in Collection (e.g. ”Blog Post” if the Collection is called “Blog Posts”)
+                  slug:
+                    type: string
+                    example: blog-posts
+                    description: Slug of Collection in Site URL structure
+                  createdOn:
+                    type: string
+                    format: date-time
+                    example: '2022-12-07T16:51:37.571Z'
+                    readOnly: true
+                    description: The date the collection was created
+                  lastUpdated:
+                    type: string
+                    format: date-time
+                    example: '2022-12-07T16:51:37.571Z'
+                    readOnly: true
+                    description: The date the collection was last updated
+                  fields:
+                    type: array
+                    description: The list of fields in the Collection
+                    items:
+                      description: The details of a field in a collection
+                      example:
+                        id: 75821f618da60c18383330bcc0ca488b
+                        isEditable: true
+                        isRequired: false
+                        type: RichText
+                        slug: post-body
+                        displayName: Post Body
+                        helpText: Add the body of your post here
+                        validations:
+                          maxLength: 1000
+                          minLength: 100
+                      type: object
+                      required:
+                        - id
+                        - type
+                        - isRequired
+                        - displayName
+                      properties:
+                        id:
+                          type: string
+                          format: objectid
+                          description: Unique identifier for a Field
+                        isRequired:
+                          type: boolean
+                          description: define whether a field is required in a collection
+                        isEditable:
+                          type: boolean
+                          description: Define whether the field is editable
+                          readOnly: true
+                        type:
+                          type: string
+                          enum:
+                            - Color
+                            - DateTime
+                            - Email
+                            - ExtFileRef
+                            - File
+                            - Image
+                            - Link
+                            - MultiImage
+                            - MultiReference
+                            - Number
+                            - Option
+                            - Phone
+                            - PlainText
+                            - Reference
+                            - RichText
+                            - Switch
+                            - VideoLink
+                          description: Choose these appropriate field type for your collection data
+                        slug:
+                          type: string
+                          description: Slug of Field in Site URL structure. Slugs should be all lowercase with no spaces. Any spaces will be converted to "-."
+                        displayName:
+                          type: string
+                          description: The name of a field
+                        helpText:
+                          type: string
+                          description: Additional text to help anyone filling out this field
+                        validations:
+                          type: object
+                          nullable: true
+                          readOnly: true
+                          description: The validations for the field
+                          properties:
+                            additionalProperties:
+                              oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: integer
+                                - type: object
+                                  properties:
+                                    additionalProperties: true
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+    delete:
+      x-fern-sdk-group-name: collections
+      x-fern-sdk-method-name: delete
+      security:
+        - OAuth2:
+            - cms:write
+      operationId: delete-collection
+      summary: Webflow Delete Collection
+      description: 'Delete a collection using its ID.
+
+
+        Required scope | `cms:write`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      parameters:
+        - name: collection_id
+          in: path
+          description: Unique identifier for a Collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+      responses:
+        '204':
+          description: Request was successful. No Content is returned.
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+  /collections/{collection_id}/fields:
+    post:
+      x-fern-sdk-group-name:
+        - collections
+        - fields
+      x-fern-sdk-method-name: create
+      security:
+        - OAuth2:
+            - cms:write
+      operationId: create-field
+      summary: Webflow Create Collection Field
+      description: 'Create a custom field in a collection.
+
+
+        Field validation is currently not available through the API.
+
+
+        Bulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you [create the collection.](/data/v2.0.0/reference/cms/collections/create)
+
+
+        Required scope | `cms:write`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      requestBody:
+        description: The field to create
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Details about the field of a collection
+              examples:
+                StaticField:
+                  id: 562ac0395358780a1f5e6fbc
+                  isEditable: true
+                  type: RichText
+                  isRequired: false
+                  displayName: Post Body
+                  helpText: Add the body of your post here
+                OptionField:
+                  id: 562ac0395358780a1f5e6fbc
+                  isEditable: true
+                  type: Option
+                  isRequired: false
+                  displayName: Post Type
+                  helpText: Add the body of your post here
+                  metadata:
+                    options:
+                      - name: Feature
+                      - name: News
+                      - name: Product Highlight
+                ReferenceField:
+                  id: 562ac0395358780a1f5e6fbd
+                  isEditable: true
+                  type: Reference
+                  isRequired: false
+                  displayName: Author
+                  helpText: Add the post author here
+                  metadata:
+                    collectionId: 63692ab61fb2852f582ba8f5
+              oneOf:
+                - type: object
+                  x-fern-type-name: Static Field
+                  title: Static Field
+                  required:
+                    - type
+                    - displayName
+                  properties:
+                    id:
+                      type: string
+                      format: objectid
+                      description: Unique identifier for a Field
+                      example: 562ac0395358780a1f5e6fbd
+                      readOnly: true
+                    isEditable:
+                      type: boolean
+                      description: Define whether the field is editable
+                      readOnly: true
+                      example: true
+                    isRequired:
+                      type: boolean
+                      description: define whether a field is required in a collection
+                    type:
+                      type: string
+                      enum:
+                        - Color
+                        - DateTime
+                        - Email
+                        - File
+                        - Image
+                        - Link
+                        - MultiImage
+                        - Number
+                        - Phone
+                        - PlainText
+                        - RichText
+                        - Switch
+                        - VideoLink
+                      description: Choose these appropriate field type for your collection data
+                    displayName:
+                      type: string
+                      description: The name of a field
+                    helpText:
+                      type: string
+                      description: Additional text to help anyone filling out this field
+                  example:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: RichText
+                    isRequired: false
+                    displayName: Post Body
+                    helpText: Add the body of your post here
+                - type: object
+                  x-fern-type-name: Option Field
+                  title: Option Field
+                  required:
+                    - type
+                    - displayName
+                    - metadata
+                  properties:
+                    id:
+                      type: string
+                      format: objectid
+                      description: Unique identifier for a Field
+                      readOnly: true
+                    isEditable:
+                      type: boolean
+                      description: Define whether the field is editable
+                      readOnly: true
+                    isRequired:
+                      type: boolean
+                      description: define whether a field is required in a collection
+                    type:
+                      description: The [Option field type](/data/reference/field-types-item-values#option)
+                      type: string
+                      enum:
+                        - Option
+                    displayName:
+                      type: string
+                      description: The name of a field
+                    helpText:
+                      type: string
+                      description: Additional text to help anyone filling out this field
+                    metadata:
+                      type: object
+                      required:
+                        - options
+                      description: The metadata for the Option field.
+                      properties:
+                        options:
+                          type: array
+                          description: The option values for the Option field.
+                          items:
+                            type: object
+                            required:
+                              - name
+                            description: A single option value for the Option field.
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the option
+                              id:
+                                type: string
+                                description: The unique identifier of the option
+                                readOnly: true
+                            minItems: 1
+                            maxItems: 100
+                  example:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: Option
+                    isRequired: false
+                    displayName: Post Type
+                    helpText: Add the body of your post here
+                    metadata:
+                      options:
+                        - name: Feature
+                        - name: News
+                        - name: Product Highlight
+                - type: object
+                  x-fern-type-name: Reference Field
+                  title: Reference Field
+                  required:
+                    - type
+                    - displayName
+                    - metadata
+                  properties:
+                    id:
+                      type: string
+                      format: objectid
+                      description: Unique identifier for a Field
+                      readOnly: true
+                    isEditable:
+                      type: boolean
+                      description: Define whether the field is editable
+                      readOnly: true
+                    isRequired:
+                      type: boolean
+                      description: define whether a field is required in a collection
+                    type:
+                      type: string
+                      enum:
+                        - MultiReference
+                        - Reference
+                      description: Choose these appropriate field type for your collection data
+                    displayName:
+                      type: string
+                      description: The name of a field
+                    helpText:
+                      type: string
+                      description: Additional text to help anyone filling out this field
+                    metadata:
+                      type: object
+                      required:
+                        - collectionId
+                      properties:
+                        collectionId:
+                          type: string
+                          description: The unique identifier of the collection
+                      description: The collectionId for the referenced collection. Only applicable for Reference and MultiReference fields.
+                  example:
+                    id: 562ac0395358780a1f5e6fbd
+                    isEditable: true
+                    type: Reference
+                    isRequired: false
+                    displayName: Author
+                    helpText: Add the post author here
+                    metadata:
+                      collectionId: 63692ab61fb2852f582ba8f5
+            examples:
+              StaticField:
+                value:
+                  id: 562ac0395358780a1f5e6fbc
+                  isEditable: true
+                  type: RichText
+                  isRequired: false
+                  displayName: Post Body
+                  helpText: Add the body of your post here
+              OptionField:
+                value:
+                  id: 562ac0395358780a1f5e6fbc
+                  isEditable: true
+                  type: Option
+                  isRequired: false
+                  displayName: Post Type
+                  helpText: Add the body of your post here
+                  metadata:
+                    options:
+                      - name: Feature
+                      - name: News
+                      - name: Product Highlight
+              ReferenceField:
+                value:
+                  id: 562ac0395358780a1f5e6fbd
+                  isEditable: true
+                  type: Reference
+                  isRequired: false
+                  displayName: Author
+                  helpText: Add the post author here
+                  metadata:
+                    collectionId: 63692ab61fb2852f582ba8f5
+      parameters:
+        - name: collection_id
+          in: path
+          description: Unique identifier for a Collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                description: Details about the field of a collection
+                examples:
+                  StaticField:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: RichText
+                    isRequired: false
+                    displayName: Post Body
+                    helpText: Add the body of your post here
+                  OptionField:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: Option
+                    isRequired: false
+                    displayName: Post Type
+                    helpText: Add the body of your post here
+                    metadata:
+                      options:
+                        - name: Feature
+                        - name: News
+                        - name: Product Highlight
+                  ReferenceField:
+                    id: 562ac0395358780a1f5e6fbd
+                    isEditable: true
+                    type: Reference
+                    isRequired: false
+                    displayName: Author
+                    helpText: Add the post author here
+                    metadata:
+                      collectionId: 63692ab61fb2852f582ba8f5
+                oneOf:
+                  - type: object
+                    x-fern-type-name: Static Field
+                    title: Static Field
+                    required:
+                      - type
+                      - displayName
+                    properties:
+                      id:
+                        type: string
+                        format: objectid
+                        description: Unique identifier for a Field
+                        example: 562ac0395358780a1f5e6fbd
+                        readOnly: true
+                      isEditable:
+                        type: boolean
+                        description: Define whether the field is editable
+                        readOnly: true
+                        example: true
+                      isRequired:
+                        type: boolean
+                        description: define whether a field is required in a collection
+                      type:
+                        type: string
+                        enum:
+                          - Color
+                          - DateTime
+                          - Email
+                          - File
+                          - Image
+                          - Link
+                          - MultiImage
+                          - Number
+                          - Phone
+                          - PlainText
+                          - RichText
+                          - Switch
+                          - VideoLink
+                        description: Choose these appropriate field type for your collection data
+                      displayName:
+                        type: string
+                        description: The name of a field
+                      helpText:
+                        type: string
+                        description: Additional text to help anyone filling out this field
+                    example:
+                      id: 562ac0395358780a1f5e6fbc
+                      isEditable: true
+                      type: RichText
+                      isRequired: false
+                      displayName: Post Body
+                      helpText: Add the body of your post here
+                  - type: object
+                    x-fern-type-name: Option Field
+                    title: Option Field
+                    required:
+                      - type
+                      - displayName
+                      - metadata
+                    properties:
+                      id:
+                        type: string
+                        format: objectid
+                        description: Unique identifier for a Field
+                        readOnly: true
+                      isEditable:
+                        type: boolean
+                        description: Define whether the field is editable
+                        readOnly: true
+                      isRequired:
+                        type: boolean
+                        description: define whether a field is required in a collection
+                      type:
+                        description: The [Option field type](/data/reference/field-types-item-values#option)
+                        type: string
+                        enum:
+                          - Option
+                      displayName:
+                        type: string
+                        description: The name of a field
+                      helpText:
+                        type: string
+                        description: Additional text to help anyone filling out this field
+                      metadata:
+                        type: object
+                        required:
+                          - options
+                        description: The metadata for the Option field.
+                        properties:
+                          options:
+                            type: array
+                            description: The option values for the Option field.
+                            items:
+                              type: object
+                              required:
+                                - name
+                              description: A single option value for the Option field.
+                              properties:
+                                name:
+                                  type: string
+                                  description: The name of the option
+                                id:
+                                  type: string
+                                  description: The unique identifier of the option
+                                  readOnly: true
+                              minItems: 1
+                              maxItems: 100
+                    example:
+                      id: 562ac0395358780a1f5e6fbc
+                      isEditable: true
+                      type: Option
+                      isRequired: false
+                      displayName: Post Type
+                      helpText: Add the body of your post here
+                      metadata:
+                        options:
+                          - name: Feature
+                          - name: News
+                          - name: Product Highlight
+                  - type: object
+                    x-fern-type-name: Reference Field
+                    title: Reference Field
+                    required:
+                      - type
+                      - displayName
+                      - metadata
+                    properties:
+                      id:
+                        type: string
+                        format: objectid
+                        description: Unique identifier for a Field
+                        readOnly: true
+                      isEditable:
+                        type: boolean
+                        description: Define whether the field is editable
+                        readOnly: true
+                      isRequired:
+                        type: boolean
+                        description: define whether a field is required in a collection
+                      type:
+                        type: string
+                        enum:
+                          - MultiReference
+                          - Reference
+                        description: Choose these appropriate field type for your collection data
+                      displayName:
+                        type: string
+                        description: The name of a field
+                      helpText:
+                        type: string
+                        description: Additional text to help anyone filling out this field
+                      metadata:
+                        type: object
+                        required:
+                          - collectionId
+                        properties:
+                          collectionId:
+                            type: string
+                            description: The unique identifier of the collection
+                        description: The collectionId for the referenced collection. Only applicable for Reference and MultiReference fields.
+                    example:
+                      id: 562ac0395358780a1f5e6fbd
+                      isEditable: true
+                      type: Reference
+                      isRequired: false
+                      displayName: Author
+                      helpText: Add the post author here
+                      metadata:
+                        collectionId: 63692ab61fb2852f582ba8f5
+              examples:
+                StaticField:
+                  value:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: RichText
+                    isRequired: false
+                    displayName: Post Body
+                    helpText: Add the body of your post here
+                OptionField:
+                  value:
+                    id: 562ac0395358780a1f5e6fbc
+                    isEditable: true
+                    type: Option
+                    isRequired: false
+                    displayName: Post Type
+                    helpText: Add the body of your post here
+                    metadata:
+                      options:
+                        - name: Feature
+                        - name: News
+                        - name: Product Highlight
+                ReferenceField:
+                  value:
+                    id: 562ac0395358780a1f5e6fbd
+                    isEditable: true
+                    type: Reference
+                    isRequired: false
+                    displayName: Author
+                    helpText: Add the post author here
+                    metadata:
+                      collectionId: 63692ab61fb2852f582ba8f5
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '409':
+          description: Collection already exists
+          x-logErrorCode: 409
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: duplicate_collection
+                message: Collection already exists
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+  /collections/{collection_id}/fields/{field_id}:
+    patch:
+      x-fern-sdk-group-name:
+        - collections
+        - fields
+      x-fern-sdk-method-name: update
+      security:
+        - OAuth2:
+            - cms:write
+      operationId: update-field
+      summary: Webflow Update Collection Field
+      description: 'Update a custom field in a collection.
+
+
+        Required scope | `cms:write`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      requestBody:
+        description: The field details to update
+        content:
+          application/json:
+            schema:
+              description: Details about the field of a collection
+              example:
+                isRequired: false
+                displayName: Post Body
+                helpText: Add the body of your post here
+              type: object
+              properties:
+                isRequired:
+                  type: boolean
+                  description: Define whether a field is required in a collection
+                displayName:
+                  type: string
+                  description: The name of a field
+                helpText:
+                  type: string
+                  description: Additional text to help anyone filling out this field
+      parameters:
+        - name: collection_id
+          in: path
+          description: Unique identifier for a Collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+        - name: field_id
+          in: path
+          description: Unique identifier for a Field in a collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                description: The details of a field in a collection
+                example:
+                  id: 75821f618da60c18383330bcc0ca488b
+                  isEditable: true
+                  isRequired: false
+                  type: RichText
+                  slug: post-body
+                  displayName: Post Body
+                  helpText: Add the body of your post here
+                  validations:
+                    maxLength: 1000
+                    minLength: 100
+                type: object
+                required:
+                  - id
+                  - type
+                  - isRequired
+                  - displayName
+                properties:
+                  id:
+                    type: string
+                    format: objectid
+                    description: Unique identifier for a Field
+                  isRequired:
+                    type: boolean
+                    description: define whether a field is required in a collection
+                  isEditable:
+                    type: boolean
+                    description: Define whether the field is editable
+                    readOnly: true
+                  type:
+                    type: string
+                    enum:
+                      - Color
+                      - DateTime
+                      - Email
+                      - ExtFileRef
+                      - File
+                      - Image
+                      - Link
+                      - MultiImage
+                      - MultiReference
+                      - Number
+                      - Option
+                      - Phone
+                      - PlainText
+                      - Reference
+                      - RichText
+                      - Switch
+                      - VideoLink
+                    description: Choose these appropriate field type for your collection data
+                  slug:
+                    type: string
+                    description: Slug of Field in Site URL structure. Slugs should be all lowercase with no spaces. Any spaces will be converted to "-."
+                  displayName:
+                    type: string
+                    description: The name of a field
+                  helpText:
+                    type: string
+                    description: Additional text to help anyone filling out this field
+                  validations:
+                    type: object
+                    nullable: true
+                    readOnly: true
+                    description: The validations for the field
+                    properties:
+                      additionalProperties:
+                        oneOf:
+                          - type: string
+                          - type: number
+                          - type: boolean
+                          - type: integer
+                          - type: object
+                            properties:
+                              additionalProperties: true
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+    delete:
+      x-fern-sdk-group-name:
+        - collections
+        - fields
+      x-fern-sdk-method-name: delete
+      security:
+        - OAuth2:
+            - cms:write
+      operationId: delete-field
+      summary: Webflow Delete Collection Field
+      description: 'Delete a custom field in a collection. This endpoint does not currently support bulk deletion.
+
+
+        Required scope | `cms:write`
+
+        '
+      tags:
+        - Collections
+        - Sites
+      parameters:
+        - name: collection_id
+          in: path
+          description: Unique identifier for a Collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+        - name: field_id
+          in: path
+          description: Unique identifier for a Field in a collection
+          example: 580e63fc8c9a982ac9b8b745
+          required: true
+          schema:
+            type: string
+            format: objectid
+      responses:
+        '204':
+          description: Request was successful. No Content is returned.
+        '400':
+          description: Request body was incorrectly formatted.
+          x-logErrorCode: 400
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: bad_request
+                message: 'Bad Request: Request is malformed'
+                externalReference:
+                details: []
+        '401':
+          description: Provided access token is invalid or does not have access to requested resource
+          x-logErrorCode: 401
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: not_authorized
+                message: Request not authorized
+                externalReference:
+                details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference:
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference:
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference:
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                      - bad_request
+                      - collection_not_found
+                      - conflict
+                      - duplicate_collection
+                      - duplicate_user_email
+                      - ecommerce_not_enabled
+                      - forbidden
+                      - forms_require_republish
+                      - incompatible_webhook_filter
+                      - internal_error
+                      - invalid_auth_version
+                      - invalid_credentials
+                      - invalid_domain
+                      - invalid_user_email
+                      - item_not_found
+                      - missing_scopes
+                      - no_domains
+                      - not_authorized
+                      - not_enterprise_plan_site
+                      - not_enterprise_plan_workspace
+                      - order_not_found
+                      - resource_not_found
+                      - too_many_requests
+                      - unsupported_version
+                      - unsupported_webhook_trigger_type
+                      - user_limit_reached
+                      - user_not_found
+                      - users_not_enabled
+                      - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                      - type: string
+                        example: Invalid email address
+                        description: Error message
+                      - type: object
+                        example:
+                          field: email
+                          message: Invalid email address
+                        description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference:
+                details: []
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            authorized_user:read: read details about the authorized user
+            assets:read: read assets on the site
+            assets:write: write assets on a site
+            cms:read: read collections and items for a site
+            cms:write: write to collections and items for a site
+            comments:read: read comments on the site
+            comments:write: write comments on the site
+            custom_code:read: read custom code on the site
+            custom_code:write: modify custom code on the site
+            ecommerce:read: read ecommerce data
+            ecommerce:write: edit ecommerce data
+            forms:read: read form data
+            forms:write: write form data
+            pages:read: read pages on the site
+            pages:write: write to pages on the site
+            components:read: read component data
+            components:write: write component data
+            sites:read: read sites on the site
+            sites:write: modify pages on the site
+            users:read: read users on the site
+            site_activity:read: read site activity logs
+            users:write: modify users on the site
+            workspace:read: read workspace resource data
+            workspace:write: write workspace resource data
+            site_config:read: read site configuration data
+            site_config:write: write site configuration data
+          authorizationUrl: https://webflow.com/oauth/authorize
+          tokenUrl: https://api.webflow.com/oauth/token
+    ApiKey:
+      type: http
+      scheme: bearer
+      x-fern-token-variable-name: access_token

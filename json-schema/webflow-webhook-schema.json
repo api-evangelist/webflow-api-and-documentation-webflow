@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.webflow.com/schemas/webhook.json",
+  "title": "Webflow Webhook",
+  "description": "A Webflow Webhook registration object representing an app-created webhook for a site, as returned by the Webflow Data API v2. Webhooks allow applications to receive real-time notifications when specific events occur on a Webflow site.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the Webhook registration.",
+      "examples": ["57ca0a9e418c504a6e1acbb6"]
+    },
+    "triggerType": {
+      "type": "string",
+      "description": "The type of event that triggers the webhook request.",
+      "enum": [
+        "form_submission",
+        "site_publish",
+        "page_created",
+        "page_metadata_updated",
+        "page_deleted",
+        "ecomm_new_order",
+        "ecomm_order_changed",
+        "ecomm_inventory_changed",
+        "collection_item_created",
+        "collection_item_changed",
+        "collection_item_deleted",
+        "collection_item_published",
+        "collection_item_unpublished",
+        "comment_created"
+      ],
+      "examples": ["form_submission"]
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to send the Webhook payload to.",
+      "examples": ["https://example.com/webhook"]
+    },
+    "workspaceId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the Workspace the Webhook is registered in.",
+      "examples": ["580e63e98c9a982ac9b8b741"]
+    },
+    "siteId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the Site the Webhook is registered in.",
+      "examples": ["562ac0395358780a1f5e6fbd"]
+    },
+    "filter": {
+      "type": ["object", "null"],
+      "description": "Only supported for the form_submission trigger type. Filter for the form you want Webhooks to be sent for.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the form you'd like to receive notifications for.",
+          "examples": ["My Form"]
+        }
+      }
+    },
+    "lastTriggered": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date the Webhook instance was last triggered.",
+      "examples": ["2016-09-06T21:12:22.148Z"]
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Date the Webhook registration was created.",
+      "examples": ["2016-09-02T23:26:22.241Z"]
+    }
+  }
+}

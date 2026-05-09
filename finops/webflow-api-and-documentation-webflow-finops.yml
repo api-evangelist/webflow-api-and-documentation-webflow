@@ -1,0 +1,95 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Webflow API and Documentation
+providerId: webflow-api-and-documentation-webflow
+publisherName: Webflow, Inc.
+serviceCategory: Web Publishing / CMS
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - CMS
+  - Content Management
+  - Ecommerce
+  - No-Code
+  - Publishing
+  - Web Development
+  - FinOps
+  - FOCUS
+description: FOCUS-aligned FinOps for Webflow's Data API and documentation surface. The API itself is
+  bundled with the Site Plan and rate-limited rather than metered, so billable units are the Site,
+  Workspace, and Ecommerce subscriptions plus the 2% Ecommerce Standard transaction fee. Cost
+  optimization is driven by tier selection, not per-call usage.
+sources:
+  - https://webflow.com/pricing
+  - https://developers.webflow.com/data/reference/rate-limits
+billingModel:
+  pricingCategory: Tiered Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Purchase
+    - Usage
+focusColumns:
+  ServiceName: Webflow API and Documentation
+  ServiceCategory: Web Publishing / CMS
+  ProviderName: Webflow
+  PublisherName: Webflow, Inc.
+  InvoiceIssuerName: Webflow, Inc.
+  BillingCurrency: USD
+meters:
+  - name: site_subscription
+    description: Site Plan subscription (Starter / Basic / CMS / Business / Enterprise) per hosted
+      site; gates the API rate-limit tier.
+    unit: month
+    aggregation: sum
+    dimensions:
+      - site
+      - tier
+  - name: workspace_seat
+    description: Workspace seat subscription (Starter / Core / Growth / Freelancer / Agency /
+      Enterprise).
+    unit: seat
+    aggregation: sum
+    dimensions:
+      - workspace
+      - tier
+  - name: ecommerce_subscription
+    description: Ecommerce Plan subscription (Standard / Plus / Advanced) per store.
+    unit: month
+    aggregation: sum
+    dimensions:
+      - site
+      - tier
+  - name: ecommerce_transaction_fee
+    description: 2% transaction fee on Ecommerce Standard; 0% on Plus and Advanced.
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - site
+      - tier
+principles:
+  - name: Visibility
+    description: Workspace billing dashboard at webflow.com lists site / seat / ecommerce subscriptions;
+      per-site dashboards surface bandwidth and CMS-item counts that drive tier decisions.
+  - name: Allocation
+    description: Map workspaces to business units / agency clients, sites to brands / properties, and
+      seats to named users; the workspace invoice rolls these up.
+  - name: Optimization
+    description: Levers are (1) move stores from Ecommerce Standard to Plus when monthly GMV makes the
+      $74 vs $29 delta cheaper than the 2% fee; (2) consolidate idle workspaces; (3) drop Site Plans
+      from retired projects; (4) prefer webhooks over polling so a Basic site key (60 req/min) does not
+      force an upgrade to a higher-tier Site Plan for rate alone.
+  - name: Accountability
+    description: Workspace billing admin owns the invoice; engineering / design owners review per-site
+      bandwidth and API rate-limit headroom before launches.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
