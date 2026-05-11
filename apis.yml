@@ -231,7 +231,7 @@ common:
         description: Process form submissions via webhooks to integrate with CRM or marketing automation platforms.
       - name: Site Deployment Automation
         description: Automate Webflow site publishing as part of CI/CD pipelines or content approval workflows.
-  - name: Webflow Integrations
+  - name: Webflow
     type: Integrations
     data:
       - name: Zapier
