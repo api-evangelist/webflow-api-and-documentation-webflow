@@ -246,6 +246,38 @@ common:
         description: Import Shopify product catalog into Webflow ecommerce.
       - name: Cloudflare
         description: Deploy Webflow sites behind Cloudflare for CDN and security.
+  - type: Integrations
+    url: https://webflow.com/integrations
+integrations:
+  - name: Ideo
+  - name: Monday.com
+  - name: BBDO
+  - name: The New York Times
+  - name: Ted
+  - name: OpenStreetMap
+  - name: Zapier
+  - name: Anthropic Claude
+  - name: Google Docs
+  - name: PayPal Shopping Cart
+  - name: Consent Pro by Finsweet
+  - name: Smartarget Contact Us
+  - name: CMS Bridge
+  - name: Osmo SVG Import
+  - name: Telegram Chat - Contact Us
+  - name: Form Fields Pro
+  - name: Countdown Bar Timer
+  - name: Vault Vision User Authentication
+  - name: Letterdrop
+  - name: Smartarget Reviews
+  - name: TripleChecker
+  - name: Integrately
+  - name: 'Flowstar: Contact Form Builder'
+  - name: Cookie Consent
+  - name: ScheduleFlow
+  - name: Twise
+  - name: Postblaster
+  - name: Visual Sitemap
+  - name: 'Flowstar: Banners'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
