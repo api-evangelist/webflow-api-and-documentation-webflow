@@ -1,0 +1,927 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow CMS Items API — Sites
+  description: 'Webflow CMS Items API — Sites. 16 operations. Lead operation: Webflow List Collection Items. Self-contained
+    Naftiko capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Sites
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-items-sites
+    baseUri: https://api.webflow.com/v2
+    description: Webflow CMS Items API — Sites business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-collection_id-items
+      path: /collections/{collection_id}/items
+      operations:
+      - name: listcollectionitems
+        method: GET
+        description: Webflow List Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: name
+          in: query
+          type: string
+          description: Filter by the exact name of the item(s)
+        - name: slug
+          in: query
+          type: string
+          description: Filter by the exact slug of the item
+        - name: lastPublished
+          in: query
+          type: object
+          description: Filter by the last published date of the item(s)
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort results by the provided value
+        - name: sortOrder
+          in: query
+          type: string
+          description: Sorts the results by asc or desc
+      - name: createitem
+        method: POST
+        description: Webflow Create Collection Item(s)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateitems
+        method: PATCH
+        description: Webflow Update Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteitems
+        method: DELETE
+        description: Webflow Delete Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: collections-collection_id-items-bulk
+      path: /collections/{collection_id}/items/bulk
+      operations:
+      - name: createitems
+        method: POST
+        description: Webflow Create Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: collections-collection_id-items-live
+      path: /collections/{collection_id}/items/live
+      operations:
+      - name: listcollectionitemslive
+        method: GET
+        description: Webflow List Live Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: name
+          in: query
+          type: string
+          description: Filter by the exact name of the item(s)
+        - name: slug
+          in: query
+          type: string
+          description: Filter by the exact slug of the item
+        - name: lastPublished
+          in: query
+          type: object
+          description: Filter by the last published date of the item(s)
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort results by the provided value
+        - name: sortOrder
+          in: query
+          type: string
+          description: Sorts the results by asc or desc
+      - name: createitemlive
+        method: POST
+        description: Webflow Create Live Collection Item(s)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateitemslive
+        method: PATCH
+        description: Webflow Update Live Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteitemslive
+        method: DELETE
+        description: Webflow Unpublish Live Collection Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: collections-collection_id-items-publish
+      path: /collections/{collection_id}/items/publish
+      operations:
+      - name: publishitem
+        method: POST
+        description: Webflow Publish Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: collections-collection_id-items-item_id
+      path: /collections/{collection_id}/items/{item_id}
+      operations:
+      - name: getitem
+        method: GET
+        description: Webflow Get Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+      - name: updateitem
+        method: PATCH
+        description: Webflow Update Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteitem
+        method: DELETE
+        description: Webflow Delete Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+    - name: collections-collection_id-items-item_id-live
+      path: /collections/{collection_id}/items/{item_id}/live
+      operations:
+      - name: getitemlive
+        method: GET
+        description: Webflow Get Live Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+      - name: updateitemlive
+        method: PATCH
+        description: Webflow Update Live Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: skipInvalidFiles
+          in: query
+          type: boolean
+          description: When true, invalid files are skipped and processing continues. When false, the entire request fails
+            if any file is invalid.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteitemlive
+        method: DELETE
+        description: Webflow Unpublish Live Collection Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier for an Item
+          required: true
+        - name: cmsLocaleId
+          in: query
+          type: string
+          description: Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed
+            as `cmsLocaleId` in the Sites response. To query multipl
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-items-sites-rest
+    port: 8080
+    description: REST adapter for Webflow CMS Items API — Sites. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/collections/{collection-id}/items
+      name: collections-collection-id-items
+      description: REST surface for collections-collection_id-items.
+      operations:
+      - method: GET
+        name: listcollectionitems
+        description: Webflow List Collection Items
+        call: webflow-items-sites.listcollectionitems
+        with:
+          collection_id: rest.collection_id
+          cmsLocaleId: rest.cmsLocaleId
+          offset: rest.offset
+          limit: rest.limit
+          name: rest.name
+          slug: rest.slug
+          lastPublished: rest.lastPublished
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createitem
+        description: Webflow Create Collection Item(s)
+        call: webflow-items-sites.createitem
+        with:
+          collection_id: rest.collection_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateitems
+        description: Webflow Update Collection Items
+        call: webflow-items-sites.updateitems
+        with:
+          collection_id: rest.collection_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteitems
+        description: Webflow Delete Collection Items
+        call: webflow-items-sites.deleteitems
+        with:
+          collection_id: rest.collection_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/items/bulk
+      name: collections-collection-id-items-bulk
+      description: REST surface for collections-collection_id-items-bulk.
+      operations:
+      - method: POST
+        name: createitems
+        description: Webflow Create Collection Items
+        call: webflow-items-sites.createitems
+        with:
+          collection_id: rest.collection_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/items/live
+      name: collections-collection-id-items-live
+      description: REST surface for collections-collection_id-items-live.
+      operations:
+      - method: GET
+        name: listcollectionitemslive
+        description: Webflow List Live Collection Items
+        call: webflow-items-sites.listcollectionitemslive
+        with:
+          collection_id: rest.collection_id
+          cmsLocaleId: rest.cmsLocaleId
+          offset: rest.offset
+          limit: rest.limit
+          name: rest.name
+          slug: rest.slug
+          lastPublished: rest.lastPublished
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createitemlive
+        description: Webflow Create Live Collection Item(s)
+        call: webflow-items-sites.createitemlive
+        with:
+          collection_id: rest.collection_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateitemslive
+        description: Webflow Update Live Collection Items
+        call: webflow-items-sites.updateitemslive
+        with:
+          collection_id: rest.collection_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteitemslive
+        description: Webflow Unpublish Live Collection Items
+        call: webflow-items-sites.deleteitemslive
+        with:
+          collection_id: rest.collection_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/items/publish
+      name: collections-collection-id-items-publish
+      description: REST surface for collections-collection_id-items-publish.
+      operations:
+      - method: POST
+        name: publishitem
+        description: Webflow Publish Collection Item
+        call: webflow-items-sites.publishitem
+        with:
+          collection_id: rest.collection_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/items/{item-id}
+      name: collections-collection-id-items-item-id
+      description: REST surface for collections-collection_id-items-item_id.
+      operations:
+      - method: GET
+        name: getitem
+        description: Webflow Get Collection Item
+        call: webflow-items-sites.getitem
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          cmsLocaleId: rest.cmsLocaleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateitem
+        description: Webflow Update Collection Item
+        call: webflow-items-sites.updateitem
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteitem
+        description: Webflow Delete Collection Item
+        call: webflow-items-sites.deleteitem
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          cmsLocaleId: rest.cmsLocaleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/items/{item-id}/live
+      name: collections-collection-id-items-item-id-live
+      description: REST surface for collections-collection_id-items-item_id-live.
+      operations:
+      - method: GET
+        name: getitemlive
+        description: Webflow Get Live Collection Item
+        call: webflow-items-sites.getitemlive
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          cmsLocaleId: rest.cmsLocaleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateitemlive
+        description: Webflow Update Live Collection Item
+        call: webflow-items-sites.updateitemlive
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          skipInvalidFiles: rest.skipInvalidFiles
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteitemlive
+        description: Webflow Unpublish Live Collection Item
+        call: webflow-items-sites.deleteitemlive
+        with:
+          collection_id: rest.collection_id
+          item_id: rest.item_id
+          cmsLocaleId: rest.cmsLocaleId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-items-sites-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow CMS Items API — Sites. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: webflow-list-collection-items
+      description: Webflow List Collection Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.listcollectionitems
+      with:
+        collection_id: tools.collection_id
+        cmsLocaleId: tools.cmsLocaleId
+        offset: tools.offset
+        limit: tools.limit
+        name: tools.name
+        slug: tools.slug
+        lastPublished: tools.lastPublished
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-collection-item-s
+      description: Webflow Create Collection Item(s)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-items-sites.createitem
+      with:
+        collection_id: tools.collection_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-collection-items
+      description: Webflow Update Collection Items
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.updateitems
+      with:
+        collection_id: tools.collection_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-collection-items
+      description: Webflow Delete Collection Items
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-items-sites.deleteitems
+      with:
+        collection_id: tools.collection_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-collection-items
+      description: Webflow Create Collection Items
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-items-sites.createitems
+      with:
+        collection_id: tools.collection_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-live-collection-items
+      description: Webflow List Live Collection Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.listcollectionitemslive
+      with:
+        collection_id: tools.collection_id
+        cmsLocaleId: tools.cmsLocaleId
+        offset: tools.offset
+        limit: tools.limit
+        name: tools.name
+        slug: tools.slug
+        lastPublished: tools.lastPublished
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-live-collection-item-s
+      description: Webflow Create Live Collection Item(s)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-items-sites.createitemlive
+      with:
+        collection_id: tools.collection_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-live-collection-items
+      description: Webflow Update Live Collection Items
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.updateitemslive
+      with:
+        collection_id: tools.collection_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-unpublish-live-collection-items
+      description: Webflow Unpublish Live Collection Items
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-items-sites.deleteitemslive
+      with:
+        collection_id: tools.collection_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-publish-collection-item
+      description: Webflow Publish Collection Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-items-sites.publishitem
+      with:
+        collection_id: tools.collection_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-collection-item
+      description: Webflow Get Collection Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.getitem
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        cmsLocaleId: tools.cmsLocaleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-collection-item
+      description: Webflow Update Collection Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.updateitem
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-collection-item
+      description: Webflow Delete Collection Item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-items-sites.deleteitem
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        cmsLocaleId: tools.cmsLocaleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-live-collection-item
+      description: Webflow Get Live Collection Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.getitemlive
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        cmsLocaleId: tools.cmsLocaleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-live-collection-item
+      description: Webflow Update Live Collection Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-items-sites.updateitemlive
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        skipInvalidFiles: tools.skipInvalidFiles
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-unpublish-live-collection-item
+      description: Webflow Unpublish Live Collection Item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-items-sites.deleteitemlive
+      with:
+        collection_id: tools.collection_id
+        item_id: tools.item_id
+        cmsLocaleId: tools.cmsLocaleId
+      outputParameters:
+      - type: object
+        mapping: $.

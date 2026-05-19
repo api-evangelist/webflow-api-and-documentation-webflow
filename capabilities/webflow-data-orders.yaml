@@ -1,0 +1,357 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Orders
+  description: 'Webflow Data API — Orders. 6 operations. Lead operation: Webflow List Orders. Self-contained Naftiko capability
+    covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Orders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-orders
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Orders business capability. Self-contained, no shared references.
+    resources:
+    - name: sites-site_id-orders
+      path: /sites/{site_id}/orders
+      operations:
+      - name: listorders
+        method: GET
+        description: Webflow List Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: status
+          in: query
+          type: string
+          description: Filter the orders by status
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+    - name: sites-site_id-orders-order_id
+      path: /sites/{site_id}/orders/{order_id}
+      operations:
+      - name: getorder
+        method: GET
+        description: Webflow Get Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: order_id
+          in: path
+          type: string
+          description: Unique identifier for an Order
+          required: true
+      - name: updateorder
+        method: PATCH
+        description: Webflow Update Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: order_id
+          in: path
+          type: string
+          description: Unique identifier for an Order
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sites-site_id-orders-order_id-fulfill
+      path: /sites/{site_id}/orders/{order_id}/fulfill
+      operations:
+      - name: fulfillorder
+        method: POST
+        description: Webflow Fulfill Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: order_id
+          in: path
+          type: string
+          description: Unique identifier for an Order
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sites-site_id-orders-order_id-refund
+      path: /sites/{site_id}/orders/{order_id}/refund
+      operations:
+      - name: refundorder
+        method: POST
+        description: Webflow Refund Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: order_id
+          in: path
+          type: string
+          description: Unique identifier for an Order
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sites-site_id-orders-order_id-unfulfill
+      path: /sites/{site_id}/orders/{order_id}/unfulfill
+      operations:
+      - name: unfulfillorder
+        method: POST
+        description: Webflow Unfulfill Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: order_id
+          in: path
+          type: string
+          description: Unique identifier for an Order
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-orders-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Orders. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/sites/{site-id}/orders
+      name: sites-site-id-orders
+      description: REST surface for sites-site_id-orders.
+      operations:
+      - method: GET
+        name: listorders
+        description: Webflow List Orders
+        call: webflow-data-orders.listorders
+        with:
+          site_id: rest.site_id
+          status: rest.status
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/orders/{order-id}
+      name: sites-site-id-orders-order-id
+      description: REST surface for sites-site_id-orders-order_id.
+      operations:
+      - method: GET
+        name: getorder
+        description: Webflow Get Order
+        call: webflow-data-orders.getorder
+        with:
+          site_id: rest.site_id
+          order_id: rest.order_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateorder
+        description: Webflow Update Order
+        call: webflow-data-orders.updateorder
+        with:
+          site_id: rest.site_id
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/orders/{order-id}/fulfill
+      name: sites-site-id-orders-order-id-fulfill
+      description: REST surface for sites-site_id-orders-order_id-fulfill.
+      operations:
+      - method: POST
+        name: fulfillorder
+        description: Webflow Fulfill Order
+        call: webflow-data-orders.fulfillorder
+        with:
+          site_id: rest.site_id
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/orders/{order-id}/refund
+      name: sites-site-id-orders-order-id-refund
+      description: REST surface for sites-site_id-orders-order_id-refund.
+      operations:
+      - method: POST
+        name: refundorder
+        description: Webflow Refund Order
+        call: webflow-data-orders.refundorder
+        with:
+          site_id: rest.site_id
+          order_id: rest.order_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/orders/{order-id}/unfulfill
+      name: sites-site-id-orders-order-id-unfulfill
+      description: REST surface for sites-site_id-orders-order_id-unfulfill.
+      operations:
+      - method: POST
+        name: unfulfillorder
+        description: Webflow Unfulfill Order
+        call: webflow-data-orders.unfulfillorder
+        with:
+          site_id: rest.site_id
+          order_id: rest.order_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Orders. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: webflow-list-orders
+      description: Webflow List Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-orders.listorders
+      with:
+        site_id: tools.site_id
+        status: tools.status
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-order
+      description: Webflow Get Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-orders.getorder
+      with:
+        site_id: tools.site_id
+        order_id: tools.order_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-order
+      description: Webflow Update Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data-orders.updateorder
+      with:
+        site_id: tools.site_id
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-fulfill-order
+      description: Webflow Fulfill Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-orders.fulfillorder
+      with:
+        site_id: tools.site_id
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-refund-order
+      description: Webflow Refund Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-orders.refundorder
+      with:
+        site_id: tools.site_id
+        order_id: tools.order_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-unfulfill-order
+      description: Webflow Unfulfill Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-orders.unfulfillorder
+      with:
+        site_id: tools.site_id
+        order_id: tools.order_id
+      outputParameters:
+      - type: object
+        mapping: $.

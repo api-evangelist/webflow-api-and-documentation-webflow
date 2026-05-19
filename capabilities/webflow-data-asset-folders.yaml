@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Asset Folders
+  description: 'Webflow Data API — Asset Folders. 3 operations. Lead operation: Webflow Get Asset Folder. Self-contained Naftiko
+    capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Asset Folders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-asset-folders
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Asset Folders business capability. Self-contained, no shared references.
+    resources:
+    - name: asset_folders-asset_folder_id
+      path: /asset_folders/{asset_folder_id}
+      operations:
+      - name: getassetfolder
+        method: GET
+        description: Webflow Get Asset Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: asset_folder_id
+          in: path
+          type: string
+          description: Unique identifier for an Asset Folder
+          required: true
+    - name: sites-site_id-asset_folders
+      path: /sites/{site_id}/asset_folders
+      operations:
+      - name: listassetfolders
+        method: GET
+        description: Webflow List Asset Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+      - name: createassetfolder
+        method: POST
+        description: Webflow Create Asset Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-asset-folders-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Asset Folders. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/asset-folders/{asset-folder-id}
+      name: asset-folders-asset-folder-id
+      description: REST surface for asset_folders-asset_folder_id.
+      operations:
+      - method: GET
+        name: getassetfolder
+        description: Webflow Get Asset Folder
+        call: webflow-data-asset-folders.getassetfolder
+        with:
+          asset_folder_id: rest.asset_folder_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/asset-folders
+      name: sites-site-id-asset-folders
+      description: REST surface for sites-site_id-asset_folders.
+      operations:
+      - method: GET
+        name: listassetfolders
+        description: Webflow List Asset Folders
+        call: webflow-data-asset-folders.listassetfolders
+        with:
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createassetfolder
+        description: Webflow Create Asset Folder
+        call: webflow-data-asset-folders.createassetfolder
+        with:
+          site_id: rest.site_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-asset-folders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Asset Folders. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: webflow-get-asset-folder
+      description: Webflow Get Asset Folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-asset-folders.getassetfolder
+      with:
+        asset_folder_id: tools.asset_folder_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-asset-folders
+      description: Webflow List Asset Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-asset-folders.listassetfolders
+      with:
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-asset-folder
+      description: Webflow Create Asset Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-asset-folders.createassetfolder
+      with:
+        site_id: tools.site_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

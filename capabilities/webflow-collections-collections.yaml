@@ -1,0 +1,346 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Collections API — Collections
+  description: 'Webflow Collections API — Collections. 7 operations. Lead operation: Webflow Get Collection Details. Self-contained
+    Naftiko capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Collections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-collections-collections
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Collections API — Collections business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-collection_id
+      path: /collections/{collection_id}
+      operations:
+      - name: collectiondetails
+        method: GET
+        description: Webflow Get Collection Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+      - name: deletecollection
+        method: DELETE
+        description: Webflow Delete Collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+    - name: collections-collection_id-fields
+      path: /collections/{collection_id}/fields
+      operations:
+      - name: createfield
+        method: POST
+        description: Webflow Create Collection Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: collections-collection_id-fields-field_id
+      path: /collections/{collection_id}/fields/{field_id}
+      operations:
+      - name: updatefield
+        method: PATCH
+        description: Webflow Update Collection Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: field_id
+          in: path
+          type: string
+          description: Unique identifier for a Field in a collection
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletefield
+        method: DELETE
+        description: Webflow Delete Collection Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: collection_id
+          in: path
+          type: string
+          description: Unique identifier for a Collection
+          required: true
+        - name: field_id
+          in: path
+          type: string
+          description: Unique identifier for a Field in a collection
+          required: true
+    - name: sites-site_id-collections
+      path: /sites/{site_id}/collections
+      operations:
+      - name: listcollections
+        method: GET
+        description: Webflow List Collections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+      - name: createcollection
+        method: POST
+        description: Webflow Create Collection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-collections-collections-rest
+    port: 8080
+    description: REST adapter for Webflow Collections API — Collections. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/collections/{collection-id}
+      name: collections-collection-id
+      description: REST surface for collections-collection_id.
+      operations:
+      - method: GET
+        name: collectiondetails
+        description: Webflow Get Collection Details
+        call: webflow-collections-collections.collectiondetails
+        with:
+          collection_id: rest.collection_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecollection
+        description: Webflow Delete Collection
+        call: webflow-collections-collections.deletecollection
+        with:
+          collection_id: rest.collection_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/fields
+      name: collections-collection-id-fields
+      description: REST surface for collections-collection_id-fields.
+      operations:
+      - method: POST
+        name: createfield
+        description: Webflow Create Collection Field
+        call: webflow-collections-collections.createfield
+        with:
+          collection_id: rest.collection_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/{collection-id}/fields/{field-id}
+      name: collections-collection-id-fields-field-id
+      description: REST surface for collections-collection_id-fields-field_id.
+      operations:
+      - method: PATCH
+        name: updatefield
+        description: Webflow Update Collection Field
+        call: webflow-collections-collections.updatefield
+        with:
+          collection_id: rest.collection_id
+          field_id: rest.field_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefield
+        description: Webflow Delete Collection Field
+        call: webflow-collections-collections.deletefield
+        with:
+          collection_id: rest.collection_id
+          field_id: rest.field_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/collections
+      name: sites-site-id-collections
+      description: REST surface for sites-site_id-collections.
+      operations:
+      - method: GET
+        name: listcollections
+        description: Webflow List Collections
+        call: webflow-collections-collections.listcollections
+        with:
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcollection
+        description: Webflow Create Collection
+        call: webflow-collections-collections.createcollection
+        with:
+          site_id: rest.site_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-collections-collections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Collections API — Collections. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: webflow-get-collection-details
+      description: Webflow Get Collection Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-collections-collections.collectiondetails
+      with:
+        collection_id: tools.collection_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-collection
+      description: Webflow Delete Collection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-collections-collections.deletecollection
+      with:
+        collection_id: tools.collection_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-collection-field
+      description: Webflow Create Collection Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-collections-collections.createfield
+      with:
+        collection_id: tools.collection_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-collection-field
+      description: Webflow Update Collection Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-collections-collections.updatefield
+      with:
+        collection_id: tools.collection_id
+        field_id: tools.field_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-collection-field
+      description: Webflow Delete Collection Field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-collections-collections.deletefield
+      with:
+        collection_id: tools.collection_id
+        field_id: tools.field_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-collections
+      description: Webflow List Collections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-collections-collections.listcollections
+      with:
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-create-collection
+      description: Webflow Create Collection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-collections-collections.createcollection
+      with:
+        site_id: tools.site_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

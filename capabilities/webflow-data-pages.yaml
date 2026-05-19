@@ -1,0 +1,303 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Pages
+  description: 'Webflow Data API — Pages. 5 operations. Lead operation: Webflow Get Page Metadata. Self-contained Naftiko
+    capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Pages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-pages
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Pages business capability. Self-contained, no shared references.
+    resources:
+    - name: pages-page_id
+      path: /pages/{page_id}
+      operations:
+      - name: getpagemetadata
+        method: GET
+        description: Webflow Get Page Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page_id
+          in: path
+          type: string
+          description: Unique identifier for a Page
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+      - name: updatepagesettings
+        method: PUT
+        description: Webflow Update Page Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page_id
+          in: path
+          type: string
+          description: Unique identifier for a Page
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: pages-page_id-dom
+      path: /pages/{page_id}/dom
+      operations:
+      - name: getstaticcontent
+        method: GET
+        description: Webflow Get Page Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page_id
+          in: path
+          type: string
+          description: Unique identifier for a Page
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+      - name: updatestaticcontent
+        method: POST
+        description: Webflow Update Page Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page_id
+          in: path
+          type: string
+          description: Unique identifier for a Page
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: The locale identifier.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sites-site_id-pages
+      path: /sites/{site_id}/pages
+      operations:
+      - name: listpages
+        method: GET
+        description: Webflow List Pages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-pages-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Pages. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/pages/{page-id}
+      name: pages-page-id
+      description: REST surface for pages-page_id.
+      operations:
+      - method: GET
+        name: getpagemetadata
+        description: Webflow Get Page Metadata
+        call: webflow-data-pages.getpagemetadata
+        with:
+          page_id: rest.page_id
+          localeId: rest.localeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepagesettings
+        description: Webflow Update Page Metadata
+        call: webflow-data-pages.updatepagesettings
+        with:
+          page_id: rest.page_id
+          localeId: rest.localeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page-id}/dom
+      name: pages-page-id-dom
+      description: REST surface for pages-page_id-dom.
+      operations:
+      - method: GET
+        name: getstaticcontent
+        description: Webflow Get Page Content
+        call: webflow-data-pages.getstaticcontent
+        with:
+          page_id: rest.page_id
+          localeId: rest.localeId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatestaticcontent
+        description: Webflow Update Page Content
+        call: webflow-data-pages.updatestaticcontent
+        with:
+          page_id: rest.page_id
+          localeId: rest.localeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/pages
+      name: sites-site-id-pages
+      description: REST surface for sites-site_id-pages.
+      operations:
+      - method: GET
+        name: listpages
+        description: Webflow List Pages
+        call: webflow-data-pages.listpages
+        with:
+          site_id: rest.site_id
+          localeId: rest.localeId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-pages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Pages. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: webflow-get-page-metadata
+      description: Webflow Get Page Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-pages.getpagemetadata
+      with:
+        page_id: tools.page_id
+        localeId: tools.localeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-page-metadata
+      description: Webflow Update Page Metadata
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data-pages.updatepagesettings
+      with:
+        page_id: tools.page_id
+        localeId: tools.localeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-page-content
+      description: Webflow Get Page Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-pages.getstaticcontent
+      with:
+        page_id: tools.page_id
+        localeId: tools.localeId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-page-content
+      description: Webflow Update Page Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-pages.updatestaticcontent
+      with:
+        page_id: tools.page_id
+        localeId: tools.localeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-pages
+      description: Webflow List Pages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-pages.listpages
+      with:
+        site_id: tools.site_id
+        localeId: tools.localeId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.

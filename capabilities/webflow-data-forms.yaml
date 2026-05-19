@@ -1,0 +1,568 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Forms
+  description: 'Webflow Data API — Forms. 11 operations. Lead operation: Webflow Get Form Submission. Self-contained Naftiko
+    capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Forms
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-forms
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Forms business capability. Self-contained, no shared references.
+    resources:
+    - name: form_submissions-form_submission_id
+      path: /form_submissions/{form_submission_id}
+      operations:
+      - name: getformsubmission
+        method: GET
+        description: Webflow Get Form Submission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+      - name: modifyformsubmission
+        method: PATCH
+        description: Webflow Modify Form Submission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteformsubmission
+        method: DELETE
+        description: Webflow Delete Form Submission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+    - name: forms-form_id
+      path: /forms/{form_id}
+      operations:
+      - name: getformschema
+        method: GET
+        description: Webflow Get Form Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: form_id
+          in: path
+          type: string
+          description: Unique identifier for a Form
+          required: true
+    - name: forms-form_id-submissions
+      path: /forms/{form_id}/submissions
+      operations:
+      - name: listsubmissions
+        method: GET
+        description: Webflow List Form Submissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: form_id
+          in: path
+          type: string
+          description: Unique identifier for a Form
+          required: true
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+    - name: sites-site_id-form_submissions
+      path: /sites/{site_id}/form_submissions
+      operations:
+      - name: listsubmissionsbysite
+        method: GET
+        description: Webflow List Form Submissions by Site
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: elementId
+          in: query
+          type: string
+          description: Identifier for an element
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+    - name: sites-site_id-form_submissions-form_submission_id
+      path: /sites/{site_id}/form_submissions/{form_submission_id}
+      operations:
+      - name: getformsubmissionbysite
+        method: GET
+        description: Webflow Get Form Submission by Site
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+      - name: modifyformsubmissionbysite
+        method: PATCH
+        description: Webflow Modify Form Submission by Site
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteformsubmissionbysite
+        method: DELETE
+        description: Webflow Delete Form Submission by Site
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: form_submission_id
+          in: path
+          type: string
+          description: Unique identifier for a Form Submission
+          required: true
+    - name: sites-site_id-forms
+      path: /sites/{site_id}/forms
+      operations:
+      - name: listforms
+        method: GET
+        description: Webflow List Forms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+    - name: sites-site_id-forms-form_id-submissions
+      path: /sites/{site_id}/forms/{form_id}/submissions
+      operations:
+      - name: listsubmissions
+        method: GET
+        description: Webflow List Form Submissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: form_id
+          in: path
+          type: string
+          description: Unique identifier for a Form
+          required: true
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-forms-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Forms. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/form-submissions/{form-submission-id}
+      name: form-submissions-form-submission-id
+      description: REST surface for form_submissions-form_submission_id.
+      operations:
+      - method: GET
+        name: getformsubmission
+        description: Webflow Get Form Submission
+        call: webflow-data-forms.getformsubmission
+        with:
+          form_submission_id: rest.form_submission_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: modifyformsubmission
+        description: Webflow Modify Form Submission
+        call: webflow-data-forms.modifyformsubmission
+        with:
+          form_submission_id: rest.form_submission_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteformsubmission
+        description: Webflow Delete Form Submission
+        call: webflow-data-forms.deleteformsubmission
+        with:
+          form_submission_id: rest.form_submission_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/forms/{form-id}
+      name: forms-form-id
+      description: REST surface for forms-form_id.
+      operations:
+      - method: GET
+        name: getformschema
+        description: Webflow Get Form Schema
+        call: webflow-data-forms.getformschema
+        with:
+          form_id: rest.form_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/forms/{form-id}/submissions
+      name: forms-form-id-submissions
+      description: REST surface for forms-form_id-submissions.
+      operations:
+      - method: GET
+        name: listsubmissions
+        description: Webflow List Form Submissions
+        call: webflow-data-forms.listsubmissions
+        with:
+          form_id: rest.form_id
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/form-submissions
+      name: sites-site-id-form-submissions
+      description: REST surface for sites-site_id-form_submissions.
+      operations:
+      - method: GET
+        name: listsubmissionsbysite
+        description: Webflow List Form Submissions by Site
+        call: webflow-data-forms.listsubmissionsbysite
+        with:
+          site_id: rest.site_id
+          elementId: rest.elementId
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/form-submissions/{form-submission-id}
+      name: sites-site-id-form-submissions-form-submission-id
+      description: REST surface for sites-site_id-form_submissions-form_submission_id.
+      operations:
+      - method: GET
+        name: getformsubmissionbysite
+        description: Webflow Get Form Submission by Site
+        call: webflow-data-forms.getformsubmissionbysite
+        with:
+          site_id: rest.site_id
+          form_submission_id: rest.form_submission_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: modifyformsubmissionbysite
+        description: Webflow Modify Form Submission by Site
+        call: webflow-data-forms.modifyformsubmissionbysite
+        with:
+          site_id: rest.site_id
+          form_submission_id: rest.form_submission_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteformsubmissionbysite
+        description: Webflow Delete Form Submission by Site
+        call: webflow-data-forms.deleteformsubmissionbysite
+        with:
+          site_id: rest.site_id
+          form_submission_id: rest.form_submission_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/forms
+      name: sites-site-id-forms
+      description: REST surface for sites-site_id-forms.
+      operations:
+      - method: GET
+        name: listforms
+        description: Webflow List Forms
+        call: webflow-data-forms.listforms
+        with:
+          site_id: rest.site_id
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/forms/{form-id}/submissions
+      name: sites-site-id-forms-form-id-submissions
+      description: REST surface for sites-site_id-forms-form_id-submissions.
+      operations:
+      - method: GET
+        name: listsubmissions
+        description: Webflow List Form Submissions
+        call: webflow-data-forms.listsubmissions
+        with:
+          site_id: rest.site_id
+          form_id: rest.form_id
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-forms-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Forms. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: webflow-get-form-submission
+      description: Webflow Get Form Submission
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.getformsubmission
+      with:
+        form_submission_id: tools.form_submission_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-modify-form-submission
+      description: Webflow Modify Form Submission
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.modifyformsubmission
+      with:
+        form_submission_id: tools.form_submission_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-form-submission
+      description: Webflow Delete Form Submission
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-data-forms.deleteformsubmission
+      with:
+        form_submission_id: tools.form_submission_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-form-schema
+      description: Webflow Get Form Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.getformschema
+      with:
+        form_id: tools.form_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-form-submissions
+      description: Webflow List Form Submissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.listsubmissions
+      with:
+        form_id: tools.form_id
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-form-submissions-site
+      description: Webflow List Form Submissions by Site
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.listsubmissionsbysite
+      with:
+        site_id: tools.site_id
+        elementId: tools.elementId
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-form-submission-site
+      description: Webflow Get Form Submission by Site
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.getformsubmissionbysite
+      with:
+        site_id: tools.site_id
+        form_submission_id: tools.form_submission_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-modify-form-submission-site
+      description: Webflow Modify Form Submission by Site
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.modifyformsubmissionbysite
+      with:
+        site_id: tools.site_id
+        form_submission_id: tools.form_submission_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-form-submission-site
+      description: Webflow Delete Form Submission by Site
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-data-forms.deleteformsubmissionbysite
+      with:
+        site_id: tools.site_id
+        form_submission_id: tools.form_submission_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-forms
+      description: Webflow List Forms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.listforms
+      with:
+        site_id: tools.site_id
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-form-submissions-2
+      description: Webflow List Form Submissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-forms.listsubmissions
+      with:
+        site_id: tools.site_id
+        form_id: tools.form_id
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

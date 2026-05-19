@@ -1,0 +1,253 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Assets
+  description: 'Webflow Data API — Assets. 5 operations. Lead operation: Webflow Get Asset. Self-contained Naftiko capability
+    covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Assets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-assets
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Assets business capability. Self-contained, no shared references.
+    resources:
+    - name: assets-asset_id
+      path: /assets/{asset_id}
+      operations:
+      - name: getasset
+        method: GET
+        description: Webflow Get Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: asset_id
+          in: path
+          type: string
+          description: Unique identifier for an Asset on a site
+          required: true
+      - name: patchasset
+        method: PATCH
+        description: Webflow Update Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: asset_id
+          in: path
+          type: string
+          description: Unique identifier for an Asset on a site
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteasset
+        method: DELETE
+        description: Webflow Delete Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: asset_id
+          in: path
+          type: string
+          description: Unique identifier for an Asset on a site
+          required: true
+    - name: sites-site_id-assets
+      path: /sites/{site_id}/assets
+      operations:
+      - name: listassets
+        method: GET
+        description: Webflow List Assets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+      - name: createasset
+        method: POST
+        description: Webflow Upload Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-assets-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Assets. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/assets/{asset-id}
+      name: assets-asset-id
+      description: REST surface for assets-asset_id.
+      operations:
+      - method: GET
+        name: getasset
+        description: Webflow Get Asset
+        call: webflow-data-assets.getasset
+        with:
+          asset_id: rest.asset_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchasset
+        description: Webflow Update Asset
+        call: webflow-data-assets.patchasset
+        with:
+          asset_id: rest.asset_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteasset
+        description: Webflow Delete Asset
+        call: webflow-data-assets.deleteasset
+        with:
+          asset_id: rest.asset_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/assets
+      name: sites-site-id-assets
+      description: REST surface for sites-site_id-assets.
+      operations:
+      - method: GET
+        name: listassets
+        description: Webflow List Assets
+        call: webflow-data-assets.listassets
+        with:
+          site_id: rest.site_id
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createasset
+        description: Webflow Upload Asset
+        call: webflow-data-assets.createasset
+        with:
+          site_id: rest.site_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-assets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Assets. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: webflow-get-asset
+      description: Webflow Get Asset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-assets.getasset
+      with:
+        asset_id: tools.asset_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-asset
+      description: Webflow Update Asset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: webflow-data-assets.patchasset
+      with:
+        asset_id: tools.asset_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-delete-asset
+      description: Webflow Delete Asset
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: webflow-data-assets.deleteasset
+      with:
+        asset_id: tools.asset_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-assets
+      description: Webflow List Assets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-assets.listassets
+      with:
+        site_id: tools.site_id
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-upload-asset
+      description: Webflow Upload Asset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-assets.createasset
+      with:
+        site_id: tools.site_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

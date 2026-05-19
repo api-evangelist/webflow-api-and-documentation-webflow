@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Comments
+  description: 'Webflow Data API — Comments. 3 operations. Lead operation: Webflow List Comment Threads. Self-contained Naftiko
+    capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Comments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-comments
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Comments business capability. Self-contained, no shared references.
+    resources:
+    - name: sites-site_id-comments
+      path: /sites/{site_id}/comments
+      operations:
+      - name: listcommentthreads
+        method: GET
+        description: Webflow List Comment Threads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort results by the provided value. Only allowed when sortOrder is provided.
+        - name: sortOrder
+          in: query
+          type: string
+          description: Sorts the results by asc or desc
+    - name: sites-site_id-comments-comment_thread_id
+      path: /sites/{site_id}/comments/{comment_thread_id}
+      operations:
+      - name: getcommentthread
+        method: GET
+        description: Webflow Get Comment Thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: comment_thread_id
+          in: path
+          type: string
+          description: Unique identifier for a Comment Thread
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort results by the provided value. Only allowed when sortOrder is provided.
+        - name: sortOrder
+          in: query
+          type: string
+          description: Sorts the results by asc or desc
+    - name: sites-site_id-comments-comment_thread_id-replies
+      path: /sites/{site_id}/comments/{comment_thread_id}/replies
+      operations:
+      - name: listcommentreplies
+        method: GET
+        description: Webflow List Comment Replies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: comment_thread_id
+          in: path
+          type: string
+          description: Unique identifier for a Comment Thread
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort results by the provided value. Only allowed when sortOrder is provided.
+        - name: sortOrder
+          in: query
+          type: string
+          description: Sorts the results by asc or desc
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-comments-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Comments. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/sites/{site-id}/comments
+      name: sites-site-id-comments
+      description: REST surface for sites-site_id-comments.
+      operations:
+      - method: GET
+        name: listcommentthreads
+        description: Webflow List Comment Threads
+        call: webflow-data-comments.listcommentthreads
+        with:
+          site_id: rest.site_id
+          localeId: rest.localeId
+          offset: rest.offset
+          limit: rest.limit
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/comments/{comment-thread-id}
+      name: sites-site-id-comments-comment-thread-id
+      description: REST surface for sites-site_id-comments-comment_thread_id.
+      operations:
+      - method: GET
+        name: getcommentthread
+        description: Webflow Get Comment Thread
+        call: webflow-data-comments.getcommentthread
+        with:
+          site_id: rest.site_id
+          comment_thread_id: rest.comment_thread_id
+          localeId: rest.localeId
+          offset: rest.offset
+          limit: rest.limit
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/comments/{comment-thread-id}/replies
+      name: sites-site-id-comments-comment-thread-id-replies
+      description: REST surface for sites-site_id-comments-comment_thread_id-replies.
+      operations:
+      - method: GET
+        name: listcommentreplies
+        description: Webflow List Comment Replies
+        call: webflow-data-comments.listcommentreplies
+        with:
+          site_id: rest.site_id
+          comment_thread_id: rest.comment_thread_id
+          localeId: rest.localeId
+          offset: rest.offset
+          limit: rest.limit
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-comments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Comments. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: webflow-list-comment-threads
+      description: Webflow List Comment Threads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-comments.listcommentthreads
+      with:
+        site_id: tools.site_id
+        localeId: tools.localeId
+        offset: tools.offset
+        limit: tools.limit
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-comment-thread
+      description: Webflow Get Comment Thread
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-comments.getcommentthread
+      with:
+        site_id: tools.site_id
+        comment_thread_id: tools.comment_thread_id
+        localeId: tools.localeId
+        offset: tools.offset
+        limit: tools.limit
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-list-comment-replies
+      description: Webflow List Comment Replies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-comments.listcommentreplies
+      with:
+        site_id: tools.site_id
+        comment_thread_id: tools.comment_thread_id
+        localeId: tools.localeId
+        offset: tools.offset
+        limit: tools.limit
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.

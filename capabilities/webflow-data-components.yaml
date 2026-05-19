@@ -1,0 +1,366 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Webflow Data API — Components
+  description: 'Webflow Data API — Components. 5 operations. Lead operation: Webflow List Components. Self-contained Naftiko
+    capability covering one Webflow Api And Documentation Webflow business surface.'
+  tags:
+  - Webflow Api And Documentation Webflow
+  - Components
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY: WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: webflow-data-components
+    baseUri: https://api.webflow.com/v2
+    description: Webflow Data API — Components business capability. Self-contained, no shared references.
+    resources:
+    - name: sites-site_id-components
+      path: /sites/{site_id}/components
+      operations:
+      - name: listcomponents
+        method: GET
+        description: Webflow List Components
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: branchId
+          in: query
+          type: string
+          description: Scope the operation to work on a specific branch.
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+    - name: sites-site_id-components-component_id-dom
+      path: /sites/{site_id}/components/{component_id}/dom
+      operations:
+      - name: getcomponentcontent
+        method: GET
+        description: Webflow Get Component Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: component_id
+          in: path
+          type: string
+          description: Unique identifier for a Component
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: branchId
+          in: query
+          type: string
+          description: Scope the operation to work on a specific branch.
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+      - name: updatecomponentcontent
+        method: POST
+        description: Webflow Update Component Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: component_id
+          in: path
+          type: string
+          description: Unique identifier for a Component
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: branchId
+          in: query
+          type: string
+          description: Scope the operation to work on a specific branch.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sites-site_id-components-component_id-properties
+      path: /sites/{site_id}/components/{component_id}/properties
+      operations:
+      - name: getcomponentproperties
+        method: GET
+        description: Webflow Get Component Properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: component_id
+          in: path
+          type: string
+          description: Unique identifier for a Component
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: branchId
+          in: query
+          type: string
+          description: Scope the operation to work on a specific branch.
+        - name: limit
+          in: query
+          type: integer
+          description: 'Maximum number of records to be returned (max limit: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: Offset used for pagination if the results have more than limit records
+      - name: updatecomponentproperties
+        method: POST
+        description: Webflow Update Component Properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: site_id
+          in: path
+          type: string
+          description: Unique identifier for a Site
+          required: true
+        - name: component_id
+          in: path
+          type: string
+          description: Unique identifier for a Component
+          required: true
+        - name: localeId
+          in: query
+          type: string
+          description: Unique identifier for a specific Locale.
+        - name: branchId
+          in: query
+          type: string
+          description: Scope the operation to work on a specific branch.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.WEBFLOW_API_AND_DOCUMENTATION_WEBFLOW_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: webflow-data-components-rest
+    port: 8080
+    description: REST adapter for Webflow Data API — Components. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/sites/{site-id}/components
+      name: sites-site-id-components
+      description: REST surface for sites-site_id-components.
+      operations:
+      - method: GET
+        name: listcomponents
+        description: Webflow List Components
+        call: webflow-data-components.listcomponents
+        with:
+          site_id: rest.site_id
+          branchId: rest.branchId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/components/{component-id}/dom
+      name: sites-site-id-components-component-id-dom
+      description: REST surface for sites-site_id-components-component_id-dom.
+      operations:
+      - method: GET
+        name: getcomponentcontent
+        description: Webflow Get Component Content
+        call: webflow-data-components.getcomponentcontent
+        with:
+          site_id: rest.site_id
+          component_id: rest.component_id
+          localeId: rest.localeId
+          branchId: rest.branchId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatecomponentcontent
+        description: Webflow Update Component Content
+        call: webflow-data-components.updatecomponentcontent
+        with:
+          site_id: rest.site_id
+          component_id: rest.component_id
+          localeId: rest.localeId
+          branchId: rest.branchId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sites/{site-id}/components/{component-id}/properties
+      name: sites-site-id-components-component-id-properties
+      description: REST surface for sites-site_id-components-component_id-properties.
+      operations:
+      - method: GET
+        name: getcomponentproperties
+        description: Webflow Get Component Properties
+        call: webflow-data-components.getcomponentproperties
+        with:
+          site_id: rest.site_id
+          component_id: rest.component_id
+          localeId: rest.localeId
+          branchId: rest.branchId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatecomponentproperties
+        description: Webflow Update Component Properties
+        call: webflow-data-components.updatecomponentproperties
+        with:
+          site_id: rest.site_id
+          component_id: rest.component_id
+          localeId: rest.localeId
+          branchId: rest.branchId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: webflow-data-components-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Webflow Data API — Components. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: webflow-list-components
+      description: Webflow List Components
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-components.listcomponents
+      with:
+        site_id: tools.site_id
+        branchId: tools.branchId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-component-content
+      description: Webflow Get Component Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-components.getcomponentcontent
+      with:
+        site_id: tools.site_id
+        component_id: tools.component_id
+        localeId: tools.localeId
+        branchId: tools.branchId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-component-content
+      description: Webflow Update Component Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-components.updatecomponentcontent
+      with:
+        site_id: tools.site_id
+        component_id: tools.component_id
+        localeId: tools.localeId
+        branchId: tools.branchId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-get-component-properties
+      description: Webflow Get Component Properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: webflow-data-components.getcomponentproperties
+      with:
+        site_id: tools.site_id
+        component_id: tools.component_id
+        localeId: tools.localeId
+        branchId: tools.branchId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: webflow-update-component-properties
+      description: Webflow Update Component Properties
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: webflow-data-components.updatecomponentproperties
+      with:
+        site_id: tools.site_id
+        component_id: tools.component_id
+        localeId: tools.localeId
+        branchId: tools.branchId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
