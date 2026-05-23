@@ -1,0 +1,155 @@
+{
+  "operationId": "list-forms",
+  "method": "GET",
+  "path": "/sites/{site_id}/forms",
+  "summary": "Webflow List Forms",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "forms": [
+          {
+            "displayName": "Email Form",
+            "createdOn": "2016-10-24T19:41:29.156Z",
+            "lastUpdated": "2016-10-24T19:43:17.271Z",
+            "fields": [
+              {
+                "660d5bcc9c0772150459dfb1": {
+                  "displayName": "Name",
+                  "type": "Plain",
+                  "placeholder": null,
+                  "userVisible": true
+                }
+              },
+              {
+                "589a331aa51e760df7ccb89d": {
+                  "displayName": "Email",
+                  "type": "Email",
+                  "placeholder": "Enter your email",
+                  "userVisible": true
+                }
+              }
+            ],
+            "responseSettings": {
+              "redirectUrl": "https://example.com",
+              "redirectMethod": "GET",
+              "redirectAction": null,
+              "sendEmailConfirmation": true
+            },
+            "id": "589a331aa51e760df7ccb89e",
+            "siteId": "580e63e98c9a982ac9b8b741",
+            "siteDomainId": "6419db964a9c436a4baf6248",
+            "pageId": "6419db964a9c43f6a3af6348",
+            "pageName": "Home",
+            "workspaceId": "580e63fc8c9a982ac9b8b744"
+          },
+          {
+            "displayName": "Name Form",
+            "createdOn": "2016-10-24T19:41:29.156Z",
+            "lastUpdated": "2016-10-24T19:43:17.271Z",
+            "fields": [
+              {
+                "589a331aa51e760df7ccb89d": {
+                  "displayName": "Name",
+                  "type": "Plain",
+                  "placeholder": "Enter your name",
+                  "userVisible": true
+                }
+              }
+            ],
+            "responseSettings": {
+              "redirectUrl": "https://example.com",
+              "redirectMethod": "GET",
+              "redirectAction": null,
+              "sendEmailConfirmation": false
+            },
+            "id": "580ff8d7ba3e45ba9fe588e9",
+            "siteId": "580e63e98c9a982ac9b8b741",
+            "siteDomainId": "6419db964a9c436a4baf6248",
+            "pageId": "6419db964a9c43f6a3af6348",
+            "pageName": "Home",
+            "formElementId": "4e038d2c-6a1e-4953-7be9-a59a2b453177",
+            "workspaceId": "580e63fc8c9a982ac9b8b744"
+          }
+        ],
+        "pagination": {
+          "limit": 25,
+          "offset": 0,
+          "total": 2
+        }
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "example": {
+        "code": "forbidden",
+        "message": "User is not authorized to perform this action",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/json",
+      "example": {
+        "code": "forms_require_republish",
+        "message": "To access this feature, the site needs to be republished.",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

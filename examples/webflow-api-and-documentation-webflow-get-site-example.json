@@ -1,0 +1,120 @@
+{
+  "operationId": "get-site",
+  "method": "GET",
+  "path": "/sites/{site_id}",
+  "summary": "Webflow Get Site",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "SiteWithLocales",
+      "example": {
+        "id": "42e98c9a982ac9b8b742",
+        "workspaceId": "42e63e98c9a982ac9b8b742",
+        "displayName": "The Hitchhiker's Guide to the Galaxy",
+        "shortName": "hitchhikers-guide",
+        "previewUrl": "https://screenshots.webflow.com/sites/6258612d1ee792848f805dcf/20231219211811_d5990556c743f33b7071300a03bf67e6.png",
+        "timeZone": "Magrathea/FactoryFloor",
+        "createdOn": "1979-10-12T12:00:00.000Z",
+        "lastUpdated": "2023-04-02T12:42:00.000Z",
+        "lastPublished": "2023-04-02T12:42:00.000Z",
+        "parentFolderId": "1as2d3f4g5h6j7k8l9z0x1c2v3b4n5m6",
+        "customDomains": [
+          {
+            "id": "589a331aa51e760df7ccb89d",
+            "url": "hitchhikersguide.galaxy"
+          },
+          {
+            "id": "589a331aa51e760df7ccb89e",
+            "url": "heartofgold.spaceship"
+          }
+        ],
+        "locales": {
+          "primary": {
+            "id": "653fd9af6a07fc9cfd7a5e57",
+            "cmsLocaleId": "653ad57de882f528b32e810e",
+            "enabled": false,
+            "displayName": "English (United States)",
+            "displayImageId": null,
+            "redirect": true,
+            "subdirectory": "",
+            "tag": "en-US"
+          },
+          "secondary": [
+            {
+              "id": "653fd9af6a07fc9cfd7a5e56",
+              "cmsLocaleId": "653fd9af6a07fc9cfd7a5e5d",
+              "enabled": true,
+              "displayName": "French (France)",
+              "displayImageId": null,
+              "subdirectory": "fr-fr",
+              "tag": "fr-FR"
+            },
+            {
+              "id": "654112a3a525b2739d97664c",
+              "cmsLocaleId": "654112a3a525b2739d97664f",
+              "enabled": true,
+              "displayName": "Spanish (Mexico)",
+              "displayImageId": null,
+              "subdirectory": "es-mx",
+              "tag": "es-MX"
+            }
+          ]
+        },
+        "dataCollectionEnabled": true,
+        "dataCollectionType": "always"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

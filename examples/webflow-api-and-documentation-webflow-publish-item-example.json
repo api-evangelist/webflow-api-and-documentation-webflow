@@ -1,0 +1,135 @@
+{
+  "operationId": "publish-item",
+  "method": "POST",
+  "path": "/collections/{collection_id}/items/publish",
+  "summary": "Webflow Publish Collection Item",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "PrimaryLocale",
+      "example": {
+        "itemIds": [
+          "643fd856d66b6528195ee2ca",
+          "643fd856d66b6528195ee2cb",
+          "643fd856d66b6528195ee2cc"
+        ]
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "SecondaryLocale",
+      "example": {
+        "items": [
+          {
+            "id": "643fd856d66b6528195ee2ca",
+            "cmsLocaleIds": [
+              "653ad57de882f528b32e810e"
+            ]
+          },
+          {
+            "id": "643fd856d66b6528195ee2cb",
+            "cmsLocaleIds": [
+              "653ad57de882f528b32e810e"
+            ]
+          },
+          {
+            "id": "643fd856d66b6528195ee2cc",
+            "cmsLocaleIds": [
+              "653ad57de882f528b32e810e"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "MultipleLocales",
+      "example": {
+        "items": [
+          {
+            "id": "643fd856d66b6528195ee2ca",
+            "cmsLocaleIds": [
+              "653ad57de882f528b32e810e",
+              "6514390aea353fc691d69827",
+              "65143930ea353fc691d69cd8"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "example": {
+        "publishedItemIds": [
+          "643fd856d66b6528195ee2ca",
+          "643fd856d66b6528195ee2cb"
+        ],
+        "errors": [
+          "Staging item ID 643fd856d66b6528195ee2cf not found."
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/json",
+      "example": {
+        "message": "'Site is published to multiple domains at different times",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

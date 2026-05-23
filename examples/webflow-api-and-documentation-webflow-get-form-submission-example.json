@@ -1,0 +1,69 @@
+{
+  "operationId": "get-form-submission",
+  "method": "GET",
+  "path": "/form_submissions/{form_submission_id}",
+  "summary": "Webflow Get Form Submission",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "example": {
+        "code": "forbidden",
+        "message": "User is not authorized to perform this action",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

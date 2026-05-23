@@ -1,0 +1,141 @@
+{
+  "operationId": "create-collection",
+  "method": "POST",
+  "path": "/sites/{site_id}/collections",
+  "summary": "Webflow Create Collection",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "createdOn": "2016-10-24T19:41:48Z",
+        "lastUpdated": "2016-10-24T19:42:38Z",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "validation_error",
+        "message": "Validation Error: Provided ID is invalid",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/json",
+      "example": {
+        "code": "duplicate_collection",
+        "message": "Collection already exists",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

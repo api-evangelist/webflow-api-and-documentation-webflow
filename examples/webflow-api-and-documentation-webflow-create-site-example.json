@@ -1,0 +1,80 @@
+{
+  "operationId": "create-site",
+  "method": "POST",
+  "path": "/workspaces/{workspace_id}/sites",
+  "summary": "Webflow Create Site",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "NewlyCreatedSite",
+      "example": {
+        "id": "670ecf86817e3cc7a510eb6a",
+        "workspaceId": "625860a7a6c16d624927122f",
+        "displayName": "The Hitchiker's Guide",
+        "shortName": "hitchikers-guide",
+        "previewUrl": null,
+        "timeZone": null,
+        "createdOn": "2024-10-15T20:24:38.134Z",
+        "lastUpdated": "2024-10-15T20:24:38.326Z",
+        "lastPublished": null,
+        "parentFolderId": "670ece123598db72d9648be1",
+        "customDomains": [],
+        "locales": null,
+        "dataCollectionEnabled": true,
+        "dataCollectionType": "always"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

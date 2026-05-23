@@ -1,0 +1,1025 @@
+{
+  "provider": "Webflow API and Documentation",
+  "providerId": "webflow-api-and-documentation-webflow",
+  "kind": "json-structure",
+  "description": "Structural overview of the Webflow API and Documentation API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 106,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/token/authorized_by",
+      "operationId": "authorized_by",
+      "summary": "Webflow Get Authorization User Info",
+      "tags": [
+        "Meta"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/token/introspect",
+      "operationId": "introspect",
+      "summary": "Webflow Get Authorization Info",
+      "tags": [
+        "Meta"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/workspaces/{workspace_id}/sites",
+      "operationId": "create-site",
+      "summary": "Webflow Create Site",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/workspaces/{workspace_id_or_slug}/audit_logs",
+      "operationId": "get-workspace-audit-logs",
+      "summary": "Webflow Get Workspace Audit Logs",
+      "tags": [
+        "Workspce Audit Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites",
+      "operationId": "list-sites",
+      "summary": "Webflow List Sites",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}",
+      "operationId": "get-site",
+      "summary": "Webflow Get Site",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}",
+      "operationId": "delete-site",
+      "summary": "Webflow Delete Site",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}",
+      "operationId": "update-site",
+      "summary": "Webflow Update Site",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/custom_domains",
+      "operationId": "get-custom-domains",
+      "summary": "Webflow Get Custom Domains",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/publish",
+      "operationId": "site-publish",
+      "summary": "Webflow Publish Site",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/redirects",
+      "operationId": "get-redirects",
+      "summary": "Webflow Get 301 redirects",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/redirects",
+      "operationId": "create-redirect",
+      "summary": "Webflow Create a 301 redirect",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}/redirects/{redirect_id}",
+      "operationId": "delete-redirects",
+      "summary": "Webflow Delete 301 redirects",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/redirects/{redirect_id}",
+      "operationId": "update-redirect",
+      "summary": "Webflow Update 301 redirect",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/plan",
+      "operationId": "get-site-plan",
+      "summary": "Webflow Get Site Plan",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/robots_txt",
+      "operationId": "get-robots-txt",
+      "summary": "Webflow Get robots.txt",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/sites/{site_id}/robots_txt",
+      "operationId": "replace-robots-txt",
+      "summary": "Webflow Replace robots.txt",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}/robots_txt",
+      "operationId": "delete-robots-txt",
+      "summary": "Webflow Delete robots.txt",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/robots_txt",
+      "operationId": "update-robots-txt",
+      "summary": "Webflow Update robots.txt",
+      "tags": [
+        "Sites"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/sites/{site_id}/well_known",
+      "operationId": "set-well-known",
+      "summary": "Webflow Set a well-known file",
+      "tags": [
+        "Site Administration",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}/well_known",
+      "operationId": "delete-well-known",
+      "summary": "Webflow Delete a well-known file",
+      "tags": [
+        "Site Administration",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/activity_logs",
+      "operationId": "get-site-activity-logs",
+      "summary": "Webflow Get Site Activity Logs",
+      "tags": [
+        "Site Activity",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/collections",
+      "operationId": "list-collections",
+      "summary": "Webflow List Collections",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/collections",
+      "operationId": "create-collection",
+      "summary": "Webflow Create Collection",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{collection_id}",
+      "operationId": "collection-details",
+      "summary": "Webflow Get Collection Details",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}",
+      "operationId": "delete-collection",
+      "summary": "Webflow Delete Collection",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collections/{collection_id}/fields",
+      "operationId": "create-field",
+      "summary": "Webflow Create Collection Field",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}/fields/{field_id}",
+      "operationId": "delete-field",
+      "summary": "Webflow Delete Collection Field",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{collection_id}/fields/{field_id}",
+      "operationId": "update-field",
+      "summary": "Webflow Update Collection Field",
+      "tags": [
+        "Collections",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{collection_id}/items",
+      "operationId": "list-collection-items",
+      "summary": "Webflow List Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collections/{collection_id}/items",
+      "operationId": "create-item",
+      "summary": "Webflow Create Collection Item(s)",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}/items",
+      "operationId": "delete-items",
+      "summary": "Webflow Delete Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{collection_id}/items",
+      "operationId": "update-items",
+      "summary": "Webflow Update Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{collection_id}/items/live",
+      "operationId": "list-collection-items-live",
+      "summary": "Webflow List Live Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collections/{collection_id}/items/live",
+      "operationId": "create-item-live",
+      "summary": "Webflow Create Live Collection Item(s)",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}/items/live",
+      "operationId": "delete-items-live",
+      "summary": "Webflow Unpublish Live Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{collection_id}/items/live",
+      "operationId": "update-items-live",
+      "summary": "Webflow Update Live Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collections/{collection_id}/items/bulk",
+      "operationId": "create-items",
+      "summary": "Webflow Create Collection Items",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{collection_id}/items/{item_id}",
+      "operationId": "Get-Item",
+      "summary": "Webflow Get Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}/items/{item_id}",
+      "operationId": "delete-item",
+      "summary": "Webflow Delete Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{collection_id}/items/{item_id}",
+      "operationId": "update-item",
+      "summary": "Webflow Update Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{collection_id}/items/{item_id}/live",
+      "operationId": "get-item-live",
+      "summary": "Webflow Get Live Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/collections/{collection_id}/items/{item_id}/live",
+      "operationId": "delete-item-live",
+      "summary": "Webflow Unpublish Live Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{collection_id}/items/{item_id}/live",
+      "operationId": "update-item-live",
+      "summary": "Webflow Update Live Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collections/{collection_id}/items/publish",
+      "operationId": "publish-item",
+      "summary": "Webflow Publish Collection Item",
+      "tags": [
+        "Collections",
+        "Items",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/comments",
+      "operationId": "list-comment-threads",
+      "summary": "Webflow List Comment Threads",
+      "tags": [
+        "Comments",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/comments/{comment_thread_id}",
+      "operationId": "get-comment-thread",
+      "summary": "Webflow Get Comment Thread",
+      "tags": [
+        "Comments",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/comments/{comment_thread_id}/replies",
+      "operationId": "list-comment-replies",
+      "summary": "Webflow List Comment Replies",
+      "tags": [
+        "Comments",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/pages",
+      "operationId": "list-pages",
+      "summary": "Webflow List Pages",
+      "tags": [
+        "Pages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/pages/{page_id}",
+      "operationId": "get-page-metadata",
+      "summary": "Webflow Get Page Metadata",
+      "tags": [
+        "Pages"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/pages/{page_id}",
+      "operationId": "update-page-settings",
+      "summary": "Webflow Update Page Metadata",
+      "tags": [
+        "Pages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/pages/{page_id}/dom",
+      "operationId": "get-static-content",
+      "summary": "Webflow Get Page Content",
+      "tags": [
+        "Pages"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/pages/{page_id}/dom",
+      "operationId": "update-static-content",
+      "summary": "Webflow Update Page Content",
+      "tags": [
+        "Pages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/components",
+      "operationId": "list-components",
+      "summary": "Webflow List Components",
+      "tags": [
+        "Components"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/components/{component_id}/dom",
+      "operationId": "get-component-content",
+      "summary": "Webflow Get Component Content",
+      "tags": [
+        "Components"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/components/{component_id}/dom",
+      "operationId": "update-component-content",
+      "summary": "Webflow Update Component Content",
+      "tags": [
+        "Components"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/components/{component_id}/properties",
+      "operationId": "get-component-properties",
+      "summary": "Webflow Get Component Properties",
+      "tags": [
+        "Components"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/components/{component_id}/properties",
+      "operationId": "update-component-properties",
+      "summary": "Webflow Update Component Properties",
+      "tags": [
+        "Components"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/pages/{page_id}/custom_code",
+      "operationId": "get-page-custom-code",
+      "summary": "Webflow Get Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Pages",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/pages/{page_id}/custom_code",
+      "operationId": "add-custom-code-to-page",
+      "summary": "Webflow Add/Update Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Pages",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/pages/{page_id}/custom_code",
+      "operationId": "delete-page-custom-code",
+      "summary": "Webflow Delete Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Pages",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/custom_code",
+      "operationId": "get-site-custom-code",
+      "summary": "Webflow Get Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Sites",
+        "Sites"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/sites/{site_id}/custom_code",
+      "operationId": "add-custom-code-tosite",
+      "summary": "Webflow Add/Update Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Sites",
+        "Sites"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}/custom_code",
+      "operationId": "delete-site-custom-code",
+      "summary": "Webflow Delete Custom Code",
+      "tags": [
+        "Custom Code",
+        "Custom Code - Sites",
+        "Sites"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/registered_scripts",
+      "operationId": "get-scripts",
+      "summary": "Webflow Get Registered Scripts",
+      "tags": [
+        "Custom Code",
+        "Registered Scripts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/registered_scripts/hosted",
+      "operationId": "post-hosted-script",
+      "summary": "Webflow Register Script - Hosted",
+      "tags": [
+        "Custom Code",
+        "Registered Scripts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/registered_scripts/inline",
+      "operationId": "post-inline-scripts",
+      "summary": "Webflow Register Script - Inline",
+      "tags": [
+        "Custom Code",
+        "Registered Scripts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/custom_code/blocks",
+      "operationId": "get-site-custom-code-blocks",
+      "summary": "Webflow List Custom Code Blocks",
+      "tags": [
+        "Custom Code"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/assets",
+      "operationId": "list-assets",
+      "summary": "Webflow List Assets",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/assets",
+      "operationId": "create-asset",
+      "summary": "Webflow Upload Asset",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/assets/{asset_id}",
+      "operationId": "get-asset",
+      "summary": "Webflow Get Asset",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/assets/{asset_id}",
+      "operationId": "delete-asset",
+      "summary": "Webflow Delete Asset",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/assets/{asset_id}",
+      "operationId": "patch-asset",
+      "summary": "Webflow Update Asset",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/asset_folders",
+      "operationId": "list-asset-folders",
+      "summary": "Webflow List Asset Folders",
+      "tags": [
+        "Asset Folders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/asset_folders",
+      "operationId": "create-asset-folder",
+      "summary": "Webflow Create Asset Folder",
+      "tags": [
+        "Asset Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/asset_folders/{asset_folder_id}",
+      "operationId": "get-asset-folder",
+      "summary": "Webflow Get Asset Folder",
+      "tags": [
+        "Asset Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/webhooks",
+      "operationId": "list-webhooks",
+      "summary": "Webflow List Webhooks",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/webhooks",
+      "operationId": "create-webhook",
+      "summary": "Webflow Create Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/{webhook_id}",
+      "operationId": "get-webhook",
+      "summary": "Webflow Get Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/webhooks/{webhook_id}",
+      "operationId": "remove-webhook",
+      "summary": "Webflow Remove Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/forms",
+      "operationId": "list-forms",
+      "summary": "Webflow List Forms",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/forms/{form_id}",
+      "operationId": "get-form-schema",
+      "summary": "Webflow Get Form Schema",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/forms/{form_id}/submissions",
+      "operationId": "list-submissions",
+      "summary": "Webflow List Form Submissions",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/form_submissions/{form_submission_id}",
+      "operationId": "get-form-submission",
+      "summary": "Webflow Get Form Submission",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/form_submissions/{form_submission_id}",
+      "operationId": "delete-form-submission",
+      "summary": "Webflow Delete Form Submission",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/form_submissions/{form_submission_id}",
+      "operationId": "modify-form-submission",
+      "summary": "Webflow Modify Form Submission",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/form_submissions",
+      "operationId": "list-submissions-by-site",
+      "summary": "Webflow List Form Submissions by Site",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/forms/{form_id}/submissions",
+      "operationId": "list-submissions",
+      "summary": "Webflow List Form Submissions",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/form_submissions/{form_submission_id}",
+      "operationId": "get-form-submission-by-site",
+      "summary": "Webflow Get Form Submission by Site",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sites/{site_id}/form_submissions/{form_submission_id}",
+      "operationId": "delete-form-submission-by-site",
+      "summary": "Webflow Delete Form Submission by Site",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/form_submissions/{form_submission_id}",
+      "operationId": "modify-form-submission-by-site",
+      "summary": "Webflow Modify Form Submission by Site",
+      "tags": [
+        "Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/products",
+      "operationId": "list-products",
+      "summary": "Webflow List Products & SKUs",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/products",
+      "operationId": "create-product",
+      "summary": "Webflow Create Product & SKU",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/products/{product_id}",
+      "operationId": "get-product",
+      "summary": "Webflow Get Product and SKUs",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/products/{product_id}",
+      "operationId": "update-product",
+      "summary": "Webflow Update Product",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/products/{product_id}/skus",
+      "operationId": "create-skus",
+      "summary": "Webflow Create SKUs",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/products/{product_id}/skus/{sku_id}",
+      "operationId": "update-sku",
+      "summary": "Webflow Update SKU",
+      "tags": [
+        "Products & SKUs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/orders",
+      "operationId": "list-orders",
+      "summary": "Webflow List Orders",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/orders/{order_id}",
+      "operationId": "get-order",
+      "summary": "Webflow Get Order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sites/{site_id}/orders/{order_id}",
+      "operationId": "update-order",
+      "summary": "Webflow Update Order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/orders/{order_id}/fulfill",
+      "operationId": "fulfill-order",
+      "summary": "Webflow Fulfill Order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/orders/{order_id}/unfulfill",
+      "operationId": "unfulfill-order",
+      "summary": "Webflow Unfulfill Order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sites/{site_id}/orders/{order_id}/refund",
+      "operationId": "refund-order",
+      "summary": "Webflow Refund Order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/collections/{sku_collection_id}/items/{sku_id}/inventory",
+      "operationId": "list-inventory",
+      "summary": "Webflow List Inventory",
+      "tags": [
+        "Inventory"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/collections/{sku_collection_id}/items/{sku_id}/inventory",
+      "operationId": "update-inventory",
+      "summary": "Webflow Update Item Inventory",
+      "tags": [
+        "Inventory"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sites/{site_id}/ecommerce/settings",
+      "operationId": "ecommerce-settings",
+      "summary": "Webflow Get Ecommerce Settings",
+      "tags": [
+        "Settings"
+      ]
+    }
+  ]
+}

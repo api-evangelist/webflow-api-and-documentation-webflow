@@ -1,0 +1,256 @@
+{
+  "operationId": "update-items-live",
+  "method": "PATCH",
+  "path": "/collections/{collection_id}/items/live",
+  "summary": "Webflow Update Live Collection Items",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "LocalizedItems",
+      "example": {
+        "items": [
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "fieldData": {
+              "name": "Ne Paniquez Pas",
+              "slug": "ne-paniquez-pas",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "fieldData": {
+              "name": "No Entrar en P\u00e1nico",
+              "slug": "no-entrar-en-panico",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "fieldData": {
+              "name": "Au Revoir et Merci pour Tous les Poissons",
+              "slug": "au-revoir-et-merci",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "fieldData": {
+              "name": "Hasta Luego y Gracias por Todo el Pescado",
+              "slug": "hasta-luego-y-gracias",
+              "featured": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "MultipleItems",
+      "example": {
+        "items": [
+          {
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Senior Data Analyst",
+              "slug": "senior-data-analyst",
+              "url": "https://boards.greenhouse.io/webflow/jobs/26567701",
+              "department": "Data"
+            }
+          },
+          {
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Product Manager",
+              "slug": "product-manager",
+              "url": "https://boards.greenhouse.io/webflow/jobs/31234567",
+              "department": "Product"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "LocalizedItems",
+      "example": {
+        "items": [
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "lastPublished": "2024-09-27T17:38:29.066Z",
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Ne Paniquez Pas",
+              "slug": "ne-paniquez-pas",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "lastPublished": "2024-09-27T17:38:29.066Z",
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "No Entrar en P\u00e1nico",
+              "slug": "no-entrar-en-panico",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "lastPublished": "2024-09-27T17:38:29.066Z",
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Au Revoir et Merci pour Tous les Poissons",
+              "slug": "au-revoir-et-merci",
+              "featured": false
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "lastPublished": "2024-09-27T17:38:29.066Z",
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Hasta Luego y Gracias por Todo el Pescado",
+              "slug": "hasta-luego-y-gracias",
+              "featured": false
+            }
+          }
+        ],
+        "pagination": {
+          "limit": 25,
+          "offset": 0,
+          "total": 4
+        }
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "MultipleItems",
+      "example": {
+        "items": [
+          {
+            "id": "62b720ef280c7a7a3be8cabe",
+            "lastPublished": "2022-06-30T13:35:20.878Z",
+            "lastUpdated": "2022-06-25T14:51:27.809Z",
+            "createdOn": "2022-06-25T14:51:27.809Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca3",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Senior Data Analyst",
+              "slug": "senior-data-analyst",
+              "url": "https://boards.greenhouse.io/webflow/jobs/26567701",
+              "department": "Data"
+            }
+          },
+          {
+            "id": "62c880ef281c7b7b4cf9dabc",
+            "lastPublished": "2023-04-15T10:25:18.123Z",
+            "lastUpdated": "2023-04-10T11:45:30.567Z",
+            "createdOn": "2023-04-10T11:45:30.567Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca3",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Product Manager",
+              "slug": "product-manager",
+              "url": "https://boards.greenhouse.io/webflow/jobs/31234567",
+              "department": "Product"
+            }
+          }
+        ],
+        "pagination": {
+          "limit": 25,
+          "offset": 0,
+          "total": 2
+        }
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/json",
+      "example": {
+        "code": "conflict",
+        "message": "Conflict: Conflict with server data: Live PATCH updates can't be applied to items that have never been published",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

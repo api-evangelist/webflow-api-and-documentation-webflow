@@ -1,0 +1,61 @@
+{
+  "operationId": "site-publish",
+  "method": "POST",
+  "path": "/sites/{site_id}/publish",
+  "summary": "Webflow Publish Site",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "DomainIDs",
+      "example": {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "example": {
+        "code": "forbidden",
+        "message": "User is not authorized to perform this action",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

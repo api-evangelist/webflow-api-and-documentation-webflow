@@ -1,0 +1,49 @@
+{
+  "operationId": "authorized_by",
+  "method": "GET",
+  "path": "/token/authorized_by",
+  "summary": "Webflow Get Authorization User Info",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "example": {
+        "code": "missing_scopes",
+        "message": "OAuthForbidden: You are missing the following scopes - components:write",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "4XX",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "5XX",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

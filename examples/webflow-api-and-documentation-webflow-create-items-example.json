@@ -1,0 +1,240 @@
+{
+  "operationId": "create-items",
+  "method": "POST",
+  "path": "/collections/{collection_id}/items/bulk",
+  "summary": "Webflow Create Collection Items",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "SingleItemMultipleLocales",
+      "example": {
+        "cmsLocaleIds": [
+          "66f6e966c9e1dc700a857ca3",
+          "66f6e966c9e1dc700a857ca4",
+          "66f6e966c9e1dc700a857ca5"
+        ],
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "name": "Don\u2019t Panic",
+          "slug": "dont-panic"
+        }
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "MultipleItemsMultipleLocales",
+      "example": {
+        "cmsLocaleIds": [
+          "66f6e966c9e1dc700a857ca3",
+          "66f6e966c9e1dc700a857ca4"
+        ],
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": [
+          {
+            "name": "Don\u2019t Panic",
+            "slug": "dont-panic"
+          },
+          {
+            "name": "So Long and Thanks for All the Fish",
+            "slug": "so-long-and-thanks"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "name": "SingleItemMultipleLocales",
+      "example": {
+        "items": [
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "lastPublished": "2024-02-28T19:25:39.942Z",
+            "lastUpdated": "2024-02-28T19:25:39.942Z",
+            "createdOn": "2024-02-28T19:25:39.942Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca3",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "lastPublished": "2024-02-28T19:25:39.942Z",
+            "lastUpdated": "2024-02-28T19:25:39.942Z",
+            "createdOn": "2024-02-28T19:25:39.942Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "lastPublished": "2024-02-28T19:25:39.942Z",
+            "lastUpdated": "2024-02-28T19:25:39.942Z",
+            "createdOn": "2024-02-28T19:25:39.942Z",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "name": "MultipleItemsMultipleLocales",
+      "example": {
+        "items": [
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca3",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5ea6",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "Don't Panic",
+              "slug": "dont-panic"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca3",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "So Long and Thanks for All the Fish",
+              "slug": "so-long-and-thanks"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca4",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "So Long and Thanks for All the Fish",
+              "slug": "so-long-and-thanks"
+            }
+          },
+          {
+            "id": "66f6ed9576ddacf3149d5eaa",
+            "cmsLocaleId": "66f6e966c9e1dc700a857ca5",
+            "lastPublished": null,
+            "lastUpdated": "2024-09-27T17:38:29.066Z",
+            "createdOn": "2024-09-27T17:38:29.066Z",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "featured": false,
+              "name": "So Long and Thanks for All the Fish",
+              "slug": "so-long-and-thanks"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}

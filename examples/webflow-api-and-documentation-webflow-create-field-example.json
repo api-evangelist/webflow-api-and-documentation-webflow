@@ -1,0 +1,177 @@
+{
+  "operationId": "create-field",
+  "method": "POST",
+  "path": "/collections/{collection_id}/fields",
+  "summary": "Webflow Create Collection Field",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "StaticField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbc",
+        "isEditable": true,
+        "type": "RichText",
+        "isRequired": false,
+        "displayName": "Post Body",
+        "helpText": "Add the body of your post here"
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "OptionField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbc",
+        "isEditable": true,
+        "type": "Option",
+        "isRequired": false,
+        "displayName": "Post Type",
+        "helpText": "Add the body of your post here",
+        "metadata": {
+          "options": [
+            {
+              "name": "Feature"
+            },
+            {
+              "name": "News"
+            },
+            {
+              "name": "Product Highlight"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "ReferenceField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbd",
+        "isEditable": true,
+        "type": "Reference",
+        "isRequired": false,
+        "displayName": "Author",
+        "helpText": "Add the post author here",
+        "metadata": {
+          "collectionId": "63692ab61fb2852f582ba8f5"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "StaticField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbc",
+        "isEditable": true,
+        "type": "RichText",
+        "isRequired": false,
+        "displayName": "Post Body",
+        "helpText": "Add the body of your post here"
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "OptionField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbc",
+        "isEditable": true,
+        "type": "Option",
+        "isRequired": false,
+        "displayName": "Post Type",
+        "helpText": "Add the body of your post here",
+        "metadata": {
+          "options": [
+            {
+              "name": "Feature"
+            },
+            {
+              "name": "News"
+            },
+            {
+              "name": "Product Highlight"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "ReferenceField",
+      "example": {
+        "id": "562ac0395358780a1f5e6fbd",
+        "isEditable": true,
+        "type": "Reference",
+        "isRequired": false,
+        "displayName": "Author",
+        "helpText": "Add the post author here",
+        "metadata": {
+          "collectionId": "63692ab61fb2852f582ba8f5"
+        }
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "code": "bad_request",
+        "message": "Bad Request: Request is malformed",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "example": {
+        "code": "not_authorized",
+        "message": "Request not authorized",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "example": {
+        "code": "resource_not_found",
+        "message": "Requested resource not found: The site cannot be found",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/json",
+      "example": {
+        "code": "duplicate_collection",
+        "message": "Collection already exists",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "429",
+      "contentType": "application/json",
+      "example": {
+        "code": "too_many_requests",
+        "message": "Too many requests",
+        "externalReference": null,
+        "details": []
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/json",
+      "example": {
+        "code": "internal_error",
+        "message": "An Internal Error occurred",
+        "externalReference": null,
+        "details": []
+      }
+    }
+  ]
+}
