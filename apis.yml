@@ -293,6 +293,8 @@ common:
       description: Deploy Webflow sites behind Cloudflare for CDN and security.
   - type: Integrations
     url: https://webflow.com/integrations
+  - type: LLMsTxt
+    url: https://webflow.com/llms.txt
 integrations:
   - name: Ideo
   - name: Monday.com
