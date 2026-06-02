@@ -2,12 +2,20 @@
   "repo": "webflow-api-and-documentation-webflow",
   "feeds": [
     {
+      "source": "https://webflow.com/blog/rss.xml",
+      "feed_url": "https://webflow.com/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://webflow.com/blog",
       "feed_url": "https://webflow.com/blog/rss.xml",
-      "title": "Webflow Blog",
-      "saved": 33
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 55,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 78,
+  "fetched": "2026-06-01T23:35:02Z"
 }
