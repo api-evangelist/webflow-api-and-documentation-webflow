@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Form Schema and Submission Webhook
+  summary: List a site's forms, read the first form's schema, and register a form_submission webhook.
+  description: >-
+    Connects a Webflow form to downstream automation. The workflow lists the
+    forms on a site, reads the first form's schema to confirm its fields, and
+    registers a form_submission webhook so each new submission is pushed to an
+    external endpoint. Each step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: form-schema-and-webhook
+  summary: Read a form's schema and register a form_submission webhook.
+  description: >-
+    Lists the forms on a site, retrieves the first form's schema, and registers
+    a webhook that fires on each form submission.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    - destinationUrl
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with forms:read and sites:write scopes.
+      siteId:
+        type: string
+        description: Unique identifier for the Site whose forms are inspected.
+      destinationUrl:
+        type: string
+        description: URL that form submission webhook payloads are sent to.
+  steps:
+  - stepId: listForms
+    description: List the forms that belong to the site.
+    operationId: list-forms
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstFormId: $response.body#/forms/0/id
+  - stepId: getFormSchema
+    description: Read the first form's schema to confirm its fields.
+    operationId: get-form-schema
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: form_id
+      in: path
+      value: $steps.listForms.outputs.firstFormId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      formId: $response.body#/id
+  - stepId: registerSubmissionWebhook
+    description: Register a webhook that fires on each form submission.
+    operationId: create-webhook
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    requestBody:
+      contentType: application/json
+      payload:
+        triggerType: form_submission
+        url: $inputs.destinationUrl
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      webhookId: $response.body#/id
+  outputs:
+    formId: $steps.getFormSchema.outputs.formId
+    webhookId: $steps.registerSubmissionWebhook.outputs.webhookId

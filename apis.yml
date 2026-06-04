@@ -170,6 +170,36 @@ apis:
     - type: NaftikoCapability
       url: capabilities/webflow-webhooks-webhooks.yaml
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/webflow-api-and-documentation-webflow-apply-custom-code-workflow.yml
+      name: Webflow Apply Custom Code and Publish
+      summary: List a site's registered scripts, apply one to the site, then publish the site.
+    - url: arazzo/webflow-api-and-documentation-webflow-create-collection-and-first-item-workflow.yml
+      name: Webflow Create Collection and First Item
+      summary: Create a CMS collection on a site, add a custom field, then create and publish a first item.
+    - url: arazzo/webflow-api-and-documentation-webflow-create-item-and-publish-site-workflow.yml
+      name: Webflow Create Item and Publish Site
+      summary: Create a draft item, publish the item, then publish the whole site.
+    - url: arazzo/webflow-api-and-documentation-webflow-create-product-and-publish-workflow.yml
+      name: Webflow Create Product and Publish
+      summary: Create an ecommerce product with its default SKU, confirm it, then publish the site.
+    - url: arazzo/webflow-api-and-documentation-webflow-form-schema-and-webhook-workflow.yml
+      name: Webflow Form Schema and Submission Webhook
+      summary: List a site's forms, read the first form's schema, and register a form_submission webhook.
+    - url: arazzo/webflow-api-and-documentation-webflow-fulfill-order-workflow.yml
+      name: Webflow Fulfill Order
+      summary: List a site's orders, read the first order, and mark it fulfilled.
+    - url: arazzo/webflow-api-and-documentation-webflow-register-webhook-workflow.yml
+      name: Webflow Register Webhook
+      summary: Resolve a site, register a webhook for an event, and confirm the registration.
+    - url: arazzo/webflow-api-and-documentation-webflow-resolve-site-add-item-workflow.yml
+      name: Webflow Resolve Site and Add Collection Item
+      summary: List sites, pick a site's first collection, and add an item to it.
+    - url: arazzo/webflow-api-and-documentation-webflow-update-page-seo-workflow.yml
+      name: Webflow Update Page SEO and Publish
+      summary: List a site's pages, read the first page's metadata, update its SEO, then publish the site.
   - type: LinkedIn
     url: https://www.linkedin.com/company/webflow-inc-
   - url: https://developers.webflow.com/

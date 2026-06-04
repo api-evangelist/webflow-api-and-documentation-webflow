@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Fulfill Order
+  summary: List a site's orders, read the first order, and mark it fulfilled.
+  description: >-
+    Closes the loop on a Webflow ecommerce sale. The workflow lists the orders
+    for a site, reads the first order to confirm its current status, and then
+    marks that order as fulfilled, optionally sending the customer a fulfillment
+    email. Each step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: fulfill-order
+  summary: List orders, read the first one, and mark it fulfilled.
+  description: >-
+    Lists the orders on a site filtered to unfulfilled, retrieves the first
+    order, and updates its status to fulfilled.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with ecommerce:read and ecommerce:write scopes.
+      siteId:
+        type: string
+        description: Unique identifier for the Site whose orders are processed.
+      sendOrderFulfilledEmail:
+        type: boolean
+        description: Whether to send the customer the Order Fulfilled email.
+  steps:
+  - stepId: listOrders
+    description: List unfulfilled orders for the site.
+    operationId: list-orders
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: status
+      in: query
+      value: unfulfilled
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstOrderId: $response.body#/orders/0/orderId
+  - stepId: getOrder
+    description: Read the first order to confirm its current status.
+    operationId: get-order
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: order_id
+      in: path
+      value: $steps.listOrders.outputs.firstOrderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      orderId: $response.body#/orderId
+      status: $response.body#/status
+  - stepId: fulfillOrder
+    description: Mark the order as fulfilled.
+    operationId: fulfill-order
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: order_id
+      in: path
+      value: $steps.getOrder.outputs.orderId
+    requestBody:
+      contentType: application/json
+      payload:
+        sendOrderFulfilledEmail: $inputs.sendOrderFulfilledEmail
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      orderId: $response.body#/orderId
+      status: $response.body#/status
+  outputs:
+    orderId: $steps.fulfillOrder.outputs.orderId
+    status: $steps.fulfillOrder.outputs.status

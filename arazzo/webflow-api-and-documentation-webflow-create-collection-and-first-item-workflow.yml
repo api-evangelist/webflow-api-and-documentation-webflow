@@ -1,0 +1,147 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Create Collection and First Item
+  summary: Create a CMS collection on a site, add a custom field, then create and publish a first item.
+  description: >-
+    Stands up a brand new CMS structure end to end. The workflow creates a
+    collection on the target site, adds a custom field to that collection so the
+    schema carries more than the default name and slug, creates an initial item
+    using the supplied field data, and finally publishes that item live. Each
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-collection-and-first-item
+  summary: Create a collection, add a field, create an item, and publish it.
+  description: >-
+    Creates a new CMS collection for a site, extends it with one custom field,
+    creates a first item, and publishes that item to the live site.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    - collectionDisplayName
+    - collectionSingularName
+    - fieldType
+    - fieldDisplayName
+    - itemName
+    - itemSlug
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with cms:write scope.
+      siteId:
+        type: string
+        description: Unique identifier for the Site the collection belongs to.
+      collectionDisplayName:
+        type: string
+        description: Display name for the new collection (must be distinct).
+      collectionSingularName:
+        type: string
+        description: Singular name for each item in the collection.
+      collectionSlug:
+        type: string
+        description: Optional slug for the collection URL.
+      fieldType:
+        type: string
+        description: Field type to add (e.g. PlainText, RichText, Email).
+      fieldDisplayName:
+        type: string
+        description: Display name for the custom field.
+      itemName:
+        type: string
+        description: Name of the first collection item.
+      itemSlug:
+        type: string
+        description: URL slug of the first collection item.
+  steps:
+  - stepId: createCollection
+    description: Create a new CMS collection on the site.
+    operationId: create-collection
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.collectionDisplayName
+        singularName: $inputs.collectionSingularName
+        slug: $inputs.collectionSlug
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      collectionId: $response.body#/id
+  - stepId: addField
+    description: Add a single custom field to the new collection.
+    operationId: create-field
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: collection_id
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.fieldType
+        displayName: $inputs.fieldDisplayName
+        isRequired: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fieldId: $response.body#/id
+  - stepId: createItem
+    description: Create the first item in the collection using the supplied field data.
+    operationId: create-item
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: collection_id
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        isArchived: false
+        isDraft: false
+        fieldData:
+          name: $inputs.itemName
+          slug: $inputs.itemSlug
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      itemId: $response.body#/id
+  - stepId: publishItem
+    description: Publish the newly created item to the live site.
+    operationId: publish-item
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: collection_id
+      in: path
+      value: $steps.createCollection.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        itemIds:
+        - $steps.createItem.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishedItemIds: $response.body#/publishedItemIds
+  outputs:
+    collectionId: $steps.createCollection.outputs.collectionId
+    fieldId: $steps.addField.outputs.fieldId
+    itemId: $steps.createItem.outputs.itemId

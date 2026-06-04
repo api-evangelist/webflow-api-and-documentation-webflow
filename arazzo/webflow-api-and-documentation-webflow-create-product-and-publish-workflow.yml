@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Create Product and Publish
+  summary: Create an ecommerce product with its default SKU, confirm it, then publish the site.
+  description: >-
+    Adds a new ecommerce product to a Webflow site and makes it live. The
+    workflow creates a product together with its default SKU, fetches the
+    created product to confirm it persisted, and publishes the site so the
+    product appears on the storefront. Each step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-product-and-publish
+  summary: Create a product and default SKU, confirm it, and publish the site.
+  description: >-
+    Creates an ecommerce product with a default SKU, retrieves the created
+    product, and publishes the site to the Webflow subdomain.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    - productName
+    - productSlug
+    - skuName
+    - skuSlug
+    - priceValue
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with ecommerce:write and sites:write scopes.
+      siteId:
+        type: string
+        description: Unique identifier for the Site to add the product to.
+      productName:
+        type: string
+        description: Name of the product.
+      productSlug:
+        type: string
+        description: URL slug for the product.
+      skuName:
+        type: string
+        description: Name of the default SKU.
+      skuSlug:
+        type: string
+        description: URL slug for the default SKU.
+      priceValue:
+        type: integer
+        description: Price of the default SKU in the smallest currency unit (e.g. cents).
+      currency:
+        type: string
+        description: ISO currency code for the SKU price (e.g. USD).
+  steps:
+  - stepId: createProduct
+    description: Create a new product and its default SKU on the site.
+    operationId: create-product
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    requestBody:
+      contentType: application/json
+      payload:
+        publishStatus: staging
+        product:
+          fieldData:
+            name: $inputs.productName
+            slug: $inputs.productSlug
+        sku:
+          fieldData:
+            name: $inputs.skuName
+            slug: $inputs.skuSlug
+            price:
+              value: $inputs.priceValue
+              currency: $inputs.currency
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productId: $response.body#/product/id
+  - stepId: getProduct
+    description: Retrieve the created product to confirm it persisted.
+    operationId: get-product
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    - name: product_id
+      in: path
+      value: $steps.createProduct.outputs.productId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productId: $response.body#/product/id
+  - stepId: publishSite
+    description: Publish the site so the new product appears on the storefront.
+    operationId: site-publish
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    requestBody:
+      contentType: application/json
+      payload:
+        publishToWebflowSubdomain: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      publishToWebflowSubdomain: $response.body#/publishToWebflowSubdomain
+  outputs:
+    productId: $steps.createProduct.outputs.productId

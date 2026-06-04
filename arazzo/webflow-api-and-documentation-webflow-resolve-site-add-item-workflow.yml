@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Resolve Site and Add Collection Item
+  summary: List sites, pick a site's first collection, and add an item to it.
+  description: >-
+    A discovery-first content workflow for integrations that do not yet know the
+    target collection. It lists the sites the token can access, lists the
+    collections on the chosen site, reads the details of the first collection to
+    confirm its schema, and then creates a new item in that collection. Each
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: resolve-site-add-item
+  summary: Discover a site and its first collection, then create an item.
+  description: >-
+    Lists accessible sites, lists the collections on the selected site, confirms
+    the first collection's details, and creates a new item in that collection.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    - itemName
+    - itemSlug
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with cms:read and cms:write scopes.
+      siteId:
+        type: string
+        description: Unique identifier for the Site to inspect.
+      itemName:
+        type: string
+        description: Name of the item to create.
+      itemSlug:
+        type: string
+        description: URL slug of the item to create.
+  steps:
+  - stepId: listSites
+    description: List all sites the access token can access.
+    operationId: list-sites
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSiteId: $response.body#/sites/0/id
+  - stepId: listCollections
+    description: List the collections that belong to the selected site.
+    operationId: list-collections
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstCollectionId: $response.body#/collections/0/id
+  - stepId: collectionDetails
+    description: Read the details of the first collection to confirm its schema.
+    operationId: collection-details
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: collection_id
+      in: path
+      value: $steps.listCollections.outputs.firstCollectionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      collectionId: $response.body#/id
+  - stepId: createItem
+    description: Create a new item in the resolved collection.
+    operationId: create-item
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: collection_id
+      in: path
+      value: $steps.collectionDetails.outputs.collectionId
+    requestBody:
+      contentType: application/json
+      payload:
+        isArchived: false
+        isDraft: true
+        fieldData:
+          name: $inputs.itemName
+          slug: $inputs.itemSlug
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      itemId: $response.body#/id
+  outputs:
+    collectionId: $steps.collectionDetails.outputs.collectionId
+    itemId: $steps.createItem.outputs.itemId

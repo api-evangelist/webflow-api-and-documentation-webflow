@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Webflow Register Webhook
+  summary: Resolve a site, register a webhook for an event, and confirm the registration.
+  description: >-
+    Wires a Webflow site up to an external listener. The workflow resolves the
+    site to confirm it exists, registers a webhook for the requested trigger
+    type pointing at the supplied URL, and reads the webhook back to confirm the
+    registration persisted. Each step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webflowDataApi
+  url: ../openapi/webflow-data-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: register-webhook
+  summary: Register a webhook on a site and confirm it.
+  description: >-
+    Confirms the site exists, creates a webhook for the supplied trigger type
+    and destination URL, and retrieves the created webhook to verify it.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - siteId
+    - triggerType
+    - destinationUrl
+    properties:
+      accessToken:
+        type: string
+        description: Webflow OAuth bearer token with sites:read and sites:write scopes.
+      siteId:
+        type: string
+        description: Unique identifier for the Site to register the webhook on.
+      triggerType:
+        type: string
+        description: Event that triggers the webhook (e.g. form_submission, site_publish).
+      destinationUrl:
+        type: string
+        description: URL the webhook payload is sent to.
+  steps:
+  - stepId: getSite
+    description: Resolve the site to confirm it exists before registering a webhook.
+    operationId: get-site
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      siteId: $response.body#/id
+  - stepId: createWebhook
+    description: Register a webhook for the supplied trigger type and destination URL.
+    operationId: create-webhook
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: site_id
+      in: path
+      value: $inputs.siteId
+    requestBody:
+      contentType: application/json
+      payload:
+        triggerType: $inputs.triggerType
+        url: $inputs.destinationUrl
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      webhookId: $response.body#/id
+  - stepId: confirmWebhook
+    description: Retrieve the created webhook to confirm the registration persisted.
+    operationId: get-webhook
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: webhook_id
+      in: path
+      value: $steps.createWebhook.outputs.webhookId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      webhookId: $response.body#/id
+      triggerType: $response.body#/triggerType
+  outputs:
+    webhookId: $steps.createWebhook.outputs.webhookId
