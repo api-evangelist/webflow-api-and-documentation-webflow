@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Collections API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/collections",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all Collections within a Site.\n\nRequired scope | `cms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/collections",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a Collection for a site with collection fields.\n\nEach collection includes the required _name_ and _slug_ fields, which are generated automatically. You can update the `displayName` of these fields, but the slug for them cannot be changed. Fields slugs are automatically converted to lowercase. Spaces in slugs are replaced with hyphens.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Collection Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the full details of a collection from its ID.\n\nRequired scope | `cms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a collection using its ID.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a custom field in a collection.\n\nField validation is currently not available through the API.\n\nBulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you [create the collection.](/data/v2.0.0/reference/cms/collections/create)\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields/:field_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "field_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Field in a collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a custom field in a collection.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields/:field_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "field_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Field in a collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a custom field in a collection. This endpoint does not currently support bulk deletion.\n\nRequired scope | `cms:write`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

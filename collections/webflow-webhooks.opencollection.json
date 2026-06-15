@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Webhooks API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/webhooks",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ]
+          },
+          "docs": "List all App-created Webhooks registered for a given site\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/webhooks",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Webhook.\n\nLimit of 75 registrations per `triggerType`, per site.\n\n<Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for a Webhook"
+              }
+            ]
+          },
+          "docs": "Get a specific Webhook instance\n\nRequired scope: `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Remove Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for a Webhook"
+              }
+            ]
+          },
+          "docs": "Remove a Webhook\n\nRequired scope: `sites:read`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

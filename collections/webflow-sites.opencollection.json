@@ -1,0 +1,726 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Sites API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Create Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/workspaces/:workspace_id/sites",
+            "params": [
+              {
+                "name": "workspace_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Workspace"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `workspace:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all sites the provided access token is able to access.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a site.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Custom Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_domains",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of all custom domains related to site.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Publish Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/publish",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Publishes a site to one or more more domains.\n\nTo publish to a specific custom domain, use the domain IDs from the [Get Custom Domains](/data/reference/sites/get-custom-domain) endpoint.\n\nYou must include at least one of the `customDomains` or `publishToWebflowSubdomain` properties in the request body.\n\n<Note title=\"Rate limit: 1 publish per minute\">This endpoint has a specific rate limit of one successful publish queue per minute.</Note>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get 301 redirects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a list of all 301 redirect rules configured for a specific site.\n\nUse this endpoint to review, audit, or manage the redirection rules that control how traffic is rerouted on your site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create a 301 redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add a new 301 redirection rule to a site.\n\nThis endpoint allows you to define a source path (`fromUrl`) and its corresponding destination path (`toUrl`), which will dictate how traffic is rerouted on your site. This is useful for managing site changes, restructuring URLs, or handling outdated links.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update 301 redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects/:redirect_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "redirect_id",
+                "value": "66c4cb9a20cac35ed19500e6",
+                "type": "path",
+                "description": "Unique identifier site redirect"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a 301 redirection rule from a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete 301 redirects",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects/:redirect_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "redirect_id",
+                "value": "66c4cb9a20cac35ed19500e6",
+                "type": "path",
+                "description": "Unique identifier site redirect"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove a 301 redirection rule from a site.\n\nThis is useful for cleaning up outdated or unnecessary redirects, ensuring that your site's routing behavior remains efficient and up-to-date.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Site Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/plan",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get site plan details for the specified Site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the robots.txt configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Replace robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Replace the `robots.txt` configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `site_config:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update the `robots.txt` configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `site_config:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove specific rules for a user-agent in your `robots.txt` file. To delete all rules for a user-agent, provide an empty rule set. This will remove the user-agent's entry entirely, leaving it subject to your site's default crawling behavior.\n\n**Note:** Deleting a user-agent with no rules will make the user-agent's access unrestricted unless other directives apply.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workspce Audit Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Workspace Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/workspaces/:workspace_id_or_slug/audit_logs",
+            "params": [
+              {
+                "name": "workspace_id_or_slug",
+                "value": "hitchhikers-workspace",
+                "type": "path",
+                "description": "Unique identifier or slug for a Workspace"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              },
+              {
+                "name": "eventType",
+                "value": "user_access",
+                "type": "query",
+                "description": "The event type to filter by"
+              },
+              {
+                "name": "from",
+                "value": "2025-06-22T16:00:31Z",
+                "type": "query",
+                "description": "The start date to filter by"
+              },
+              {
+                "name": "to",
+                "value": "2025-07-22T16:00:31Z",
+                "type": "query",
+                "description": "The end date to filter by"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get audit logs for a workspace.\n\n<Warning title=\"Enterprise & workspace API token only\">This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.</Warning>\n\nRequired scope | `workspace_activity:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Site Administration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Set a well-known file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/sites/:site_id/well_known",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Upload a supported well-known file to a site.\n\nThe current restrictions on well-known files are as follows:\n  - Each file must be smaller than 100kb\n  - Less than 30 total files\n  - Have one of the following file extensions (or no extension): `.txt`, `.json`, `.noext`\n\n  <Note title=\".noext\">\n    `.noext` is a special file extension that removes other extensions. For example, `apple-app-site-association.noext.txt` will be uploaded as `apple-app-site-association`. Use this extension for tools tha"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete a well-known file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/well_known",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete existing well-known files from a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Site Activity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Site Activity Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/activity_logs",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve Activity Logs for a specific Site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_activity:read`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

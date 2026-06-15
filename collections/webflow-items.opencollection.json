@@ -1,0 +1,732 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow CMS Items API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact name of the item(s)"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact slug of the item"
+              },
+              {
+                "name": "lastPublished",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the last published date of the item(s)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all Items within a Collection.\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Item(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create Item(s) in a Collection.\n\n\nTo create items across multiple locales, please use [this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a single item or multiple items in a Collection.\n\nThe limit for this endpoint is 100 items.\n\n<Tip title=\"Localization Tip\">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete Items from a Collection.\n\n<Tip title=\"Localization Tip\">Items will only be deleted in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact name of the item(s)"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact slug of the item"
+              },
+              {
+                "name": "lastPublished",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the last published date of the item(s)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all published items in a collection.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Live Collection Item(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create item(s) in a collection that will be immediately published to the live site.\n\n\nTo create items across multiple locales, [please use this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)\n\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a single published item or multiple published items (up to 100) in a Collection\n\n<Tip title=\"Localization Tip\">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Unpublish Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Unpublish up to 100 items from the live site and set the `isDraft` property to `true`.\n\n<Tip title=\"Localization Tip\">Items will only be unpublished in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/bulk",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create an item or multiple items in a CMS Collection across multiple corresponding locales.\n\n<Note>\n  - This endpoint can create up to 100 items in a request.\n  - If the `cmsLocaleIds` parameter is not included in the request, an item will only be created in the primary locale.\n</Note>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a selected Collection Item.\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a selected Item in a Collection.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an item from a collection.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a selected Collection live Item.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a selected live Item in a Collection. The updates for this Item will be published to the live site.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Unpublish Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Unpublish a live item from the site and set the `isDraft` property to `true`.\n\nFor bulk unpublishing, please use [this endpoint.](/data/v2.0.0/reference/cms/collection-items/live-items/delete-items-live)\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Publish Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/publish",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Publish an item or multiple items.\n\nRequired scope | `cms:write`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

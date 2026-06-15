@@ -1,0 +1,4090 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Data API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Authorization User Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/token/authorized_by",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Information about the Authorized User\n\nRequired Scope | `authorized_user:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Authorization Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/token/introspect"
+          },
+          "docs": "Information about the authorization token\n\n<Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Create Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/workspaces/:workspace_id/sites",
+            "params": [
+              {
+                "name": "workspace_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Workspace"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `workspace:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all sites the provided access token is able to access.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a site.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Custom Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_domains",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of all custom domains related to site.\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Publish Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/publish",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Publishes a site to one or more more domains.\n\nTo publish to a specific custom domain, use the domain IDs from the [Get Custom Domains](/data/reference/sites/get-custom-domain) endpoint.\n\nYou must include at least one of the `customDomains` or `publishToWebflowSubdomain` properties in the request body.\n\n<Note title=\"Rate limit: 1 publish per minute\">This endpoint has a specific rate limit of one successful publish queue per minute.</Note>\n\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get 301 redirects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a list of all 301 redirect rules configured for a specific site.\n\nUse this endpoint to review, audit, or manage the redirection rules that control how traffic is rerouted on your site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create a 301 redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add a new 301 redirection rule to a site.\n\nThis endpoint allows you to define a source path (`fromUrl`) and its corresponding destination path (`toUrl`), which will dictate how traffic is rerouted on your site. This is useful for managing site changes, restructuring URLs, or handling outdated links.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update 301 redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects/:redirect_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "redirect_id",
+                "value": "66c4cb9a20cac35ed19500e6",
+                "type": "path",
+                "description": "Unique identifier site redirect"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a 301 redirection rule from a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete 301 redirects",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/redirects/:redirect_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "redirect_id",
+                "value": "66c4cb9a20cac35ed19500e6",
+                "type": "path",
+                "description": "Unique identifier site redirect"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove a 301 redirection rule from a site.\n\nThis is useful for cleaning up outdated or unnecessary redirects, ensuring that your site's routing behavior remains efficient and up-to-date.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Site Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/plan",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get site plan details for the specified Site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the robots.txt configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Replace robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Replace the `robots.txt` configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `site_config:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update the `robots.txt` configuration for various user agents.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope | `site_config:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete robots.txt",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/robots_txt",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove specific rules for a user-agent in your `robots.txt` file. To delete all rules for a user-agent, provide an empty rule set. This will remove the user-agent's entry entirely, leaving it subject to your site's default crawling behavior.\n\n**Note:** Deleting a user-agent with no rules will make the user-agent's access unrestricted unless other directives apply.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workspce Audit Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Workspace Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/workspaces/:workspace_id_or_slug/audit_logs",
+            "params": [
+              {
+                "name": "workspace_id_or_slug",
+                "value": "hitchhikers-workspace",
+                "type": "path",
+                "description": "Unique identifier or slug for a Workspace"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              },
+              {
+                "name": "eventType",
+                "value": "user_access",
+                "type": "query",
+                "description": "The event type to filter by"
+              },
+              {
+                "name": "from",
+                "value": "2025-06-22T16:00:31Z",
+                "type": "query",
+                "description": "The start date to filter by"
+              },
+              {
+                "name": "to",
+                "value": "2025-07-22T16:00:31Z",
+                "type": "query",
+                "description": "The end date to filter by"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get audit logs for a workspace.\n\n<Warning title=\"Enterprise & workspace API token only\">This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.</Warning>\n\nRequired scope | `workspace_activity:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Site Administration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Set a well-known file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/sites/:site_id/well_known",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Upload a supported well-known file to a site.\n\nThe current restrictions on well-known files are as follows:\n  - Each file must be smaller than 100kb\n  - Less than 30 total files\n  - Have one of the following file extensions (or no extension): `.txt`, `.json`, `.noext`\n\n  <Note title=\".noext\">\n    `.noext` is a special file extension that removes other extensions. For example, `apple-app-site-association.noext.txt` will be uploaded as `apple-app-site-association`. Use this extension for tools tha"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete a well-known file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/well_known",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete existing well-known files from a site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Site Activity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Site Activity Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/activity_logs",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve Activity Logs for a specific Site.\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_activity:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/collections",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all Collections within a Site.\n\nRequired scope | `cms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/collections",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a Collection for a site with collection fields.\n\nEach collection includes the required _name_ and _slug_ fields, which are generated automatically. You can update the `displayName` of these fields, but the slug for them cannot be changed. Fields slugs are automatically converted to lowercase. Spaces in slugs are replaced with hyphens.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Collection Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the full details of a collection from its ID.\n\nRequired scope | `cms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a collection using its ID.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a custom field in a collection.\n\nField validation is currently not available through the API.\n\nBulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you [create the collection.](/data/v2.0.0/reference/cms/collections/create)\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields/:field_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "field_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Field in a collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a custom field in a collection.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/fields/:field_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "field_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Field in a collection"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a custom field in a collection. This endpoint does not currently support bulk deletion.\n\nRequired scope | `cms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact name of the item(s)"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact slug of the item"
+              },
+              {
+                "name": "lastPublished",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the last published date of the item(s)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all Items within a Collection.\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Item(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create Item(s) in a Collection.\n\n\nTo create items across multiple locales, please use [this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a single item or multiple items in a Collection.\n\nThe limit for this endpoint is 100 items.\n\n<Tip title=\"Localization Tip\">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete Items from a Collection.\n\n<Tip title=\"Localization Tip\">Items will only be deleted in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact name of the item(s)"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the exact slug of the item"
+              },
+              {
+                "name": "lastPublished",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the last published date of the item(s)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all published items in a collection.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Live Collection Item(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create item(s) in a collection that will be immediately published to the live site.\n\n\nTo create items across multiple locales, [please use this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)\n\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a single published item or multiple published items (up to 100) in a Collection\n\n<Tip title=\"Localization Tip\">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Unpublish Live Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Unpublish up to 100 items from the live site and set the `isDraft` property to `true`.\n\n<Tip title=\"Localization Tip\">Items will only be unpublished in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Collection Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/bulk",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create an item or multiple items in a CMS Collection across multiple corresponding locales.\n\n<Note>\n  - This endpoint can create up to 100 items in a request.\n  - If the `cmsLocaleIds` parameter is not included in the request, an item will only be created in the primary locale.\n</Note>\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a selected Collection Item.\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a selected Item in a Collection.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an item from a collection.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a selected Collection live Item.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "skipInvalidFiles",
+                "value": "true",
+                "type": "query",
+                "description": "When true, invalid files are skipped and processing continues. When false, the entire request fails if any file is invalid."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a selected live Item in a Collection. The updates for this Item will be published to the live site.\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Unpublish Live Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/:item_id/live",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              },
+              {
+                "name": "item_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for an Item"
+              },
+              {
+                "name": "cmsLocaleId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for a CMS Locale. This UID is different from the Site locale identifier and is listed as `cmsLocaleId` in the Sites response. To query multiple locales, input a comma separated string."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Unpublish a live item from the site and set the `isDraft` property to `true`.\n\nFor bulk unpublishing, please use [this endpoint.](/data/v2.0.0/reference/cms/collection-items/live-items/delete-items-live)\n\nRequired scope | `CMS:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Publish Collection Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/collections/:collection_id/items/publish",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Collection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Publish an item or multiple items.\n\nRequired scope | `cms:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Comment Threads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/comments",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value. Only allowed when sortOrder is provided."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all comment threads for a site.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Comment Thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/comments/:comment_thread_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "comment_thread_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Comment Thread"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value. Only allowed when sortOrder is provided."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details of a specific comment thread.\n\n  <Note title=\"Timing of comment threads\">\n    There may be a delay of up to 5 minutes before new comments appear in the system.\n  </Note>\n\nRequired scope | `comments:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Comment Replies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/comments/:comment_thread_id/replies",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "comment_thread_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Comment Thread"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort results by the provided value. Only allowed when sortOrder is provided."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all replies to a specific comment thread.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/pages",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all pages for a site.\n\nRequired scope | `pages:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Page Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/pages/:page_id",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get metadata information for a single page.\n\nRequired scope | `pages:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Page Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/pages/:page_id",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update Page-level metadata, including SEO and Open Graph fields.\n\nRequired scope | `pages:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Page Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/pages/:page_id/dom",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get text and component instance content from a static page.\n\n<Badge intent=\"info\">Localization</Badge>\n\nRequired scope | `pages:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Page Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/pages/:page_id/dom",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              },
+              {
+                "name": "localeId",
+                "value": "",
+                "type": "query",
+                "description": "The locale identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get page content](/data/reference/pages-and-components/pages/get-content) endpoint to identify available content nodes and their types.\n2. If the page has component instances, retrieve the component's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/components",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "branchId",
+                "value": "68026fa68ef6dc744c75b833",
+                "type": "query",
+                "description": "Scope the operation to work on a specific branch."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of all components for a site.\n\nRequired scope | `components:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Component Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/components/:component_id/dom",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "component_id",
+                "value": "8505ba55-ef72-629e-f85c-33e4b703d48b",
+                "type": "path",
+                "description": "Unique identifier for a Component"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "branchId",
+                "value": "68026fa68ef6dc744c75b833",
+                "type": "query",
+                "description": "Scope the operation to work on a specific branch."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get static content from a component definition. This includes text nodes, image nodes, select nodes, text input nodes, submit button nodes, and nested component instances.\nTo retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n\n<Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.</Note>\n\nRequired sco"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Component Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/components/:component_id/dom",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "component_id",
+                "value": "8505ba55-ef72-629e-f85c-33e4b703d48b",
+                "type": "path",
+                "description": "Unique identifier for a Component"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "branchId",
+                "value": "68026fa68ef6dc744c75b833",
+                "type": "query",
+                "description": "Scope the operation to work on a specific branch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content) endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance nested within it, retrieve the nested component instance's properties that you'll override using the [get component "
+        },
+        {
+          "info": {
+            "name": "Webflow Get Component Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/components/:component_id/properties",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "component_id",
+                "value": "8505ba55-ef72-629e-f85c-33e4b703d48b",
+                "type": "path",
+                "description": "Unique identifier for a Component"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "branchId",
+                "value": "68026fa68ef6dc744c75b833",
+                "type": "query",
+                "description": "Scope the operation to work on a specific branch."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the default property values of a component definition.\n\n<Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.</Note>\n\nRequired scope | `components:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Component Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/components/:component_id/properties",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "component_id",
+                "value": "8505ba55-ef72-629e-f85c-33e4b703d48b",
+                "type": "path",
+                "description": "Unique identifier for a Component"
+              },
+              {
+                "name": "localeId",
+                "value": "65427cf400e02b306eaa04a0",
+                "type": "query",
+                "description": "Unique identifier for a specific Locale.\n\n[Lear more about localization.](/data/v2.0.0/docs/working-with-localization)\n"
+              },
+              {
+                "name": "branchId",
+                "value": "68026fa68ef6dc744c75b833",
+                "type": "query",
+                "description": "Scope the operation to work on a specific branch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update the default property values of a component definition in a specificed locale.\n\nBefore making updates:\n1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to identify properties that can be updated in a secondary locale.\n2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across locales. Always include the original `data-w-id` value in your update requests to ensure consi"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom Code",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/pages/:page_id/custom_code",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get all scripts applied to a page.\n\nRequired scope | `custom_code:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Add/Update Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/pages/:page_id/custom_code",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Apply registered scripts to a page. If you have multiple scripts your App needs to apply or maintain on a page, ensure they are always included in the request body for this endpoint. To remove individual scripts, simply call this endpoint without the script in the request body.\n\n<Note title=\"Script Registration\">\n  To apply a script to a page, the script must first be registered to a Site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registere"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/pages/:page_id/custom_code",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "63c720f9347c2139b248e552",
+                "type": "path",
+                "description": "Unique identifier for a Page"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove all scripts from a page applied by the App. This endpoint will not remove scripts from the site's registered scripts.\n\nTo remove individual scripts applied by the App, use the [Add/Update Custom Code](/data/reference/custom-code/custom-code-pages/upsert-custom-code) endpoint.\n\n<Note>Access to this endpoint requires a bearer token obtained from an [OAuth Code Grant Flow](/data/reference/oauth-app).</Note>\n\nRequired scope | `custom_code:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_code",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get all scripts applied to a site by the App.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nRequired scope | `custom_code:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Add/Update Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_code",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Apply registered scripts to a site. If you have multiple scripts your App needs to apply or maintain on a site, ensure they are always included in the request body for this endpoint. To remove individual scripts, simply call this endpoint without the script in the request body.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once r"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Custom Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_code",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove all scripts from a site applied by the App. This endpoint will not remove scripts from the site's registered scripts.\n\nTo remove individual scripts applied by the App, use the [Add/Update Custom Code](/data/reference/custom-code/custom-code-sites/upsert-custom-code) endpoint.\n\n<Note>Access to this endpoint requires a bearer token obtained from an [OAuth Code Grant Flow](/data/reference/oauth-app).</Note>\n\nRequired scope | `custom_code:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Registered Scripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/registered_scripts",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of scripts that have been registered to a site. A site can have a maximum of 800 registered scripts.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for"
+        },
+        {
+          "info": {
+            "name": "Webflow Register Script - Hosted",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/registered_scripts/hosted",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Register a hosted script to a site.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nRequired scope | `custom_code:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Register Script - Inline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/registered_scripts/inline",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Register an inline script to a site. Inline scripts are limited to 2000 characters.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints. See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Custom Code Blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/custom_code/blocks",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of scripts that have been applied to a site and/or individual pages.\n\n<Note title=\"Script Registration\">\n  To apply a script to a site or page, the script must first be registered to a site via the [Register Script](/data/reference/custom-code/custom-code/register-hosted) endpoints. Once registered, the script can be applied to a Site or Page using the appropriate endpoints.\n\n  See the documentation on [working with Custom Code](/data/docs/custom-code) for more information.\n</Note>\n\nR"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/assets",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of assets uploaded to a site\n\nRequired scope | `assets:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Upload Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/assets",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "The first step in uploading an asset to a site.\n\n\nThis endpoint generates a response with the following information: `uploadUrl` and `uploadDetails`.\n\n\nUse these properties in the header of a [POST request to Amazson s3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOST.html) to complete the upload.\n\n\nTo learn more about how to upload assets to Webflow, see our [assets guide](/data/docs/working-with-assets).\n\n Required scope | `assets:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details about an asset\n\nRequired scope | `assets:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update details of an Asset.\n\nRequired scope | `assets:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an Asset\n\nRequired Scope: `assets: write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Asset Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Asset Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/asset_folders",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List Asset Folders within a given site\n\nRequired scope | `assets:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Asset Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/asset_folders",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create an Asset Folder within a given site\n\nRequired scope | `assets:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Asset Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/asset_folders/:asset_folder_id",
+            "params": [
+              {
+                "name": "asset_folder_id",
+                "value": "6390c49774a71f0e3c1a08ee",
+                "type": "path",
+                "description": "Unique identifier for an Asset Folder"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details about a specific Asset Folder\n\nRequired scope | `assets:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/webhooks",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ]
+          },
+          "docs": "List all App-created Webhooks registered for a given site\n\nRequired scope | `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/webhooks",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Webhook.\n\nLimit of 75 registrations per `triggerType`, per site.\n\n<Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>\nRequired scope | `sites:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for a Webhook"
+              }
+            ]
+          },
+          "docs": "Get a specific Webhook instance\n\nRequired scope: `sites:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Remove Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "580e64008c9a982ac9b8b754",
+                "type": "path",
+                "description": "Unique identifier for a Webhook"
+              }
+            ]
+          },
+          "docs": "Remove a Webhook\n\nRequired scope: `sites:read`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/forms",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List forms for a given site.\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Form Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/forms/:form_id",
+            "params": [
+              {
+                "name": "form_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get information about a given form.\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Form Submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/forms/:form_id/submissions",
+            "params": [
+              {
+                "name": "form_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List form submissions for a given form\n\n<Note title=\"Forms in components\">\n  When a form is used in a component definition, each instance of the form is considered a unique form.\n\n  To get a combined list of submissions for a form that appears across multiple component instances, use the [List Form Submissions by Site](/data/reference/forms/form-submissions/list-submissions-by-site) endpoint.\n</Note>\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Form Submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get information about a given form submissio.\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Modify Form Submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update hidden fields on a form submission\n\nRequired scope | `forms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Form Submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a form submission\n\n\nRequired scope | `forms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow List Form Submissions by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/form_submissions",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "elementId",
+                "value": "18259716-3e5a-646a-5f41-5dc4b9405aa0",
+                "type": "query",
+                "description": "Identifier for an element"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all form submissions for a given site with the ability to filter submissions by a centralized `elementId`.\n\nAdd `elementId` when you want to filter form submissions to a specific form in a site. You can get the `elementId` from the [List forms endpoint](/data/reference/forms/forms/list) (displayed as `formElementId` in the response).\n\n<Note title=\"Forms in components\">\nWhen a form is used in a Webflow component definition, each instance of the component will yield a unique form. Adding the "
+        },
+        {
+          "info": {
+            "name": "Webflow List Form Submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/forms/:form_id/submissions",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "form_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List form submissions for a given form ID within a specific site.\n\nUse the [List Form Submissions by Site endpoint](/data/reference/forms/form-submissions/list-submissions-by-site) to list form submissions for a given site with the ability to filter by a `formElementId`.\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Form Submission by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get information about a form submission within a specific site.\n\nRequired scope | `forms:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Modify Form Submission by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update hidden fields on a form submission within a specific site.\n\nRequired scope | `forms:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Form Submission by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/sites/:site_id/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Form Submission"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a form submission within a specific site.\n\nRequired scope | `forms:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products & SKUs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Products & SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all products for a site.\n\nUse `limit` and `offset` to page through all products with subsequent requests. All SKUs for each product\nwill also be fetched and returned. The `limit`, `offset` and `total` values represent Products only and do not include any SKUs.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create Product & SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a new ecommerce product and defaultSKU. A product, at minimum, must have a single SKU.\n\nTo create a product with multiple SKUs:\n  - First, create a list of `sku-properties`, also known as [product options](https://help.webflow.com/hc/en-us/articles/33961334531347-Create-product-options-and-variants). For example, a T-shirt product may have a \"color\" `sku-property`, with a list of enum values: red, yellow, and blue, another `sku-property` may be \"size\", with a list of enum values: small, m"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Product and SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products/:product_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "product_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Product"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a single product by its ID. All of its SKUs will also be\nretrieved.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products/:product_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "product_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Product"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update an existing Product.\n\nUpdating an existing Product will set the product type to `Advanced`, which ensures all Product and SKU fields will be shown to users in the Designer.\n\nRequired scope | `ecommerce:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Create SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products/:product_id/skus",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "product_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Product"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create additional SKUs to manage every [option and variant of your Product.](https://help.webflow.com/hc/en-us/articles/33961334531347-Create-product-options-and-variants)\n\nCreating SKUs through the API will set the product type to `Advanced`, which ensures all Product and SKU fields will be shown to users in the Designer.\n\nRequired scope | `ecommerce:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/products/:product_id/skus/:sku_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "product_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for a Product"
+              },
+              {
+                "name": "sku_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for a SKU"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update a specified SKU.\n\nUpdating an existing SKU will set the Product type to `Advanced`, which ensures all Product and SKU fields will be shown to users in the Designer.\n\nRequired scope | `ecommerce:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter the orders by status"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List all orders created for a given site.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders/:order_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "order_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for an Order"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a single product by its ID. All of its SKUs will also be\nretrieved.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders/:order_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "order_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for an Order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This API lets you update the fields, `comment`, `shippingProvider`,\nand/or `shippingTracking` for a given order. All three fields can be\nupdated simultaneously or independently.\n\nRequired scope | `ecommerce:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Fulfill Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders/:order_id/fulfill",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "order_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for an Order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates an order's status to fulfilled\n\nRequired scope | `ecommerce:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Unfulfill Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders/:order_id/unfulfill",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "order_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for an Order"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates an order's status to unfulfilled\n\nRequired scope | `ecommerce:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Refund Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/orders/:order_id/refund",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "order_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for an Order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This API will reverse a Stripe charge and refund an order back to a\ncustomer. It will also set the order's status to `refunded`.\n\nRequired scope | `ecommerce:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:sku_collection_id/items/:sku_id/inventory",
+            "params": [
+              {
+                "name": "sku_collection_id",
+                "value": "6377a7c4b7a79608c34a46f7",
+                "type": "path",
+                "description": "Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+              },
+              {
+                "name": "sku_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for a SKU"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List the current inventory levels for a particular SKU item.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Item Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:sku_collection_id/items/:sku_id/inventory",
+            "params": [
+              {
+                "name": "sku_collection_id",
+                "value": "6377a7c4b7a79608c34a46f7",
+                "type": "path",
+                "description": "Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+              },
+              {
+                "name": "sku_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for a SKU"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the current inventory levels for a particular SKU item.\n\nUpdates may be given in one or two methods, absolutely or incrementally.\n- Absolute updates are done by setting `quantity` directly.\n- Incremental updates are by specifying the inventory delta in `updateQuantity` which is then added to the `quantity` stored on the server.\n\nRequired scope | `ecommerce:write`\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Ecommerce Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/ecommerce/settings",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve ecommerce settings for a site.\n\nRequired scope | `ecommerce:read`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

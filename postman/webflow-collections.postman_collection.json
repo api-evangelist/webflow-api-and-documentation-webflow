@@ -1,0 +1,3204 @@
+{
+  "info": {
+    "_postman_id": "bbdbbeda-d94e-4cbd-828f-fa9505ca4562",
+    "name": "Webflow Collections API",
+    "description": "Webflow Data API v2 - Collections endpoints.\n\nContact Support:\n Name: Webflow Developer Relations\n Email: developers@webflow.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:20:56.000Z",
+    "updatedAt": "2026-06-05T15:20:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bbdbbeda-d94e-4cbd-828f-fa9505ca4562"
+  },
+  "item": [
+    {
+      "name": "sites",
+      "item": [
+        {
+          "name": "{site_id}",
+          "item": [
+            {
+              "name": "collections",
+              "item": [
+                {
+                  "name": "Webflow List Collections",
+                  "id": "1f2c46e1-1be2-49a7-a70b-fb800f49cc22",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/collections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "collections"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cbcfc1a1-e762-4920-8479-caf7f9c639d9",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "List of all Collections within a Site.\n\nRequired scope | `cms:read`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9a2f26b4-87af-4a9c-91af-ca68d832b60c",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"collections\": [\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"singularName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"singularName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"createdOn\": \"<dateTime>\",\n      \"lastUpdated\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-9a2f26b4-87af-4a9c-91af-ca68d832b60c"
+                    },
+                    {
+                      "id": "9f2b6003-1ee6-4ba8-bb96-a4dcf0de1c39",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-9f2b6003-1ee6-4ba8-bb96-a4dcf0de1c39"
+                    },
+                    {
+                      "id": "bb84bfbd-16b1-45ae-9e0d-8bc9cd6f5290",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-bb84bfbd-16b1-45ae-9e0d-8bc9cd6f5290"
+                    },
+                    {
+                      "id": "86a4c8a3-b5b7-449b-978c-5753e3ff88cd",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-86a4c8a3-b5b7-449b-978c-5753e3ff88cd"
+                    },
+                    {
+                      "id": "e3f144ff-643a-452a-b9d8-ac5c89f2ed6b",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-e3f144ff-643a-452a-b9d8-ac5c89f2ed6b"
+                    },
+                    {
+                      "id": "415413ce-f18f-4cc3-85b1-71dad1175276",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-415413ce-f18f-4cc3-85b1-71dad1175276"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-1f2c46e1-1be2-49a7-a70b-fb800f49cc22"
+                },
+                {
+                  "name": "Webflow Create Collection",
+                  "id": "58959740-9026-4067-8df6-e96cb87d459e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sites/:site_id/collections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sites",
+                        ":site_id",
+                        "collections"
+                      ],
+                      "variable": [
+                        {
+                          "id": "887e5329-560d-4fa7-84c5-13042909b6bc",
+                          "key": "site_id",
+                          "value": "",
+                          "description": "(Required) Unique identifier for a Site"
+                        }
+                      ]
+                    },
+                    "description": "Create a Collection for a site with collection fields.\n\nEach collection includes the required _name_ and _slug_ fields, which are generated automatically. You can update the `displayName` of these fields, but the slug for them cannot be changed. Fields slugs are automatically converted to lowercase. Spaces in slugs are replaced with hyphens.\n\nRequired scope | `cms:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "09250f30-8c97-4699-abb9-3a79e76bd9b6",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"fields\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"Number\",\n      \"isRequired\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"validations\": {\n        \"additionalProperties\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"PlainText\",\n      \"isRequired\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"validations\": {\n        \"additionalProperties\": \"<string>\"\n      }\n    }\n  ],\n  \"slug\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-09250f30-8c97-4699-abb9-3a79e76bd9b6"
+                    },
+                    {
+                      "id": "e94162ca-d91f-45a7-83ec-60fde7c622a6",
+                      "name": "Validation failure",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-e94162ca-d91f-45a7-83ec-60fde7c622a6"
+                    },
+                    {
+                      "id": "4560d88a-18e1-4291-80e8-d3f34a46053a",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-4560d88a-18e1-4291-80e8-d3f34a46053a"
+                    },
+                    {
+                      "id": "dcfafdf9-750b-47b8-b62c-1af1a365a465",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-dcfafdf9-750b-47b8-b62c-1af1a365a465"
+                    },
+                    {
+                      "id": "aa6551b4-b220-43bc-bf58-e87aeda413f4",
+                      "name": "Collection already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-aa6551b4-b220-43bc-bf58-e87aeda413f4"
+                    },
+                    {
+                      "id": "08f76057-7faa-4584-be4f-c873027e7b41",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-08f76057-7faa-4584-be4f-c873027e7b41"
+                    },
+                    {
+                      "id": "fdf0884e-ae13-4b52-ac3b-e78189b65bd1",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"fields\": [\n    {\n      \"type\": \"DateTime\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    },\n    {\n      \"type\": \"MultiImage\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"isRequired\": \"<boolean>\",\n      \"helpText\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sites/:site_id/collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sites",
+                            ":site_id",
+                            "collections"
+                          ],
+                          "variable": [
+                            {
+                              "key": "site_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-fdf0884e-ae13-4b52-ac3b-e78189b65bd1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-58959740-9026-4067-8df6-e96cb87d459e"
+                }
+              ],
+              "id": "a8128c22-e175-4d80-8a1e-2a3f55bc2703",
+              "createdAt": "2026-06-05T15:20:57.000Z",
+              "updatedAt": "2026-06-05T15:20:57.000Z",
+              "uid": "35240-a8128c22-e175-4d80-8a1e-2a3f55bc2703"
+            }
+          ],
+          "id": "edc267f0-079e-4383-b35d-77da09316f21",
+          "createdAt": "2026-06-05T15:20:57.000Z",
+          "updatedAt": "2026-06-05T15:20:57.000Z",
+          "uid": "35240-edc267f0-079e-4383-b35d-77da09316f21"
+        }
+      ],
+      "id": "d5a92871-84e5-4c5c-af0c-613c9d5a6151",
+      "createdAt": "2026-06-05T15:20:57.000Z",
+      "updatedAt": "2026-06-05T15:20:57.000Z",
+      "uid": "35240-d5a92871-84e5-4c5c-af0c-613c9d5a6151"
+    },
+    {
+      "name": "collections",
+      "item": [
+        {
+          "name": "{collection_id}",
+          "item": [
+            {
+              "name": "fields",
+              "item": [
+                {
+                  "name": "{field_id}",
+                  "item": [
+                    {
+                      "name": "Webflow Update Collection Field",
+                      "id": "a0b02547-0c9b-439b-bf43-de73ce6d7750",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.webflow.com/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://webflow.com/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields",
+                            ":field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "69dcab1c-ae3a-4374-84af-b417659874ac",
+                              "key": "collection_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for a Collection"
+                            },
+                            {
+                              "id": "279bd4d5-e894-4de7-965d-4ab1a3e876c7",
+                              "key": "field_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for a Field in a collection"
+                            }
+                          ]
+                        },
+                        "description": "Update a custom field in a collection.\n\nRequired scope | `cms:write`\n"
+                      },
+                      "response": [
+                        {
+                          "id": "526548ea-1fdf-4378-920f-ad721891652d",
+                          "name": "Request was successful",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"Phone\",\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"helpText\": \"<string>\",\n  \"validations\": {\n    \"additionalProperties\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-526548ea-1fdf-4378-920f-ad721891652d"
+                        },
+                        {
+                          "id": "1f9a5de7-6281-4d39-9629-86ba29d794a0",
+                          "name": "Request body was incorrectly formatted.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-1f9a5de7-6281-4d39-9629-86ba29d794a0"
+                        },
+                        {
+                          "id": "717307c4-63c3-473c-85b2-fc6b1e5d455c",
+                          "name": "Provided access token is invalid or does not have access to requested resource",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-717307c4-63c3-473c-85b2-fc6b1e5d455c"
+                        },
+                        {
+                          "id": "d742ec4d-84c3-4602-9bd7-d3907622ad56",
+                          "name": "Requested resource not found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-d742ec4d-84c3-4602-9bd7-d3907622ad56"
+                        },
+                        {
+                          "id": "edf0370d-938e-4c54-ad42-32aa413e95f6",
+                          "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains the number of available requests remaining in the current minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Remaining",
+                              "value": "<number>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains your current overall rate limit per minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Limit",
+                              "value": "<number>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-edf0370d-938e-4c54-ad42-32aa413e95f6"
+                        },
+                        {
+                          "id": "bc673a3e-9e2a-4c72-b4bc-e6cbd7162cab",
+                          "name": "We had a problem with our server. Try again later.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"isRequired\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"helpText\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-bc673a3e-9e2a-4c72-b4bc-e6cbd7162cab"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-a0b02547-0c9b-439b-bf43-de73ce6d7750"
+                    },
+                    {
+                      "name": "Webflow Delete Collection Field",
+                      "id": "66c92b9f-5c74-42fb-8456-16996b84424d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.webflow.com/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://webflow.com/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields",
+                            ":field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "43c4e71a-25ef-44ec-b38d-046f081369dc",
+                              "key": "collection_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for a Collection"
+                            },
+                            {
+                              "id": "3a6ba7fb-5b45-444f-b159-5153c6a6db2f",
+                              "key": "field_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for a Field in a collection"
+                            }
+                          ]
+                        },
+                        "description": "Delete a custom field in a collection. This endpoint does not currently support bulk deletion.\n\nRequired scope | `cms:write`\n"
+                      },
+                      "response": [
+                        {
+                          "id": "4b49d28d-2be2-4de6-80f9-7967ffa31dd7",
+                          "name": "Request was successful. No Content is returned.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-4b49d28d-2be2-4de6-80f9-7967ffa31dd7"
+                        },
+                        {
+                          "id": "341f459c-17d8-4fc3-b98c-4ddaad19e9f8",
+                          "name": "Request body was incorrectly formatted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-341f459c-17d8-4fc3-b98c-4ddaad19e9f8"
+                        },
+                        {
+                          "id": "3687e838-0c65-4187-b702-353a1e284753",
+                          "name": "Provided access token is invalid or does not have access to requested resource",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-3687e838-0c65-4187-b702-353a1e284753"
+                        },
+                        {
+                          "id": "8bab60a5-8c0a-441f-b967-dc008feddd66",
+                          "name": "Requested resource not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-8bab60a5-8c0a-441f-b967-dc008feddd66"
+                        },
+                        {
+                          "id": "a58c8277-78c3-4aa7-af72-007dd4949452",
+                          "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains the number of available requests remaining in the current minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Remaining",
+                              "value": "<number>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Contains your current overall rate limit per minute",
+                                "type": "text/plain"
+                              },
+                              "key": "X-RateLimit-Limit",
+                              "value": "<number>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-a58c8277-78c3-4aa7-af72-007dd4949452"
+                        },
+                        {
+                          "id": "ad5c6055-f784-4b37-b1b7-3d305b51691d",
+                          "name": "We had a problem with our server. Try again later.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collection_id/fields/:field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collection_id",
+                                "fields",
+                                ":field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collection_id"
+                                },
+                                {
+                                  "key": "field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:20:57.000Z",
+                          "updatedAt": "2026-06-05T15:20:57.000Z",
+                          "uid": "35240-ad5c6055-f784-4b37-b1b7-3d305b51691d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-66c92b9f-5c74-42fb-8456-16996b84424d"
+                    }
+                  ],
+                  "id": "f9432dbf-4674-41bd-949f-c43d726b73cf",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-f9432dbf-4674-41bd-949f-c43d726b73cf"
+                },
+                {
+                  "name": "Webflow Create Collection Field",
+                  "id": "43d829a5-8693-4b59-b85d-fd507cdd42d0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.webflow.com/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://webflow.com/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id",
+                        "fields"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8bfaf7d6-6284-4fbf-bb4f-060d72366f77",
+                          "key": "collection_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for a Collection"
+                        }
+                      ]
+                    },
+                    "description": "Create a custom field in a collection.\n\nField validation is currently not available through the API.\n\nBulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you [create the collection.](/data/v2.0.0/reference/cms/collections/create)\n\nRequired scope | `cms:write`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "70547c0f-c24a-466e-93cb-a9812379e87d",
+                      "name": "Request was successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-70547c0f-c24a-466e-93cb-a9812379e87d"
+                    },
+                    {
+                      "id": "c054c77b-968a-4f4e-9090-f7cae626da28",
+                      "name": "Request body was incorrectly formatted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-c054c77b-968a-4f4e-9090-f7cae626da28"
+                    },
+                    {
+                      "id": "1561dc00-52df-49da-843d-ee93cbdbec4c",
+                      "name": "Provided access token is invalid or does not have access to requested resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-1561dc00-52df-49da-843d-ee93cbdbec4c"
+                    },
+                    {
+                      "id": "175af375-7b06-422d-a842-bef8c8f961a0",
+                      "name": "Requested resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-175af375-7b06-422d-a842-bef8c8f961a0"
+                    },
+                    {
+                      "id": "7cf3d199-77f9-400e-a042-900f8984f819",
+                      "name": "Collection already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-7cf3d199-77f9-400e-a042-900f8984f819"
+                    },
+                    {
+                      "id": "e2916b2b-76ce-4d7b-9cec-b0ba9feb6f72",
+                      "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains the number of available requests remaining in the current minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Remaining",
+                          "value": "<number>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Contains your current overall rate limit per minute",
+                            "type": "text/plain"
+                          },
+                          "key": "X-RateLimit-Limit",
+                          "value": "<number>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-e2916b2b-76ce-4d7b-9cec-b0ba9feb6f72"
+                    },
+                    {
+                      "id": "337d48fd-53bb-4322-948f-c926c5705a6e",
+                      "name": "We had a problem with our server. Try again later.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"MultiImage\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"isEditable\": \"<boolean>\",\n  \"isRequired\": \"<boolean>\",\n  \"helpText\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collection_id/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collection_id",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collection_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:20:57.000Z",
+                      "updatedAt": "2026-06-05T15:20:57.000Z",
+                      "uid": "35240-337d48fd-53bb-4322-948f-c926c5705a6e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-43d829a5-8693-4b59-b85d-fd507cdd42d0"
+                }
+              ],
+              "id": "15b89d1f-988b-4b9f-bf05-710bad1408ed",
+              "createdAt": "2026-06-05T15:20:57.000Z",
+              "updatedAt": "2026-06-05T15:20:57.000Z",
+              "uid": "35240-15b89d1f-988b-4b9f-bf05-710bad1408ed"
+            },
+            {
+              "name": "Webflow Get Collection Details",
+              "id": "36c1d41b-699e-4095-a55e-191fbb88dd4b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:collection_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5937c241-f620-44b0-bbd3-23a444bae8ab",
+                      "key": "collection_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for a Collection"
+                    }
+                  ]
+                },
+                "description": "Get the full details of a collection from its ID.\n\nRequired scope | `cms:read`\n"
+              },
+              "response": [
+                {
+                  "id": "c76e9b7c-8718-4c43-8290-26147533a309",
+                  "name": "Request was successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"singularName\": \"<string>\",\n  \"fields\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"Number\",\n      \"isRequired\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"validations\": {\n        \"additionalProperties\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"PlainText\",\n      \"isRequired\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"isEditable\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"helpText\": \"<string>\",\n      \"validations\": {\n        \"additionalProperties\": \"<string>\"\n      }\n    }\n  ],\n  \"slug\": \"<string>\",\n  \"createdOn\": \"<dateTime>\",\n  \"lastUpdated\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-c76e9b7c-8718-4c43-8290-26147533a309"
+                },
+                {
+                  "id": "05f9951c-4126-49d7-b640-fbd1524d37c5",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-05f9951c-4126-49d7-b640-fbd1524d37c5"
+                },
+                {
+                  "id": "ba59d604-10c8-4a00-9a2d-bc5a3a5f2fe2",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-ba59d604-10c8-4a00-9a2d-bc5a3a5f2fe2"
+                },
+                {
+                  "id": "978d9b7c-8e55-4738-b77c-c686792285e5",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-978d9b7c-8e55-4738-b77c-c686792285e5"
+                },
+                {
+                  "id": "c3d9531d-05a5-4005-bbdc-aae87f054624",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-c3d9531d-05a5-4005-bbdc-aae87f054624"
+                },
+                {
+                  "id": "9e2ca193-1d22-4329-98ee-c8b1d1e3ec49",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-9e2ca193-1d22-4329-98ee-c8b1d1e3ec49"
+                }
+              ],
+              "createdAt": "2026-06-05T15:20:57.000Z",
+              "updatedAt": "2026-06-05T15:20:57.000Z",
+              "uid": "35240-36c1d41b-699e-4095-a55e-191fbb88dd4b"
+            },
+            {
+              "name": "Webflow Delete Collection",
+              "id": "5be0cbf2-87f0-48b4-9144-d67ffd97bb83",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.webflow.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://webflow.com/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:collection_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e79372b9-e3c4-470f-ac5a-045e822c4e20",
+                      "key": "collection_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for a Collection"
+                    }
+                  ]
+                },
+                "description": "Delete a collection using its ID.\n\nRequired scope | `cms:write`\n"
+              },
+              "response": [
+                {
+                  "id": "4f164daf-3760-43a5-90e7-59dafa3754b4",
+                  "name": "Request was successful. No Content is returned.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-4f164daf-3760-43a5-90e7-59dafa3754b4"
+                },
+                {
+                  "id": "1000eaf7-50d5-4fdf-bb6e-3429163a4c17",
+                  "name": "Request body was incorrectly formatted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-1000eaf7-50d5-4fdf-bb6e-3429163a4c17"
+                },
+                {
+                  "id": "9542503b-d50c-484d-ab44-242ff06ccc33",
+                  "name": "Provided access token is invalid or does not have access to requested resource",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-9542503b-d50c-484d-ab44-242ff06ccc33"
+                },
+                {
+                  "id": "9f61219c-88ed-49f4-a47a-660f3b582f7d",
+                  "name": "Requested resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-9f61219c-88ed-49f4-a47a-660f3b582f7d"
+                },
+                {
+                  "id": "dfabf3bc-b16d-43b7-9238-e111def7aa87",
+                  "name": "The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains the number of available requests remaining in the current minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Remaining",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Contains your current overall rate limit per minute",
+                        "type": "text/plain"
+                      },
+                      "key": "X-RateLimit-Limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-dfabf3bc-b16d-43b7-9238-e111def7aa87"
+                },
+                {
+                  "id": "0649f7aa-7cb4-4e0f-9875-d8faa54b2979",
+                  "name": "We had a problem with our server. Try again later.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collection_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collection_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collection_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"unsupported_version\",\n  \"message\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"details\": [\n    \"ex mollit\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:20:57.000Z",
+                  "updatedAt": "2026-06-05T15:20:57.000Z",
+                  "uid": "35240-0649f7aa-7cb4-4e0f-9875-d8faa54b2979"
+                }
+              ],
+              "createdAt": "2026-06-05T15:20:57.000Z",
+              "updatedAt": "2026-06-05T15:20:57.000Z",
+              "uid": "35240-5be0cbf2-87f0-48b4-9144-d67ffd97bb83"
+            }
+          ],
+          "id": "b1a85329-c69c-43c4-a03e-5e87349dcc14",
+          "createdAt": "2026-06-05T15:20:57.000Z",
+          "updatedAt": "2026-06-05T15:20:57.000Z",
+          "uid": "35240-b1a85329-c69c-43c4-a03e-5e87349dcc14"
+        }
+      ],
+      "id": "a2b2045c-8e4f-4f21-ad4a-049b10ff25cd",
+      "createdAt": "2026-06-05T15:20:57.000Z",
+      "updatedAt": "2026-06-05T15:20:57.000Z",
+      "uid": "35240-a2b2045c-8e4f-4f21-ad4a-049b10ff25cd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.webflow.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://webflow.com/oauth/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.webflow.com/v2"
+    }
+  ]
+}
