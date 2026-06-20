@@ -6,7 +6,7 @@ description: >-
   integrations, automate content workflows, and extend Webflow's core functionality. All V2 API endpoints start with
   https://api.webflow.com/v2 and support OAuth 2.0 and API key authentication.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - CMS
   - Content Management
