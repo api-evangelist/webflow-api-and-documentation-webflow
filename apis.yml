@@ -112,6 +112,12 @@ apis:
       - type: OpenAPI
         url: openapi/webflow-webhooks-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/webflow-api-and-documentation-webflow-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/webflow-api-and-documentation-webflow-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/webflow-api-and-documentation-webflow-domain-security.yml
   - type: Authentication
     url: authentication/webflow-api-and-documentation-webflow-authentication.yml
   - type: OAuthScopes
