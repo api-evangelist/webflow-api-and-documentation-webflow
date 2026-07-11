@@ -1,0 +1,306 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/webflow-collections-openapi.yml, openapi/webflow-data-api-openapi.yml, openapi/webflow-items-openapi.yml,
+  openapi/webflow-sites-openapi.yml, openapi/webflow-webhooks-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/webflow-collections-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+- name: OAuth2
+  source: openapi/webflow-data-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+- name: OAuth2
+  source: openapi/webflow-items-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+- name: OAuth2
+  source: openapi/webflow-sites-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+- name: OAuth2
+  source: openapi/webflow-webhooks-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://webflow.com/oauth/authorize
+    tokenUrl: https://api.webflow.com/oauth/token
+scopes:
+- scope: assets:read
+  description: read assets on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: assets:write
+  description: write assets on a site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: authorized_user:read
+  description: read details about the authorized user
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: cms:read
+  description: read collections and items for a site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: cms:write
+  description: write to collections and items for a site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: comments:read
+  description: read comments on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: comments:write
+  description: write comments on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: components:read
+  description: read component data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: components:write
+  description: write component data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: custom_code:read
+  description: read custom code on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: custom_code:write
+  description: modify custom code on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: ecommerce:read
+  description: read ecommerce data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: ecommerce:write
+  description: edit ecommerce data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: forms:read
+  description: read form data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: forms:write
+  description: write form data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: page:read
+  sources:
+  - openapi/webflow-data-api-openapi.yml
+- scope: page:write
+  sources:
+  - openapi/webflow-data-api-openapi.yml
+- scope: pages:read
+  description: read pages on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: pages:write
+  description: write to pages on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: site_activity:read
+  description: read site activity logs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: site_config:read
+  description: read site configuration data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: site_config:write
+  description: write site configuration data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: sites:read
+  description: read sites on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: sites:write
+  description: modify pages on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: users:read
+  description: read users on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: users:write
+  description: modify users on the site
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: workspace:read
+  description: read workspace resource data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: workspace:write
+  description: write workspace resource data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/webflow-collections-openapi.yml
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-items-openapi.yml
+  - openapi/webflow-sites-openapi.yml
+  - openapi/webflow-webhooks-openapi.yml
+- scope: workspace_activity:read
+  sources:
+  - openapi/webflow-data-api-openapi.yml
+  - openapi/webflow-sites-openapi.yml
