@@ -112,6 +112,8 @@ apis:
       - type: OpenAPI
         url: openapi/webflow-webhooks-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/webflow-api-and-documentation-webflow-agentic-access.yml
   - type: TrustCenter
     url: security/webflow-api-and-documentation-webflow-trust-center.yml
   - type: VulnerabilityDisclosure
