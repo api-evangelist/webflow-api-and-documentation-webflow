@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Webflow Webhooks API
-  description: Webflow Data API v2 - Webhooks endpoints.
+  title: Webflow Collections Asset Folders Webhooks API
+  description: Webflow Data API v2 - Collections endpoints.
   version: 2.0.0
   contact:
     name: Webflow Developer Relations
@@ -12,15 +12,15 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: https://api.webflow.com/v2
-    description: Webflow API v2
-    x-fern-server-name: Data API
+- url: https://api.webflow.com/v2
+  description: Webflow API v2
+  x-fern-server-name: Data API
 security:
-  - OAuth2: []
-  - ApiKey: []
+- OAuth2: []
+- ApiKey: []
 tags:
-  - name: Webhooks
-    description: Webhooks are the webhooks in your Webflow site.
+- name: Webhooks
+  description: Webhooks are the webhooks in your Webflow site.
 paths:
   /sites/{site_id}/webhooks:
     get:
@@ -35,17 +35,17 @@ paths:
 
         '
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: site_id
-          in: path
-          description: Unique identifier for a Site
-          example: 580e63e98c9a982ac9b8b741
-          required: true
-          schema:
-            type: string
-            format: objectid
-            default:
+      - name: site_id
+        in: path
+        description: Unique identifier for a Site
+        example: 580e63e98c9a982ac9b8b741
+        required: true
+        schema:
+          type: string
+          format: objectid
+          default: null
       responses:
         '200':
           description: Request was successful
@@ -54,33 +54,33 @@ paths:
               schema:
                 example:
                   webhooks:
-                    - id: 57ca0a9e418c504a6e1acbb6
-                      triggerType: form_submission
-                      siteId: 562ac0395358780a1f5e6fbd
-                      workspaceId: 4f4e46fd476ea8c507000001
-                      filter:
-                        name: Email Form
-                      createdOn: '2016-09-02T23:26:22.241Z'
-                      lastTriggered: '2023-02-08T23:59:28.572Z'
-                      url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
-                    - id: 578d85cce0c47cd2865f4cf2
-                      triggerType: form_submission
-                      siteId: 562ac0395358780a1f5e6fbd
-                      workspaceId: 4f4e46fd476ea8c507000001
-                      filter:
-                        name: Email Form
-                      createdOn: '2016-07-19T01:43:40.585Z'
-                      lastTriggered: '2023-02-08T23:59:28.572Z'
-                      url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
-                    - id: 578d85cce0c47cd2865f4cf3
-                      triggerType: form_submission
-                      siteId: 562ac0395358780a1f5e6fbd
-                      workspaceId: 4f4e46fd476ea8c507000001
-                      filter:
-                        name: Email Form
-                      createdOn: '2016-07-19T01:43:40.605Z'
-                      lastTriggered: '2023-02-08T23:59:28.572Z'
-                      url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
+                  - id: 57ca0a9e418c504a6e1acbb6
+                    triggerType: form_submission
+                    siteId: 562ac0395358780a1f5e6fbd
+                    workspaceId: 4f4e46fd476ea8c507000001
+                    filter:
+                      name: Email Form
+                    createdOn: '2016-09-02T23:26:22.241Z'
+                    lastTriggered: '2023-02-08T23:59:28.572Z'
+                    url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
+                  - id: 578d85cce0c47cd2865f4cf2
+                    triggerType: form_submission
+                    siteId: 562ac0395358780a1f5e6fbd
+                    workspaceId: 4f4e46fd476ea8c507000001
+                    filter:
+                      name: Email Form
+                    createdOn: '2016-07-19T01:43:40.585Z'
+                    lastTriggered: '2023-02-08T23:59:28.572Z'
+                    url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
+                  - id: 578d85cce0c47cd2865f4cf3
+                    triggerType: form_submission
+                    siteId: 562ac0395358780a1f5e6fbd
+                    workspaceId: 4f4e46fd476ea8c507000001
+                    filter:
+                      name: Email Form
+                    createdOn: '2016-07-19T01:43:40.605Z'
+                    lastTriggered: '2023-02-08T23:59:28.572Z'
+                    url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
                 properties:
                   webhooks:
                     type: array
@@ -92,7 +92,7 @@ paths:
                         workspaceId: 4f4e46fd476ea8c507000001
                         createdOn: '2022-11-08T23:59:28.572Z'
                         lastTriggered: '2023-02-08T23:59:28.572Z'
-                        filter:
+                        filter: null
                         url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
                       properties:
                         id:
@@ -108,20 +108,20 @@ paths:
 
                             '
                           enum:
-                            - form_submission
-                            - site_publish
-                            - page_created
-                            - page_metadata_updated
-                            - page_deleted
-                            - ecomm_new_order
-                            - ecomm_order_changed
-                            - ecomm_inventory_changed
-                            - collection_item_created
-                            - collection_item_changed
-                            - collection_item_deleted
-                            - collection_item_published
-                            - collection_item_unpublished
-                            - comment_created
+                          - form_submission
+                          - site_publish
+                          - page_created
+                          - page_metadata_updated
+                          - page_deleted
+                          - ecomm_new_order
+                          - ecomm_order_changed
+                          - ecomm_inventory_changed
+                          - collection_item_created
+                          - collection_item_changed
+                          - collection_item_deleted
+                          - collection_item_published
+                          - collection_item_unpublished
+                          - comment_created
                         url:
                           type: string
                           example: https://example.com/webhook
@@ -162,9 +162,9 @@ paths:
                     description: Pagination object
                     type: object
                     required:
-                      - limit
-                      - offset
-                      - total
+                    - limit
+                    - offset
+                    - total
                     properties:
                       limit:
                         type: integer
@@ -191,7 +191,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -199,35 +199,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -240,19 +240,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference:
+                externalReference: null
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -264,7 +264,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -272,35 +272,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -313,19 +313,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference:
+                externalReference: null
                 details: []
         '404':
           description: Requested resource not found
@@ -337,7 +337,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -345,35 +345,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -386,19 +386,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference:
+                externalReference: null
                 details: []
         '429':
           description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
@@ -419,7 +419,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -427,35 +427,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -468,19 +468,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference:
+                externalReference: null
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -492,7 +492,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -500,35 +500,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -541,19 +541,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference:
+                externalReference: null
                 details: []
     post:
       x-fern-sdk-group-name: webhooks
@@ -572,17 +572,17 @@ paths:
 
         '
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: site_id
-          in: path
-          description: Unique identifier for a Site
-          example: 580e63e98c9a982ac9b8b741
-          required: true
-          schema:
-            type: string
-            format: objectid
-            default:
+      - name: site_id
+        in: path
+        description: Unique identifier for a Site
+        example: 580e63e98c9a982ac9b8b741
+        required: true
+        schema:
+          type: string
+          format: objectid
+          default: null
       requestBody:
         description: The Webhook registration object
         required: true
@@ -596,7 +596,7 @@ paths:
                 workspaceId: 4f4e46fd476ea8c507000001
                 createdOn: '2022-11-08T23:59:28.572Z'
                 lastTriggered: '2023-02-08T23:59:28.572Z'
-                filter:
+                filter: null
                 url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
               properties:
                 id:
@@ -612,20 +612,20 @@ paths:
 
                     '
                   enum:
-                    - form_submission
-                    - site_publish
-                    - page_created
-                    - page_metadata_updated
-                    - page_deleted
-                    - ecomm_new_order
-                    - ecomm_order_changed
-                    - ecomm_inventory_changed
-                    - collection_item_created
-                    - collection_item_changed
-                    - collection_item_deleted
-                    - collection_item_published
-                    - collection_item_unpublished
-                    - comment_created
+                  - form_submission
+                  - site_publish
+                  - page_created
+                  - page_metadata_updated
+                  - page_deleted
+                  - ecomm_new_order
+                  - ecomm_order_changed
+                  - ecomm_inventory_changed
+                  - collection_item_created
+                  - collection_item_changed
+                  - collection_item_deleted
+                  - collection_item_published
+                  - collection_item_unpublished
+                  - comment_created
                 url:
                   type: string
                   example: https://example.com/webhook
@@ -675,7 +675,7 @@ paths:
                   workspaceId: 4f4e46fd476ea8c507000001
                   createdOn: '2022-11-08T23:59:28.572Z'
                   lastTriggered: '2023-02-08T23:59:28.572Z'
-                  filter:
+                  filter: null
                   url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
                 properties:
                   id:
@@ -691,20 +691,20 @@ paths:
 
                       '
                     enum:
-                      - form_submission
-                      - site_publish
-                      - page_created
-                      - page_metadata_updated
-                      - page_deleted
-                      - ecomm_new_order
-                      - ecomm_order_changed
-                      - ecomm_inventory_changed
-                      - collection_item_created
-                      - collection_item_changed
-                      - collection_item_deleted
-                      - collection_item_published
-                      - collection_item_unpublished
-                      - comment_created
+                    - form_submission
+                    - site_publish
+                    - page_created
+                    - page_metadata_updated
+                    - page_deleted
+                    - ecomm_new_order
+                    - ecomm_order_changed
+                    - ecomm_inventory_changed
+                    - collection_item_created
+                    - collection_item_changed
+                    - collection_item_deleted
+                    - collection_item_published
+                    - collection_item_unpublished
+                    - comment_created
                   url:
                     type: string
                     example: https://example.com/webhook
@@ -751,7 +751,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -759,35 +759,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -800,19 +800,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference:
+                externalReference: null
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -824,7 +824,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -832,35 +832,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -873,19 +873,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference:
+                externalReference: null
                 details: []
         '404':
           description: Requested resource not found
@@ -897,7 +897,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -905,35 +905,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -946,19 +946,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference:
+                externalReference: null
                 details: []
         '429':
           description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
@@ -979,7 +979,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -987,35 +987,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1028,19 +1028,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference:
+                externalReference: null
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -1052,7 +1052,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1060,35 +1060,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1101,19 +1101,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference:
+                externalReference: null
                 details: []
   /webhooks/{webhook_id}:
     get:
@@ -1128,16 +1128,16 @@ paths:
 
         '
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: webhook_id
-          in: path
-          description: Unique identifier for a Webhook
-          example: 580e64008c9a982ac9b8b754
-          required: true
-          schema:
-            type: string
-            format: objectid
+      - name: webhook_id
+        in: path
+        description: Unique identifier for a Webhook
+        example: 580e64008c9a982ac9b8b754
+        required: true
+        schema:
+          type: string
+          format: objectid
       responses:
         '200':
           description: Request was successful
@@ -1151,7 +1151,7 @@ paths:
                   workspaceId: 4f4e46fd476ea8c507000001
                   createdOn: '2022-11-08T23:59:28.572Z'
                   lastTriggered: '2023-02-08T23:59:28.572Z'
-                  filter:
+                  filter: null
                   url: https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f
                 properties:
                   id:
@@ -1167,20 +1167,20 @@ paths:
 
                       '
                     enum:
-                      - form_submission
-                      - site_publish
-                      - page_created
-                      - page_metadata_updated
-                      - page_deleted
-                      - ecomm_new_order
-                      - ecomm_order_changed
-                      - ecomm_inventory_changed
-                      - collection_item_created
-                      - collection_item_changed
-                      - collection_item_deleted
-                      - collection_item_published
-                      - collection_item_unpublished
-                      - comment_created
+                    - form_submission
+                    - site_publish
+                    - page_created
+                    - page_metadata_updated
+                    - page_deleted
+                    - ecomm_new_order
+                    - ecomm_order_changed
+                    - ecomm_inventory_changed
+                    - collection_item_created
+                    - collection_item_changed
+                    - collection_item_deleted
+                    - collection_item_published
+                    - collection_item_unpublished
+                    - comment_created
                   url:
                     type: string
                     example: https://example.com/webhook
@@ -1227,7 +1227,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1235,35 +1235,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1276,19 +1276,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference:
+                externalReference: null
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -1300,7 +1300,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1308,35 +1308,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1349,19 +1349,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference:
+                externalReference: null
                 details: []
         '404':
           description: Requested resource not found
@@ -1373,7 +1373,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1381,35 +1381,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1422,19 +1422,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference:
+                externalReference: null
                 details: []
         '429':
           description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
@@ -1455,7 +1455,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1463,35 +1463,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1504,19 +1504,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference:
+                externalReference: null
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -1528,7 +1528,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1536,35 +1536,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1577,19 +1577,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference:
+                externalReference: null
                 details: []
     delete:
       x-fern-sdk-group-name: webhooks
@@ -1603,16 +1603,16 @@ paths:
 
         '
       tags:
-        - Webhooks
+      - Webhooks
       parameters:
-        - name: webhook_id
-          in: path
-          description: Unique identifier for a Webhook
-          example: 580e64008c9a982ac9b8b754
-          required: true
-          schema:
-            type: string
-            format: objectid
+      - name: webhook_id
+        in: path
+        description: Unique identifier for a Webhook
+        example: 580e64008c9a982ac9b8b754
+        required: true
+        schema:
+          type: string
+          format: objectid
       responses:
         '204':
           description: Request was successful. No Content is returned.
@@ -1626,7 +1626,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1634,35 +1634,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1675,19 +1675,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: bad_request
                 message: 'Bad Request: Request is malformed'
-                externalReference:
+                externalReference: null
                 details: []
         '401':
           description: Provided access token is invalid or does not have access to requested resource
@@ -1699,7 +1699,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1707,35 +1707,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1748,19 +1748,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: not_authorized
                 message: Request not authorized
-                externalReference:
+                externalReference: null
                 details: []
         '404':
           description: Requested resource not found
@@ -1772,7 +1772,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1780,35 +1780,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1821,19 +1821,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: resource_not_found
                 message: 'Requested resource not found: The site cannot be found'
-                externalReference:
+                externalReference: null
                 details: []
         '429':
           description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
@@ -1854,7 +1854,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1862,35 +1862,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1903,19 +1903,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: too_many_requests
                 message: Too many requests
-                externalReference:
+                externalReference: null
                 details: []
         '500':
           description: We had a problem with our server. Try again later.
@@ -1927,7 +1927,7 @@ paths:
                 example:
                   code: not_authorized
                   message: Request not authorized
-                  externalReference:
+                  externalReference: null
                   details: []
                 properties:
                   code:
@@ -1935,35 +1935,35 @@ paths:
                     description: Error code
                     example: not_authorized
                     enum:
-                      - bad_request
-                      - collection_not_found
-                      - conflict
-                      - duplicate_collection
-                      - duplicate_user_email
-                      - ecommerce_not_enabled
-                      - forbidden
-                      - forms_require_republish
-                      - incompatible_webhook_filter
-                      - internal_error
-                      - invalid_auth_version
-                      - invalid_credentials
-                      - invalid_domain
-                      - invalid_user_email
-                      - item_not_found
-                      - missing_scopes
-                      - no_domains
-                      - not_authorized
-                      - not_enterprise_plan_site
-                      - not_enterprise_plan_workspace
-                      - order_not_found
-                      - resource_not_found
-                      - too_many_requests
-                      - unsupported_version
-                      - unsupported_webhook_trigger_type
-                      - user_limit_reached
-                      - user_not_found
-                      - users_not_enabled
-                      - validation_error
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
                   message:
                     type: string
                     description: Error message
@@ -1976,19 +1976,19 @@ paths:
                     type: array
                     description: Array of errors
                     items:
-                      - type: string
-                        example: Invalid email address
-                        description: Error message
-                      - type: object
-                        example:
-                          field: email
-                          message: Invalid email address
-                        description: Error message
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
                     example: []
               example:
                 code: internal_error
                 message: An Internal Error occurred
-                externalReference:
+                externalReference: null
                 details: []
 components:
   securitySchemes:

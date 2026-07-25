@@ -1,0 +1,631 @@
+openapi: 3.1.0
+info:
+  title: Webflow Collections Asset Folders Site Activity API
+  description: Webflow Data API v2 - Collections endpoints.
+  version: 2.0.0
+  contact:
+    name: Webflow Developer Relations
+    email: developers@webflow.com
+    url: https://developers.webflow.com
+  termsOfService: https://webflow.com/legal/terms
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.webflow.com/v2
+  description: Webflow API v2
+  x-fern-server-name: Data API
+security:
+- OAuth2: []
+- ApiKey: []
+tags:
+- name: Site Activity
+paths:
+  /sites/{site_id}/activity_logs:
+    get:
+      x-fern-sdk-group-name:
+      - sites
+      - activity-logs
+      x-fern-sdk-method-name: list
+      summary: Webflow Get Site Activity Logs
+      operationId: get-site-activity-logs
+      description: 'Retrieve Activity Logs for a specific Site.
+
+
+        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+
+
+        Required scope: `site_activity:read`
+
+        '
+      tags:
+      - Site Activity
+      security:
+      - OAuth2:
+        - site_activity:read
+      parameters:
+      - name: site_id
+        in: path
+        description: Unique identifier for a Site
+        example: 580e63e98c9a982ac9b8b741
+        required: true
+        schema:
+          type: string
+          format: objectid
+          default: null
+      - in: query
+        allowEmptyValue: true
+        name: limit
+        example: 100
+        description: 'Maximum number of records to be returned (max limit: 100)'
+        required: false
+        schema:
+          type: integer
+      - in: query
+        example: 0
+        allowEmptyValue: true
+        name: offset
+        description: Offset used for pagination if the results have more than limit records
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of site activity logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        createdOn:
+                          type: string
+                          format: date-time
+                        lastUpdated:
+                          type: string
+                          format: date-time
+                        event:
+                          type: string
+                          enum:
+                          - styles_modified
+                          - site_published
+                          - ix2_modified_on_page
+                          - page_dom_modified
+                          - cms_item
+                          - backup_created
+                          - page_custom_code_modified
+                          - symbols_modified
+                          - variable_modified
+                          - variables_modified
+                          - cms_collection
+                          - page_settings_modified
+                          - page_settings_custom_code_modified
+                          - ix2_modified_on_component
+                          - ix2_modified_on_class
+                          - site_custom_code_modified
+                          - page_duplicated
+                          - secondary_locale_page_content_modified
+                          - page_renamed
+                          - page_created
+                          - page_deleted
+                          - site_unpublished
+                          - backup_restored
+                          - locale_added
+                          - branch_created
+                          - locale_display_name_updated
+                          - locale_subdirectory_updated
+                          - branch_merged
+                          - locale_tag_updated
+                          - branch_deleted
+                          - locale_enabled
+                          - locale_removed
+                          - locale_disabled
+                          - library_shared
+                          - library_unshared
+                          - library_installed
+                          - library_uninstalled
+                          - library_update_shared
+                          - library_update_accepted
+                          - branch_review_created
+                          - branch_review_approved
+                          - branch_review_canceled
+                        resourceOperation:
+                          type: string
+                          enum:
+                          - CREATED
+                          - MODIFIED
+                          - PUBLISHED
+                          - UNPUBLISHED
+                          - DELETED
+                          - GROUP_REORDERED
+                          - GROUP_CREATED
+                          - GROUP_DELETED
+                          - REORDERED
+                        user:
+                          type: object
+                          nullable: true
+                          properties:
+                            id:
+                              type: string
+                            displayName:
+                              type: string
+                        resourceId:
+                          type: string
+                          nullable: true
+                        resourceName:
+                          type: string
+                          nullable: true
+                        newValue:
+                          type: string
+                          nullable: true
+                        previousValue:
+                          type: string
+                          nullable: true
+                        payload:
+                          type: object
+                          nullable: true
+                  pagination:
+                    description: Pagination object
+                    type: object
+                    required:
+                    - limit
+                    - offset
+                    - total
+                    properties:
+                      limit:
+                        type: integer
+                        description: The limit used for pagination
+                        example: 100
+                        readOnly: true
+                      offset:
+                        type: integer
+                        description: The offset used for pagination
+                        example: 0
+                        readOnly: true
+                      total:
+                        type: integer
+                        description: The total number of records
+                        example: 100
+                        readOnly: true
+                example:
+                  items:
+                  - id: 654c16c7b229e56bcf26872d
+                    createdOn: '2023-11-08T23:16:23.496Z'
+                    lastUpdated: '2023-11-08T23:16:23.496Z'
+                    event: cms_collection
+                    user:
+                      id: 6509cd56e90eec668b009712
+                      displayName: John Doe
+                    resourceOperation: CREATED
+                    resourceId: 654c16c7b229e56bcf26870c
+                    resourceName: foo-bar
+                    newValue: null
+                    previousValue: null
+                    payload: null
+                  pagination:
+                    total: 1
+                    offset: 0
+                    limit: 25
+        '403':
+          description: Forbidden request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - description: Provided access token is valid, but is missing the required scopes.
+                  x-logErrorCode: 403
+                  content:
+                    application/json:
+                      schema:
+                        type: object
+                        example:
+                          code: not_authorized
+                          message: Request not authorized
+                          externalReference: null
+                          details: []
+                        properties:
+                          code:
+                            type: string
+                            description: Error code
+                            example: not_authorized
+                            enum:
+                            - bad_request
+                            - collection_not_found
+                            - conflict
+                            - duplicate_collection
+                            - duplicate_user_email
+                            - ecommerce_not_enabled
+                            - forbidden
+                            - forms_require_republish
+                            - incompatible_webhook_filter
+                            - internal_error
+                            - invalid_auth_version
+                            - invalid_credentials
+                            - invalid_domain
+                            - invalid_user_email
+                            - item_not_found
+                            - missing_scopes
+                            - no_domains
+                            - not_authorized
+                            - not_enterprise_plan_site
+                            - not_enterprise_plan_workspace
+                            - order_not_found
+                            - resource_not_found
+                            - too_many_requests
+                            - unsupported_version
+                            - unsupported_webhook_trigger_type
+                            - user_limit_reached
+                            - user_not_found
+                            - users_not_enabled
+                            - validation_error
+                          message:
+                            type: string
+                            description: Error message
+                            example: Request not authorized
+                          externalReference:
+                            type: string
+                            description: Link to more information
+                            example: ''
+                          details:
+                            type: array
+                            description: Array of errors
+                            items:
+                            - type: string
+                              example: Invalid email address
+                              description: Error message
+                            - type: object
+                              example:
+                                field: email
+                                message: Invalid email address
+                              description: Error message
+                            example: []
+                      example:
+                        code: missing_scopes
+                        message: 'OAuthForbidden: You are missing the following scopes - components:write'
+                        externalReference: null
+                        details: []
+                - description: Error response for non-enterprise plan sites.
+                  x-logErrorCode: 403
+                  content:
+                    application/json:
+                      schema:
+                        type: object
+                        example:
+                          code: not_authorized
+                          message: Request not authorized
+                          externalReference: null
+                          details: []
+                        properties:
+                          code:
+                            type: string
+                            description: Error code
+                            example: not_authorized
+                            enum:
+                            - bad_request
+                            - collection_not_found
+                            - conflict
+                            - duplicate_collection
+                            - duplicate_user_email
+                            - ecommerce_not_enabled
+                            - forbidden
+                            - forms_require_republish
+                            - incompatible_webhook_filter
+                            - internal_error
+                            - invalid_auth_version
+                            - invalid_credentials
+                            - invalid_domain
+                            - invalid_user_email
+                            - item_not_found
+                            - missing_scopes
+                            - no_domains
+                            - not_authorized
+                            - not_enterprise_plan_site
+                            - not_enterprise_plan_workspace
+                            - order_not_found
+                            - resource_not_found
+                            - too_many_requests
+                            - unsupported_version
+                            - unsupported_webhook_trigger_type
+                            - user_limit_reached
+                            - user_not_found
+                            - users_not_enabled
+                            - validation_error
+                          message:
+                            type: string
+                            description: Error message
+                            example: Request not authorized
+                          externalReference:
+                            type: string
+                            description: Link to more information
+                            example: ''
+                          details:
+                            type: array
+                            description: Array of errors
+                            items:
+                            - type: string
+                              example: Invalid email address
+                              description: Error message
+                            - type: object
+                              example:
+                                field: email
+                                message: Invalid email address
+                              description: Error message
+                            example: []
+                      example:
+                        code: not_enterprise_plan_site
+                        message: This site is not associated with an Enterprise plan
+                        externalReference: null
+                        details: []
+        '404':
+          description: Requested resource not found
+          x-logErrorCode: 404
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference: null
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
+                    example: []
+              example:
+                code: resource_not_found
+                message: 'Requested resource not found: The site cannot be found'
+                externalReference: null
+                details: []
+        '429':
+          description: The rate limit of the provided access_token has been reached. Please have your application respect the X-RateLimit-Remaining header we include on API responses.
+          x-logErrorCode: 429
+          headers:
+            X-RateLimit-Remaining:
+              description: Contains the number of available requests remaining in the current minute
+              schema:
+                type: number
+            X-RateLimit-Limit:
+              description: Contains your current overall rate limit per minute
+              schema:
+                type: number
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference: null
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
+                    example: []
+              example:
+                code: too_many_requests
+                message: Too many requests
+                externalReference: null
+                details: []
+        '500':
+          description: We had a problem with our server. Try again later.
+          content:
+            application/json:
+              x-logErrorCode: 500
+              schema:
+                type: object
+                example:
+                  code: not_authorized
+                  message: Request not authorized
+                  externalReference: null
+                  details: []
+                properties:
+                  code:
+                    type: string
+                    description: Error code
+                    example: not_authorized
+                    enum:
+                    - bad_request
+                    - collection_not_found
+                    - conflict
+                    - duplicate_collection
+                    - duplicate_user_email
+                    - ecommerce_not_enabled
+                    - forbidden
+                    - forms_require_republish
+                    - incompatible_webhook_filter
+                    - internal_error
+                    - invalid_auth_version
+                    - invalid_credentials
+                    - invalid_domain
+                    - invalid_user_email
+                    - item_not_found
+                    - missing_scopes
+                    - no_domains
+                    - not_authorized
+                    - not_enterprise_plan_site
+                    - not_enterprise_plan_workspace
+                    - order_not_found
+                    - resource_not_found
+                    - too_many_requests
+                    - unsupported_version
+                    - unsupported_webhook_trigger_type
+                    - user_limit_reached
+                    - user_not_found
+                    - users_not_enabled
+                    - validation_error
+                  message:
+                    type: string
+                    description: Error message
+                    example: Request not authorized
+                  externalReference:
+                    type: string
+                    description: Link to more information
+                    example: ''
+                  details:
+                    type: array
+                    description: Array of errors
+                    items:
+                    - type: string
+                      example: Invalid email address
+                      description: Error message
+                    - type: object
+                      example:
+                        field: email
+                        message: Invalid email address
+                      description: Error message
+                    example: []
+              example:
+                code: internal_error
+                message: An Internal Error occurred
+                externalReference: null
+                details: []
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            authorized_user:read: read details about the authorized user
+            assets:read: read assets on the site
+            assets:write: write assets on a site
+            cms:read: read collections and items for a site
+            cms:write: write to collections and items for a site
+            comments:read: read comments on the site
+            comments:write: write comments on the site
+            custom_code:read: read custom code on the site
+            custom_code:write: modify custom code on the site
+            ecommerce:read: read ecommerce data
+            ecommerce:write: edit ecommerce data
+            forms:read: read form data
+            forms:write: write form data
+            pages:read: read pages on the site
+            pages:write: write to pages on the site
+            components:read: read component data
+            components:write: write component data
+            sites:read: read sites on the site
+            sites:write: modify pages on the site
+            users:read: read users on the site
+            site_activity:read: read site activity logs
+            users:write: modify users on the site
+            workspace:read: read workspace resource data
+            workspace:write: write workspace resource data
+            site_config:read: read site configuration data
+            site_config:write: write site configuration data
+          authorizationUrl: https://webflow.com/oauth/authorize
+          tokenUrl: https://api.webflow.com/oauth/token
+    ApiKey:
+      type: http
+      scheme: bearer
+      x-fern-token-variable-name: access_token
