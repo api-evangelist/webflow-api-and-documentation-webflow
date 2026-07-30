@@ -6,7 +6,20 @@ description: >-
   integrations, automate content workflows, and extend Webflow's core functionality. All V2 API endpoints start with
   https://api.webflow.com/v2 and support OAuth 2.0 and API key authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/webflow-api-and-documentation-webflow.png
 tags:
   - CMS
   - Content Management
@@ -19,98 +32,574 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: webflow-api-and-documentation-webflow:data-api
-    name: Webflow Data API
-    description: >-
-      The Webflow Data API is a comprehensive RESTful API providing programmatic access to Webflow sites, workspaces,
-      CMS collections and items, ecommerce products and orders, assets, users, forms, and webhooks. All V2 endpoints use
-      https://api.webflow.com/v2 as the base URL and require OAuth 2.0 or API key authentication.
-    humanURL: https://developers.webflow.com/data/reference/rest-introduction
-    tags:
-      - CMS
-      - Content Management
-      - Ecommerce
-      - REST
-      - Sites
-    properties:
-      - type: Documentation
-        url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: OpenAPI
-        url: openapi/webflow-data-api-openapi.yml
-      - type: Authentication
-        url: https://developers.webflow.com/data/reference/authentication
-      - type: RateLimits
-        url: https://developers.webflow.com/data/reference/rate-limits
-      - type: ChangeLog
-        url: https://developers.webflow.com/data/v2.0.0/changelog
-      - type: JSONSchema
-        url: json-schema/webflow-site-schema.json
-      - type: JSONSchema
-        url: json-schema/webflow-collection-item-schema.json
-      - type: JSONSchema
-        url: json-schema/webflow-order-schema.json
-      - type: JSONSchema
-        url: json-schema/webflow-webhook-schema.json
-  - aid: webflow-api-and-documentation-webflow:sites-api
-    name: Webflow Sites API
-    description: >-
-      Site management endpoints for creating, updating, publishing, and deleting Webflow sites, plus managing custom
-      domains, redirects, robots.txt, and site activity logs.
-    humanURL: https://developers.webflow.com/data/reference/rest-introduction
-    tags:
-      - Domains
-      - Publishing
-      - Sites
-    properties:
-      - type: Documentation
-        url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: OpenAPI
-        url: openapi/webflow-sites-openapi.yml
-  - aid: webflow-api-and-documentation-webflow:collections-api
-    name: Webflow Collections API
-    description: >-
-      CMS collection management endpoints for creating, listing, and deleting collections, and managing collection field
-      configurations.
-    humanURL: https://developers.webflow.com/data/reference/rest-introduction
-    tags:
-      - CMS
-      - Collections
-      - Fields
-    properties:
-      - type: Documentation
-        url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: OpenAPI
-        url: openapi/webflow-collections-openapi.yml
-  - aid: webflow-api-and-documentation-webflow:items-api
-    name: Webflow CMS Items API
-    description: >-
-      CMS item endpoints for creating, reading, updating, deleting, and publishing collection items, including support
-      for bulk operations and live/staged item management.
-    humanURL: https://developers.webflow.com/data/reference/rest-introduction
-    tags:
-      - CMS
-      - Content Management
-      - Items
-    properties:
-      - type: Documentation
-        url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: OpenAPI
-        url: openapi/webflow-items-openapi.yml
-  - aid: webflow-api-and-documentation-webflow:webhooks-api
-    name: Webflow Webhooks API
-    description: >-
-      Webhook registration and management endpoints for receiving real-time event notifications from Webflow sites
-      including form submissions, ecommerce events, and CMS changes.
-    humanURL: https://developers.webflow.com/data/reference/rest-introduction
-    tags:
-      - Events
-      - Notifications
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://developers.webflow.com/data/reference/rest-introduction
-      - type: OpenAPI
-        url: openapi/webflow-webhooks-openapi.yml
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-asset-folders-api
+  name: Webflow API and Documentation Asset Folders API
+  description: >-
+    The Asset Folders API from Webflow API and Documentation — 2 operation(s) for asset folders.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Asset Folders
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-asset-folders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-assets-api
+  name: Webflow API and Documentation Assets API
+  description: Assets are files that are uploaded to your Webflow account.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-assets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-collections-api
+  name: Webflow API and Documentation Collections API
+  description: Collections are CMS collections of items.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-collections-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-comments-api
+  name: Webflow API and Documentation Comments API
+  description: The Comments API from Webflow API and Documentation — 3 operation(s) for comments.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-components-api
+  name: Webflow API and Documentation Components API
+  description: The Components API from Webflow API and Documentation — 3 operation(s) for components.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Components
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-components-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-custom-code-api
+  name: Webflow API and Documentation Custom Code API
+  description: Custom code is JavaScript that is added to your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Custom Code
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-custom-code-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-custom-code-pages-api
+  name: Webflow API and Documentation Custom Code - Pages API
+  description: Custom code for pages.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Custom Code - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-custom-code-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-custom-code-sites-api
+  name: Webflow API and Documentation Custom Code - Sites API
+  description: Custom code for sites.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Custom Code - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-custom-code-sites-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-forms-api
+  name: Webflow API and Documentation Forms API
+  description: Forms are forms that are created on your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-forms-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-inventory-api
+  name: Webflow API and Documentation Inventory API
+  description: Inventory is the stock of e-commerce items in your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-items-api
+  name: Webflow API and Documentation Items API
+  description: Items are the individual e-commerce items in your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-items-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-meta-api
+  name: Webflow API and Documentation Meta API
+  description: Meta is the metadata for your Webflow API token.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Meta
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-meta-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-orders-api
+  name: Webflow API and Documentation Orders API
+  description: Orders are the orders for your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-pages-api
+  name: Webflow API and Documentation Pages API
+  description: Pages are the pages in your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-products-skus-api
+  name: Webflow API and Documentation Products & SKUs API
+  description: Products & SKUs are the products and SKUs in your Webflow e-commerce site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Products & SKUs
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-products-skus-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-registered-scripts-api
+  name: Webflow API and Documentation Registered Scripts API
+  description: >-
+    The Registered Scripts API from Webflow API and Documentation — 3 operation(s) for registered scripts.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Registered Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-registered-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-settings-api
+  name: Webflow API and Documentation Settings API
+  description: Settings are the e-commerce settings for your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-settings-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-site-activity-api
+  name: Webflow API and Documentation Site Activity API
+  description: >-
+    The Site Activity API from Webflow API and Documentation — 1 operation(s) for site activity.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Site Activity
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-site-activity-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-site-administration-api
+  name: Webflow API and Documentation Site Administration API
+  description: >-
+    The Site Administration API from Webflow API and Documentation — 1 operation(s) for site administration.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Site Administration
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-site-administration-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-sites-api
+  name: Webflow API and Documentation Sites API
+  description: Sites are the sites in your Webflow workspace.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-sites-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-webhooks-api
+  name: Webflow API and Documentation Webhooks API
+  description: Webhooks are the webhooks in your Webflow site.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
+- aid: >-
+    webflow-api-and-documentation-webflow:webflow-api-and-documentation-webflow-workspce-audit-logs-api
+  name: Webflow API and Documentation Workspce Audit Logs API
+  description: >-
+    The Workspce Audit Logs API from Webflow API and Documentation — 1 operation(s) for workspce audit
+    logs.
+  humanURL: https://developers.webflow.com/data/reference/rest-introduction
+  tags:
+  - Workspce Audit Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/webflow-api-and-documentation-webflow-workspce-audit-logs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.webflow.com/data/reference/rest-introduction
+  - type: Authentication
+    url: https://developers.webflow.com/data/reference/authentication
+  - type: RateLimits
+    url: https://developers.webflow.com/data/reference/rate-limits
+  - type: ChangeLog
+    url: https://developers.webflow.com/data/v2.0.0/changelog
+  - type: JSONSchema
+    url: json-schema/webflow-site-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-collection-item-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-order-schema.json
+  - type: JSONSchema
+    url: json-schema/webflow-webhook-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/webflow-api-and-documentation-webflow-agentic-access.yml
