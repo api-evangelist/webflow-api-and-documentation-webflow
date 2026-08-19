@@ -1,0 +1,195 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Collections Asset Folders Assets API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/sites/:site_id/assets",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List of assets uploaded to a site\n\nRequired scope | `assets:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Upload Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.webflow.com/v2/sites/:site_id/assets",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "580e63e98c9a982ac9b8b741",
+                "type": "path",
+                "description": "Unique identifier for a Site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "The first step in uploading an asset to a site.\n\n\nThis endpoint generates a response with the following information: `uploadUrl` and `uploadDetails`.\n\n\nUse these properties in the header of a [POST request to Amazson s3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOST.html) to complete the upload.\n\n\nTo learn more about how to upload assets to Webflow, see our [assets guide](/data/docs/working-with-assets).\n\n Required scope | `assets:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Get Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get details about an asset\n\nRequired scope | `assets:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update details of an Asset.\n\nRequired scope | `assets:write`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Delete Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.webflow.com/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "580e63fc8c9a982ac9b8b745",
+                "type": "path",
+                "description": "Unique identifier for an Asset on a site"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete an Asset\n\nRequired Scope: `assets: write`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

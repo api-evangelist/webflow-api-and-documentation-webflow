@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Collections Asset Folders Workspce Audit Logs API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspce Audit Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow Get Workspace Audit Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/workspaces/:workspace_id_or_slug/audit_logs",
+            "params": [
+              {
+                "name": "workspace_id_or_slug",
+                "value": "hitchhikers-workspace",
+                "type": "path",
+                "description": "Unique identifier or slug for a Workspace"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to be returned (max limit: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Offset used for pagination if the results have more than limit records"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sorts the results by asc or desc"
+              },
+              {
+                "name": "eventType",
+                "value": "user_access",
+                "type": "query",
+                "description": "The event type to filter by"
+              },
+              {
+                "name": "from",
+                "value": "2025-06-22T16:00:31Z",
+                "type": "query",
+                "description": "The start date to filter by"
+              },
+              {
+                "name": "to",
+                "value": "2025-07-22T16:00:31Z",
+                "type": "query",
+                "description": "The end date to filter by"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get audit logs for a workspace.\n\n<Warning title=\"Enterprise & workspace API token only\">This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.</Warning>\n\nRequired scope | `workspace_activity:read`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webflow Collections Asset Folders Inventory API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://webflow.com/oauth/authorize",
+      "accessTokenUrl": "https://api.webflow.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webflow List Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.webflow.com/v2/collections/:sku_collection_id/items/:sku_id/inventory",
+            "params": [
+              {
+                "name": "sku_collection_id",
+                "value": "6377a7c4b7a79608c34a46f7",
+                "type": "path",
+                "description": "Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+              },
+              {
+                "name": "sku_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for a SKU"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List the current inventory levels for a particular SKU item.\n\nRequired scope | `ecommerce:read`\n"
+        },
+        {
+          "info": {
+            "name": "Webflow Update Item Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.webflow.com/v2/collections/:sku_collection_id/items/:sku_id/inventory",
+            "params": [
+              {
+                "name": "sku_collection_id",
+                "value": "6377a7c4b7a79608c34a46f7",
+                "type": "path",
+                "description": "Unique identifier for a SKU collection. Use the List Collections API to find this ID."
+              },
+              {
+                "name": "sku_id",
+                "value": "5e8518516e147040726cc415",
+                "type": "path",
+                "description": "Unique identifier for a SKU"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://webflow.com/oauth/authorize",
+              "accessTokenUrl": "https://api.webflow.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the current inventory levels for a particular SKU item.\n\nUpdates may be given in one or two methods, absolutely or incrementally.\n- Absolute updates are done by setting `quantity` directly.\n- Incremental updates are by specifying the inventory delta in `updateQuantity` which is then added to the `quantity` stored on the server.\n\nRequired scope | `ecommerce:write`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
