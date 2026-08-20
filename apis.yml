@@ -23,6 +23,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/webflow-ap
 tags:
   - CMS
   - Content Management
+  - E-Commerce
+  - No-Code
+  - Publishing
+  - Web Development
+tags_raw:
+  - CMS
+  - Content Management
   - Ecommerce
   - No-Code
   - Publishing
@@ -90,6 +97,8 @@ apis:
   description: Collections are CMS collections of items.
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -295,6 +304,8 @@ apis:
   description: Items are the individual e-commerce items in your Webflow site.
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -345,6 +356,8 @@ apis:
   description: Orders are the orders for your Webflow site.
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -552,6 +565,8 @@ apis:
   description: Webhooks are the webhooks in your Webflow site.
   humanURL: https://developers.webflow.com/data/reference/rest-introduction
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
