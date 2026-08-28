@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: webflowDataApi
-  url: ../openapi/webflow-data-api-openapi.yml
+- name: pagesApi
+  url: ../openapi/webflow-api-and-documentation-webflow-pages-api-openapi.yml
+  type: openapi
+- name: sitesApi
+  url: ../openapi/webflow-api-and-documentation-webflow-sites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-page-seo

@@ -10,8 +10,11 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: webflowDataApi
-  url: ../openapi/webflow-data-api-openapi.yml
+- name: customCodeApi
+  url: ../openapi/webflow-api-and-documentation-webflow-custom-code-api-openapi.yml
+  type: openapi
+- name: sitesApi
+  url: ../openapi/webflow-api-and-documentation-webflow-sites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: apply-custom-code

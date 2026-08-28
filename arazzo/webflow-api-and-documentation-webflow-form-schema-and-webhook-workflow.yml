@@ -10,8 +10,11 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: webflowDataApi
-  url: ../openapi/webflow-data-api-openapi.yml
+- name: formsApi
+  url: ../openapi/webflow-api-and-documentation-webflow-forms-api-openapi.yml
+  type: openapi
+- name: webhooksApi
+  url: ../openapi/webflow-api-and-documentation-webflow-webhooks-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: form-schema-and-webhook
