@@ -6,6 +6,18 @@ description: >-
   integrations, automate content workflows, and extend Webflow's core functionality. All V2 API endpoints start with
   https://api.webflow.com/v2 and support OAuth 2.0 and API key authentication.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
