@@ -549,6 +549,9 @@ apis:
   - type: JSONSchema
     url: json-schema/webflow-webhook-schema.json
 common:
+  - type: CapabilityMap
+    url: capabilities/webflow-api-and-documentation-webflow-capability-edges.yml
+    name: Webflow API and Documentation Business Capability Map
   - type: AgenticAccess
     url: agentic-access/webflow-api-and-documentation-webflow-agentic-access.yml
   - type: TrustCenter
