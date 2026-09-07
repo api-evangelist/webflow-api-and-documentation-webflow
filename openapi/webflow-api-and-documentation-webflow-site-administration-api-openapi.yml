@@ -1,13 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Webflow Collections Asset Folders Site Administration API
-  description: Webflow Data API v2 - Collections endpoints.
   version: 2.0.0
+  title: Webflow Data Site Administration API
+  description: Webflow's Data API v2
+  termsOfService: https://webflow.com/legal/terms
   contact:
     name: Webflow Developer Relations
     email: developers@webflow.com
     url: https://developers.webflow.com
-  termsOfService: https://webflow.com/legal/terms
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
