@@ -1,0 +1,24 @@
+slug: webflow-api-and-documentation-webflow
+provider: Webflow API and Documentation
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Orders
+  spec_file: webflow-api-and-documentation-webflow-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: POST /sites/{site_id}/orders/{order_id}/fulfill  fulfill-order  Webflow Fulfill Order
+  reason: Operations manage the ecommerce order lifecycle including fulfilment, unfulfilment and refund,
+    which is order fulfilment management. Some ambiguity because refund also touches receivables handling.
