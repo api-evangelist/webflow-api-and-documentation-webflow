@@ -33,9 +33,7 @@ paths:
       description: 'List Asset Folders within a given site
 
 
-        Required scope | `assets:read`
-
-        '
+        Required scope | `assets:read`'
       tags:
       - Asset Folders
       parameters:
@@ -532,9 +530,7 @@ paths:
       description: 'Create an Asset Folder within a given site
 
 
-        Required scope | `assets:write`
-
-        '
+        Required scope | `assets:write`'
       tags:
       - Asset Folders
       parameters:
@@ -1004,9 +1000,7 @@ paths:
       description: 'Get details about a specific Asset Folder
 
 
-        Required scope | `assets:read`
-
-        '
+        Required scope | `assets:read`'
       tags:
       - Asset Folders
       parameters:

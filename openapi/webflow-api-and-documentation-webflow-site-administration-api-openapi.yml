@@ -32,7 +32,25 @@ paths:
         - site_config:write
       operationId: set-well-known
       summary: Webflow Set a well-known file
-      description: "Upload a supported well-known file to a site.\n\nThe current restrictions on well-known files are as follows:\n  - Each file must be smaller than 100kb\n  - Less than 30 total files\n  - Have one of the following file extensions (or no extension): `.txt`, `.json`, `.noext`\n\n  <Note title=\".noext\">\n    `.noext` is a special file extension that removes other extensions. For example, `apple-app-site-association.noext.txt` will be uploaded as `apple-app-site-association`. Use this extension for tools that have trouble uploading extensionless files.\n  </Note>\n\n<Warning title=\"Enterprise Only\">This endpoint requires an Enterprise workspace.</Warning>\n\nRequired scope: `site_config:write`\n"
+      description: 'Upload a supported well-known file to a site.
+
+
+        The current restrictions on well-known files are as follows:
+
+        - Each file must be smaller than 100kb
+
+        - Less than 30 total files
+
+        - Have one of the following file extensions (or no extension): `.txt`, `.json`, `.noext`
+
+
+        `.noext` is a special file extension that removes other extensions. For example, `apple-app-site-association.noext.txt` will be uploaded as `apple-app-site-association`. Use this extension for tools that have trouble uploading extensionless files.
+
+
+        This endpoint requires an Enterprise workspace.
+
+
+        Required scope: `site_config:write`'
       tags:
       - Site Administration
       parameters:
@@ -485,12 +503,10 @@ paths:
       description: 'Delete existing well-known files from a site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `site_config:write`
-
-        '
+        Required scope: `site_config:write`'
       tags:
       - Site Administration
       parameters:

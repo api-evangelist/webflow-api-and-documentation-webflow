@@ -34,9 +34,7 @@ paths:
       description: 'List the current inventory levels for a particular SKU item.
 
 
-        Required scope | `ecommerce:read`
-
-        '
+        Required scope | `ecommerce:read`'
       tags:
       - Inventory
       parameters:
@@ -623,9 +621,7 @@ paths:
         - Incremental updates are by specifying the inventory delta in `updateQuantity` which is then added to the `quantity` stored on the server.
 
 
-        Required scope | `ecommerce:write`
-
-        '
+        Required scope | `ecommerce:write`'
       tags:
       - Inventory
       parameters:

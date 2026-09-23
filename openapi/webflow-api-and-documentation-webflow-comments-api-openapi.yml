@@ -32,7 +32,13 @@ paths:
         - comments:read
       operationId: list-comment-threads
       summary: Webflow List Comment Threads
-      description: "List all comment threads for a site.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+      description: 'List all comment threads for a site.
+
+
+        There may be a delay of up to 5 minutes before new comments appear in the system.
+
+
+        Required scope | `comments:read`'
       tags:
       - Comments
       parameters:
@@ -689,7 +695,13 @@ paths:
         - comments:read
       operationId: get-comment-thread
       summary: Webflow Get Comment Thread
-      description: "Get details of a specific comment thread.\n\n  <Note title=\"Timing of comment threads\">\n    There may be a delay of up to 5 minutes before new comments appear in the system.\n  </Note>\n\nRequired scope | `comments:read`\n"
+      description: 'Get details of a specific comment thread.
+
+
+        There may be a delay of up to 5 minutes before new comments appear in the system.
+
+
+        Required scope | `comments:read`'
       tags:
       - Comments
       parameters:
@@ -1282,7 +1294,13 @@ paths:
         - comments:read
       operationId: list-comment-replies
       summary: Webflow List Comment Replies
-      description: "List all replies to a specific comment thread.\n\n<Note title=\"Timing of comment threads\">\n  There may be a delay of up to 5 minutes before new comments appear in the system.\n</Note>\n\nRequired scope | `comments:read`\n"
+      description: 'List all replies to a specific comment thread.
+
+
+        There may be a delay of up to 5 minutes before new comments appear in the system.
+
+
+        Required scope | `comments:read`'
       tags:
       - Comments
       parameters:
@@ -1894,7 +1912,10 @@ webhooks:
     post:
       operationId: comment_created
       summary: New Comment Thread
-      description: "Information about a new comment thread or reply\n\n<Note title=\"Timing of comment webhooks\">\n  There may be a delay of up to 5 minutes before new comments appear in the system and trigger the webhook notification.\n</Note>\n"
+      description: 'Information about a new comment thread or reply
+
+
+        There may be a delay of up to 5 minutes before new comments appear in the system and trigger the webhook notification.'
       tags:
       - Comments
       requestBody:

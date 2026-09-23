@@ -34,9 +34,7 @@ paths:
       description: 'List of all pages for a site.
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -698,9 +696,7 @@ paths:
       description: 'Get metadata information for a single page.
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -1260,9 +1256,7 @@ paths:
       description: 'Update Page-level metadata, including SEO and Open Graph fields.
 
 
-        Required scope | `pages:write`
-
-        '
+        Required scope | `pages:write`'
       summary: Webflow Update Page Metadata
       operationId: update-page-settings
       tags:
@@ -1891,12 +1885,10 @@ paths:
       description: 'Get text and component instance content from a static page.
 
 
-        <Badge intent="info">Localization</Badge>
+        Localization
 
 
-        Required scope | `pages:read`
-
-        '
+        Required scope | `pages:read`'
       tags:
       - Pages
       parameters:
@@ -2816,7 +2808,22 @@ paths:
       - OAuth2:
         - page:write
       summary: Webflow Update Page Content
-      description: "This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get page content](/data/reference/pages-and-components/pages/get-content) endpoint to identify available content nodes and their types.\n2. If the page has component instances, retrieve the component's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localized pages. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `pages:write`\n"
+      description: 'This endpoint updates content on a static page in **secondary locales**. It supports updating up to 1000 nodes in a single request.
+
+
+        Before making updates:
+
+        1. Use the get page content endpoint to identify available content nodes and their types.
+
+        2. If the page has component instances, retrieve the component''s properties that you''ll override using the get component properties endpoint.
+
+        3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.
+
+
+        This endpoint is specifically for localized pages. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.
+
+
+        Required scope | `pages:write`'
       operationId: update-static-content
       tags:
       - Pages

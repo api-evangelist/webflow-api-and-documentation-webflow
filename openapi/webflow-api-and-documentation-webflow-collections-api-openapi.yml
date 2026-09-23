@@ -34,9 +34,7 @@ paths:
       description: 'List of all Collections within a Site.
 
 
-        Required scope | `cms:read`
-
-        '
+        Required scope | `cms:read`'
       tags:
       - Collections
       parameters:
@@ -661,9 +659,7 @@ paths:
         Each collection includes the required _name_ and _slug_ fields, which are generated automatically. You can update the `displayName` of these fields, but the slug for them cannot be changed. Fields slugs are automatically converted to lowercase. Spaces in slugs are replaced with hyphens.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       parameters:
@@ -1684,9 +1680,7 @@ paths:
       description: 'Get the full details of a collection from its ID.
 
 
-        Required scope | `cms:read`
-
-        '
+        Required scope | `cms:read`'
       tags:
       - Collections
       parameters:
@@ -2363,9 +2357,7 @@ paths:
       description: 'Delete a collection using its ID.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       parameters:
@@ -2771,12 +2763,10 @@ paths:
         Field validation is currently not available through the API.
 
 
-        Bulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you [create the collection.](/data/v2.0.0/reference/cms/collections/create)
+        Bulk creation of fields is not supported with this endpoint. To add multiple fields at once, include them when you create the collection.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       requestBody:
@@ -3723,9 +3713,7 @@ paths:
       description: 'Update a custom field in a collection.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       requestBody:
@@ -4234,9 +4222,7 @@ paths:
       description: 'Delete a custom field in a collection. This endpoint does not currently support bulk deletion.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       parameters:
@@ -4647,9 +4633,7 @@ paths:
       description: 'List of all Items within a Collection.
 
 
-        Required scope | `CMS:read`
-
-        '
+        Required scope | `CMS:read`'
       tags:
       - Collections
       parameters:
@@ -5292,13 +5276,10 @@ paths:
       description: 'Create Item(s) in a Collection.
 
 
+        To create items across multiple locales, please use this endpoint.
 
-        To create items across multiple locales, please use [this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)
 
-
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -6150,12 +6131,10 @@ paths:
         The limit for this endpoint is 100 items.
 
 
-        <Tip title="Localization Tip">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>
+        Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -7075,12 +7054,10 @@ paths:
       description: 'Delete Items from a Collection.
 
 
-        <Tip title="Localization Tip">Items will only be deleted in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>
+        Items will only be deleted in the primary locale unless a `cmsLocaleId` is included in the request.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -7586,7 +7563,13 @@ paths:
         - cms:read
       operationId: list-collection-items-live
       summary: Webflow List Live Collection Items
-      description: "List all published items in a collection.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+      description: 'List all published items in a collection.
+
+
+        Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.
+
+
+        Required scope | `CMS:read`'
       tags:
       - Collections
       parameters:
@@ -8229,14 +8212,10 @@ paths:
       description: 'Create item(s) in a collection that will be immediately published to the live site.
 
 
-
-        To create items across multiple locales, [please use this endpoint.](/data/reference/cms/collection-items/staged-items/create-items)
-
+        To create items across multiple locales, please use this endpoint.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -9043,12 +9022,10 @@ paths:
       description: 'Update a single published item or multiple published items (up to 100) in a Collection
 
 
-        <Tip title="Localization Tip">Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.</Tip>
+        Items will only be updated in the primary locale, unless a `cmsLocaleId` is included in the request.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -9927,12 +9904,10 @@ paths:
       description: 'Unpublish up to 100 items from the live site and set the `isDraft` property to `true`.
 
 
-        <Tip title="Localization Tip">Items will only be unpublished in the primary locale unless a `cmsLocaleId` is included in the request.</Tip>
+        Items will only be unpublished in the primary locale unless a `cmsLocaleId` is included in the request.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -10361,7 +10336,15 @@ paths:
         - cms:write
       operationId: create-items
       summary: Webflow Create Collection Items
-      description: "Create an item or multiple items in a CMS Collection across multiple corresponding locales.\n\n<Note>\n  - This endpoint can create up to 100 items in a request.\n  - If the `cmsLocaleIds` parameter is not included in the request, an item will only be created in the primary locale.\n</Note>\n\nRequired scope | `CMS:write`\n"
+      description: 'Create an item or multiple items in a CMS Collection across multiple corresponding locales.
+
+
+        - This endpoint can create up to 100 items in a request.
+
+        - If the `cmsLocaleIds` parameter is not included in the request, an item will only be created in the primary locale.
+
+
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -11126,9 +11109,7 @@ paths:
       description: 'Get details of a selected Collection Item.
 
 
-        Required scope | `CMS:read`
-
-        '
+        Required scope | `CMS:read`'
       tags:
       - Collections
       parameters:
@@ -11656,9 +11637,7 @@ paths:
       description: 'Update a selected Item in a Collection.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -12279,9 +12258,7 @@ paths:
       description: 'Delete an item from a collection.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -12700,7 +12677,13 @@ paths:
         - cms:read
       operationId: get-item-live
       summary: Webflow Get Live Collection Item
-      description: "Get details of a selected Collection live Item.\n\n<Tip title=\"Serve data with the Content Delivery API\">\n  Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.\n</Tip>\n\nRequired scope | `CMS:read`\n"
+      description: 'Get details of a selected Collection live Item.
+
+
+        Serving data to applications in real-time? Use the Content Delivery API at `api-cdn.webflow.com` for better performance. The CDN-backed endpoint is optimized for high-volume reads, while the Data API is designed for writes and management operations.
+
+
+        Required scope | `CMS:read`'
       tags:
       - Collections
       parameters:
@@ -13228,9 +13211,7 @@ paths:
       description: 'Update a selected live Item in a Collection. The updates for this Item will be published to the live site.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -13933,12 +13914,10 @@ paths:
       description: 'Unpublish a live item from the site and set the `isDraft` property to `true`.
 
 
-        For bulk unpublishing, please use [this endpoint.](/data/v2.0.0/reference/cms/collection-items/live-items/delete-items-live)
+        For bulk unpublishing, please use this endpoint.
 
 
-        Required scope | `CMS:write`
-
-        '
+        Required scope | `CMS:write`'
       tags:
       - Collections
       parameters:
@@ -14355,9 +14334,7 @@ paths:
       description: 'Publish an item or multiple items.
 
 
-        Required scope | `cms:write`
-
-        '
+        Required scope | `cms:write`'
       tags:
       - Collections
       parameters:

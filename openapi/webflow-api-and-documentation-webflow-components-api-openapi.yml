@@ -33,9 +33,7 @@ paths:
       description: 'List of all components for a site.
 
 
-        Required scope | `components:read`
-
-        '
+        Required scope | `components:read`'
       tags:
       - Components
       parameters:
@@ -551,15 +549,13 @@ paths:
       summary: Webflow Get Component Content
       description: 'Get static content from a component definition. This includes text nodes, image nodes, select nodes, text input nodes, submit button nodes, and nested component instances.
 
-        To retrieve dynamic content set by component properties, use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.
+        To retrieve dynamic content set by component properties, use the get component properties endpoint.
 
 
-        <Note>If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.</Note>
+        If you do not provide a Locale ID in your request, the response will return any content that can be localized from the Primary locale.
 
 
-        Required scope | `components:read`
-
-        '
+        Required scope | `components:read`'
       tags:
       - Components
       parameters:
@@ -1411,7 +1407,22 @@ paths:
       - OAuth2:
         - components:write
       summary: Webflow Update Component Content
-      description: "This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.\n\nBefore making updates:\n1. Use the [get component content](/data/reference/pages-and-components/components/get-content) endpoint to identify available content nodes and their types.\n2. If your component definition has a component instance nested within it, retrieve the nested component instance's properties that you'll override using the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint.\n3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.\n\n<Note>\n  This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.\n</Note>\n\nRequired scope | `components:write`\n"
+      description: 'This endpoint updates content within a component defintion for **secondary locales**. It supports updating up to 1000 nodes in a single request.
+
+
+        Before making updates:
+
+        1. Use the get component content endpoint to identify available content nodes and their types.
+
+        2. If your component definition has a component instance nested within it, retrieve the nested component instance''s properties that you''ll override using the get component properties endpoint.
+
+        3. DOM elements may include a `data-w-id` attribute. This attribute is used by Webflow to maintain custom attributes and links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.
+
+
+        This endpoint is specifically for localizing component definitions. Ensure that the specified `localeId` is a valid **secondary locale** for the site otherwise the request will fail.
+
+
+        Required scope | `components:write`'
       operationId: update-component-content
       tags:
       - Components
@@ -2106,12 +2117,10 @@ paths:
       description: 'Get the default property values of a component definition.
 
 
-        <Note>If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.</Note>
+        If you do not include a `localeId` in your request, the response will return any properties that can be localized from the Primary locale.
 
 
-        Required scope | `components:read`
-
-        '
+        Required scope | `components:read`'
       tags:
       - Components
       parameters:
@@ -2646,17 +2655,15 @@ paths:
 
         Before making updates:
 
-        1. Use the [get component properties](/data/reference/pages-and-components/components/get-properties) endpoint to identify properties that can be updated in a secondary locale.
+        1. Use the get component properties endpoint to identify properties that can be updated in a secondary locale.
 
         2. Rich Text properties may include a `data-w-id` attribute. This attribute is used by Webflow to maintain links across locales. Always include the original `data-w-id` value in your update requests to ensure consistent behavior across all locales.
 
 
-        <Note>The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and will result in an error.</Note>
+        The request requires a secondary locale ID. If a `localeId` is missing, the request will not be processed and will result in an error.
 
 
-        Required scope | `components:write`
-
-        '
+        Required scope | `components:write`'
       tags:
       - Components
       parameters:

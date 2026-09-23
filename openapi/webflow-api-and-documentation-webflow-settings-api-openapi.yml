@@ -34,9 +34,7 @@ paths:
       description: 'Retrieve ecommerce settings for a site.
 
 
-        Required scope | `ecommerce:read`
-
-        '
+        Required scope | `ecommerce:read`'
       tags:
       - Settings
       parameters:

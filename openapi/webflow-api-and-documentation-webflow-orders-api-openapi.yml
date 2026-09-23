@@ -34,9 +34,7 @@ paths:
       description: 'List all orders created for a given site.
 
 
-        Required scope | `ecommerce:read`
-
-        '
+        Required scope | `ecommerce:read`'
       tags:
       - Orders
       parameters:
@@ -1885,9 +1883,7 @@ paths:
         retrieved.
 
 
-        Required scope | `ecommerce:read`
-
-        '
+        Required scope | `ecommerce:read`'
       tags:
       - Orders
       parameters:
@@ -3374,9 +3370,7 @@ paths:
         updated simultaneously or independently.
 
 
-        Required scope | `ecommerce:write`
-
-        '
+        Required scope | `ecommerce:write`'
       tags:
       - Orders
       parameters:
@@ -4884,9 +4878,7 @@ paths:
       description: 'Updates an order''s status to fulfilled
 
 
-        Required scope | `ecommerce:write`
-
-        '
+        Required scope | `ecommerce:write`'
       tags:
       - Orders
       parameters:
@@ -6381,9 +6373,7 @@ paths:
       description: 'Updates an order''s status to unfulfilled
 
 
-        Required scope | `ecommerce:write`
-
-        '
+        Required scope | `ecommerce:write`'
       tags:
       - Orders
       parameters:
@@ -7869,9 +7859,7 @@ paths:
         customer. It will also set the order''s status to `refunded`.
 
 
-        Required scope | `ecommerce:write`
-
-        '
+        Required scope | `ecommerce:write`'
       tags:
       - Orders
       parameters:

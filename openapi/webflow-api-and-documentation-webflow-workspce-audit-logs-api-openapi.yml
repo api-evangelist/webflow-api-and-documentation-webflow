@@ -35,12 +35,10 @@ paths:
       description: 'Get audit logs for a workspace.
 
 
-        <Warning title="Enterprise & workspace API token only">This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.</Warning>
+        This endpoint requires an Enterprise workspace and a workspace token with the `workspace_activity:read` scope. Create a workspace token from your workspace dashboard integrations page to use this endpoint.
 
 
-        Required scope | `workspace_activity:read`
-
-        '
+        Required scope | `workspace_activity:read`'
       tags:
       - Workspce Audit Logs
       parameters:

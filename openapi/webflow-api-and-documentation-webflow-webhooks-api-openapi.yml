@@ -31,9 +31,7 @@ paths:
       description: 'List all App-created Webhooks registered for a given site
 
 
-        Required scope | `sites:read`
-
-        '
+        Required scope | `sites:read`'
       tags:
       - Webhooks
       parameters:
@@ -566,11 +564,9 @@ paths:
         Limit of 75 registrations per `triggerType`, per site.
 
 
-        <Note>Access to this endpoint requires a bearer token from a [Data Client App](/data/docs/getting-started-data-clients).</Note>
+        Access to this endpoint requires a bearer token from a Data Client App.
 
-        Required scope | `sites:write`
-
-        '
+        Required scope | `sites:write`'
       tags:
       - Webhooks
       parameters:
@@ -1124,9 +1120,7 @@ paths:
       description: 'Get a specific Webhook instance
 
 
-        Required scope: `sites:read`
-
-        '
+        Required scope: `sites:read`'
       tags:
       - Webhooks
       parameters:
@@ -1599,9 +1593,7 @@ paths:
       description: 'Remove a Webhook
 
 
-        Required scope: `sites:read`
-
-        '
+        Required scope: `sites:read`'
       tags:
       - Webhooks
       parameters:

@@ -34,9 +34,7 @@ paths:
       description: 'List forms for a given site.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -868,9 +866,7 @@ paths:
       description: 'Get information about a given form.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -1474,7 +1470,16 @@ paths:
         - forms:read
       operationId: list-submissions
       summary: Webflow List Form Submissions
-      description: "List form submissions for a given form\n\n<Note title=\"Forms in components\">\n  When a form is used in a component definition, each instance of the form is considered a unique form.\n\n  To get a combined list of submissions for a form that appears across multiple component instances, use the [List Form Submissions by Site](/data/reference/forms/form-submissions/list-submissions-by-site) endpoint.\n</Note>\n\nRequired scope | `forms:read`\n"
+      description: 'List form submissions for a given form
+
+
+        When a form is used in a component definition, each instance of the form is considered a unique form.
+
+
+        To get a combined list of submissions for a form that appears across multiple component instances, use the List Form Submissions by Site endpoint.
+
+
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -2060,9 +2065,7 @@ paths:
       description: 'Get information about a given form submissio.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -2580,9 +2583,7 @@ paths:
       description: 'Update hidden fields on a form submission
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -3184,10 +3185,7 @@ paths:
       description: 'Delete a form submission
 
 
-
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -3737,22 +3735,16 @@ paths:
       description: 'List all form submissions for a given site with the ability to filter submissions by a centralized `elementId`.
 
 
-        Add `elementId` when you want to filter form submissions to a specific form in a site. You can get the `elementId` from the [List forms endpoint](/data/reference/forms/forms/list) (displayed as `formElementId` in the response).
+        Add `elementId` when you want to filter form submissions to a specific form in a site. You can get the `elementId` from the List forms endpoint (displayed as `formElementId` in the response).
 
-
-        <Note title="Forms in components">
 
         When a form is used in a Webflow component definition, each instance of the component will yield a unique form. Adding the `elementId` in this request ensures this API response includes all submissions from that core form, wherever that form is used in instantiated components.
 
-        </Note>
+
+        Use the List Form Submissions endpoint to list form submissions for a given form ID.
 
 
-        Use the [List Form Submissions endpoint](/data/reference/forms/form-submissions/list-submissions) to list form submissions for a given form ID.
-
-
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -4350,12 +4342,10 @@ paths:
       description: 'List form submissions for a given form ID within a specific site.
 
 
-        Use the [List Form Submissions by Site endpoint](/data/reference/forms/form-submissions/list-submissions-by-site) to list form submissions for a given site with the ability to filter by a `formElementId`.
+        Use the List Form Submissions by Site endpoint to list form submissions for a given site with the ability to filter by a `formElementId`.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -4952,9 +4942,7 @@ paths:
       description: 'Get information about a form submission within a specific site.
 
 
-        Required scope | `forms:read`
-
-        '
+        Required scope | `forms:read`'
       tags:
       - Forms
       parameters:
@@ -5483,9 +5471,7 @@ paths:
       description: 'Update hidden fields on a form submission within a specific site.
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:
@@ -6098,9 +6084,7 @@ paths:
       description: 'Delete a form submission within a specific site.
 
 
-        Required scope | `forms:write`
-
-        '
+        Required scope | `forms:write`'
       tags:
       - Forms
       parameters:

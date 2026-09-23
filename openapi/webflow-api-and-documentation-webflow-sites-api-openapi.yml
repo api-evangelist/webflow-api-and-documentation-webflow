@@ -34,12 +34,10 @@ paths:
       description: 'Create a site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `workspace:write`
-
-        '
+        Required scope | `workspace:write`'
       tags:
       - Sites
       parameters:
@@ -854,9 +852,7 @@ paths:
       description: 'List of all sites the provided access token is able to access.
 
 
-        Required scope | `sites:read`
-
-        '
+        Required scope | `sites:read`'
       tags:
       - Sites
       responses:
@@ -1573,9 +1569,7 @@ paths:
       description: 'Get details of a site.
 
 
-        Required scope | `sites:read`
-
-        '
+        Required scope | `sites:read`'
       tags:
       - Sites
       parameters:
@@ -2236,12 +2230,10 @@ paths:
       description: 'Update a site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `sites:write`
-
-        '
+        Required scope | `sites:write`'
       tags:
       - Sites
       parameters:
@@ -3021,12 +3013,10 @@ paths:
       description: 'Delete a site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `sites:write`
-
-        '
+        Required scope | `sites:write`'
       tags:
       - Sites
       parameters:
@@ -3578,9 +3568,7 @@ paths:
       description: 'Get a list of all custom domains related to site.
 
 
-        Required scope | `sites:read`
-
-        '
+        Required scope | `sites:read`'
       tags:
       - Sites
       parameters:
@@ -4022,18 +4010,16 @@ paths:
       description: 'Publishes a site to one or more more domains.
 
 
-        To publish to a specific custom domain, use the domain IDs from the [Get Custom Domains](/data/reference/sites/get-custom-domain) endpoint.
+        To publish to a specific custom domain, use the domain IDs from the Get Custom Domains endpoint.
 
 
         You must include at least one of the `customDomains` or `publishToWebflowSubdomain` properties in the request body.
 
 
-        <Note title="Rate limit: 1 publish per minute">This endpoint has a specific rate limit of one successful publish queue per minute.</Note>
+        This endpoint has a specific rate limit of one successful publish queue per minute.
 
 
-        Required scope | `sites:write`
-
-        '
+        Required scope | `sites:write`'
       tags:
       - Sites
       parameters:
@@ -4583,12 +4569,10 @@ paths:
         Use this endpoint to review, audit, or manage the redirection rules that control how traffic is rerouted on your site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `sites:read`
-
-        '
+        Required scope: `sites:read`'
       tags:
       - Sites
       parameters:
@@ -5059,12 +5043,10 @@ paths:
         This endpoint allows you to define a source path (`fromUrl`) and its corresponding destination path (`toUrl`), which will dictate how traffic is rerouted on your site. This is useful for managing site changes, restructuring URLs, or handling outdated links.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `sites:write`
-
-        '
+        Required scope: `sites:write`'
       tags:
       - Sites
       parameters:
@@ -5515,12 +5497,10 @@ paths:
       description: 'Update a 301 redirection rule from a site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `sites:write`
-
-        '
+        Required scope: `sites:write`'
       tags:
       - Sites
       parameters:
@@ -5982,12 +5962,10 @@ paths:
         This is useful for cleaning up outdated or unnecessary redirects, ensuring that your site''s routing behavior remains efficient and up-to-date.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `sites:write`
-
-        '
+        Required scope: `sites:write`'
       tags:
       - Sites
       parameters:
@@ -6465,12 +6443,10 @@ paths:
       description: 'Get site plan details for the specified Site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `sites:read`
-
-        '
+        Required scope | `sites:read`'
       tags:
       - Sites
       parameters:
@@ -6913,12 +6889,10 @@ paths:
       description: 'Retrieve the robots.txt configuration for various user agents.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `site_config:read`
-
-        '
+        Required scope: `site_config:read`'
       tags:
       - Sites
       parameters:
@@ -7365,12 +7339,10 @@ paths:
       description: 'Replace the `robots.txt` configuration for various user agents.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `site_config:write`
-
-        '
+        Required scope | `site_config:write`'
       tags:
       - Sites
       parameters:
@@ -7862,12 +7834,10 @@ paths:
       description: 'Update the `robots.txt` configuration for various user agents.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope | `site_config:write`
-
-        '
+        Required scope | `site_config:write`'
       tags:
       - Sites
       parameters:
@@ -8362,12 +8332,10 @@ paths:
         **Note:** Deleting a user-agent with no rules will make the user-agent''s access unrestricted unless other directives apply.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `site_config:write`
-
-        '
+        Required scope: `site_config:write`'
       tags:
       - Sites
       parameters:

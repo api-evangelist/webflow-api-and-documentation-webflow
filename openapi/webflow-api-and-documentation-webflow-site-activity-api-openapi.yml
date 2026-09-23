@@ -32,12 +32,10 @@ paths:
       description: 'Retrieve Activity Logs for a specific Site.
 
 
-        <Warning title="Enterprise Only">This endpoint requires an Enterprise workspace.</Warning>
+        This endpoint requires an Enterprise workspace.
 
 
-        Required scope: `site_activity:read`
-
-        '
+        Required scope: `site_activity:read`'
       tags:
       - Site Activity
       security:
