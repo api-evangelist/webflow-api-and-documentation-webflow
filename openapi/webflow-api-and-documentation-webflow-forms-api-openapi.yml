@@ -4337,7 +4337,7 @@ paths:
       security:
       - OAuth2:
         - forms:read
-      operationId: list-submissions
+      operationId: getSitesBySiteIdFormsByFormIdSubmissions
       summary: Webflow List Form Submissions
       description: 'List form submissions for a given form ID within a specific site.
 
@@ -4928,6 +4928,8 @@ paths:
                 message: An Internal Error occurred
                 externalReference: null
                 details: []
+      x-operation-id-source: normalized
+      x-operation-id-original: list-submissions
   /sites/{site_id}/form_submissions/{form_submission_id}:
     get:
       x-fern-sdk-group-name:
