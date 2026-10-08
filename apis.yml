@@ -549,6 +549,10 @@ apis:
   - type: JSONSchema
     url: json-schema/webflow-webhook-schema.json
 common:
+  - type: Plans
+    url: plans/webflow-api-and-documentation-webflow-plans-pricing.yml
+  - type: FinOps
+    url: finops/webflow-api-and-documentation-webflow-finops.yml
   - type: CapabilityMap
     url: capabilities/webflow-api-and-documentation-webflow-capability-edges.yml
     name: Webflow API and Documentation Business Capability Map
