@@ -1,0 +1,35 @@
+# Front Door AI Index — webflow-api-and-documentation-webflow — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: webflow-api-and-documentation-webflow
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: webflow.com
+  final_host: webflow.com
+  ownership: shared
+  owner: webflow
+  shares_host_with:
+  - webflow
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: null
+  band: null
+  band_label: null
+  host_score: 38
+  density: null
+  words: 2254
+  tiers:
+    agentic: 8
+    core: 28
+    model: 2
+  ambiguous: 4
+  top_terms:
+    AI: 27
+    agent: 4
+    MCP: 3
+    fine-tune: 3
+    Claude: 2
+    agentic: 2
+    LLMs: 1
